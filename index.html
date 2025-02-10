@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio de Jordi Selma</title>
+    <style>
+        body{
+            margin: 0px;
+            padding: 0px;
+            background-image: url(img/Fondo_de_Portfolio.png);
+            background-size: cover;
+        }
+        header{
+            background-color: rgb(39, 24, 7);
+            color: white;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-style: normal;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            text-shadow: 5px 5px 10px black, -5px -5px 10px white;
+            padding: 5px;
+        }
+        H1{
+            color: gold;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-style: normal;
+            font-size: 46px;
+            font-weight: bold;
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            text-shadow: 5px 5px 10px black, -5px -5px 10px goldenrod;
+        }
+        H2{
+            color: white;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-style: normal;
+            font-size: 20px;
+            font-weight: bold;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            text-shadow: 5px 5px 10px black, -5px -5px 10px white;
+        }
+        .perfil{
+            position: absolute;
+            left: 5px;
+            top: 100px;
+        }
+        .movil{
+            text-decoration: none;
+            color: yellow;
+            top: 200px;
+            font-weight: normal;
+            
+        }
+        .movil:hover{
+            color:goldenrod;
+            text-shadow:  1px 0px 0px black,0px 1px 0px black,-1px 0px 0px black,0px -1px 0px black;
+
+            
+        }
+        .whatsapp{
+            text-decoration: none;
+            color: green;
+            top: 240px;
+            font-weight: bolder;
+           
+            text-shadow:  1px 0px 0px white,0px 1px 0px white,-1px 0px 0px white,0px -1px 0px white;
+        }
+        .whatsapp:hover{
+            color: white;
+            text-shadow:  1px 0px 0px green,0px 1px 0px green,-1px 0px 0px green,0px -1px 0px green;
+    
+        }
+        .correo{
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            top: 110px;
+        }
+        .correo:hover{
+            color: goldenrod;
+            text-shadow:  1px 0px 0px black,0px 1px 0px black,-1px 0px 0px black,0px -1px 0px black;
+
+        }
+        .linkedin{
+            text-decoration: none;
+            color: blue;
+            font-size: 22px;
+            top: 280px;
+            text-shadow:  1px 0px 0px white,0px 1px 0px white,-1px 0px 0px white,0px -1px 0px white;
+        }
+        .linkedin:hover{
+            color: white;
+            text-shadow:  1px 0px 0px blue,0px 1px 0px blue,-1px 0px 0px blue,0px -1px 0px blue;
+
+        }
+        .vitae{
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            top: 150px;
+        }
+        .vitae:hover{
+            color: goldenrod;
+            text-shadow:  1px 0px 0px black,0px 1px 0px black,-1px 0px 0px black,0px -1px 0px black;
+
+        }
+        h3{
+            position: relative;
+            top: 100px;
+            color: white;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-style: normal;
+            padding-left: 10%;
+            padding-right: 38px;
+            text-align: justify;
+        }
+        .icono{
+            position: relative;
+            top: -100px;
+        }
+        article{
+            position: relative;
+            top: 120px;
+            text-align: center;
+        }
+        #jordi{
+            animation-delay: 2s;
+            animation-iteration-count: infinite;
+            animation-name: logogira;
+            animation-duration: 6s;
+            
+        }
+        @keyframes logogira {
+            0% {transform: rotate(0deg);}
+            33.33% {transform: rotate(360deg);}
+            49.99% {transform: rotate(-0deg);}
+            83.33% {transform: rotate(-360deg);}
+            100% {transform: rotate(0deg);}
+
+        }
+        #nombre{
+            animation-delay: 2s;
+            animation-iteration-count: infinite;
+            animation-name: palpita;
+            animation-duration: 6s;
+        }
+        @keyframes palpita {
+            0% {transform: scale(1,1);}
+            33.33% {transform: scale(0.8,0.8);}
+            49.99% {transform: scale(1,1);}
+            83.33% {transform: scale(0.8,0.8);}
+            100% {transform: scale(1,1);}
+
+        }
+        .trans{
+            transition: 2s;
+        }
+        .baja{
+            position: relative;
+            bottom: -10px;
+        }
+        .baja2{
+            position: relative;
+            bottom: -8px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Portfolio
+    </header>
+    <img src="img/Esquina_superior.png" alt="Esquina superior" width="50%">
+    <h1 id="nombre">JORGE SELMA</h1>
+    <h2>Web Developer (Front-end)</h2>
+    <h2 class="correo trans"><a class="correo trans" href="mailto:jordi_selma@hotmail.com"><img class="baja" src="img/email-icon.png" alt="email icono" width="30px"> jordi_selma@hotmail.com</a></h2>
+    <h2 class="vitae trans"><a class="vitae trans" href="pdf/CV Jorge 2024 Web Developer.pdf" target="_blank"><img class="baja" src="img/CV-icon.png" alt="CV icono" width="35px"> Curriculum Vitae</a></h2>
+    <h2 class="movil trans"><a class="movil trans" href="tel:+34660858882"><img class="baja2" src="img/telefono-icon.png" alt="telefono icono" width="25px"> +34 660858882</a></h2>
+    <h2 class="whatsapp trans"><a class="whatsapp trans" href="https://wa.me/34660858882/?text=Hola,%20Quiero%20Contratarte."><img class="baja2" src="img/whatsapp.png" alt="Icono WhatsApp" width="25px"> WhatsApp</a></h2>
+    <h2 class="linkedin trans"><a class="linkedin trans" href="http://www.linkedin.com/in/jorge-selma-gabarra"><img class="baja2" src="img/linkedin-icon.png" alt="linkedin icono" width="27px"> Linkedin</a></h2>
+    <img class="perfil" id="jordi" src="img/Foto_perfil_2024.png" alt="jordi selma perfil selfie" width="30%">
+    <img class="perfil"  src="img/Foto_perfil_2024_solo.png" alt="jordi selma perfil selfie" width="30%">
+    <br>
+    <h3>Apasionado de las tecnologías, en especial la programación web. Pertenezco a la Generación X así que destaco por tener gran capacidad laboral, soy organizado y metódico, cuento con una amplia experiencia en el sector de la informática. Me caracterizo por ser una persona proactiva y asertiva.</h3>
+    <br><br><br><br>
+    <article>
+    <a href="club_baco/index.html">
+        <img class="icono" src="img/Portfolio_club_baco.png" alt="Club Baco" width="80%">
+    </a>
+    <br><br><br>
+    <a href="ECOMAR/index.html">
+        <img class="icono" src="img/Portfolio_EcoMar.png" alt="Ecomar Kids" width="80%">
+    </a>
+    <br><br><br>
+    <a href="horror-suegra/index.html">
+        <img class="icono" src="img/Portfolio_horror_suegra.png" alt="Club Baco" width="80%">
+    </a>
+    <br><br><br>
+    <a href="Newsletter/Newsletter.html">
+        <img class="icono" src="img/Portfolio_newsleter.png" alt="Newsletter" width="80%">
+    </a>
+    <br><br><br>
+    <a href="Grupomusical/Index.html">
+        <img class="icono" src="img/Portfolio_grupo_musical.png" alt="bee gees" width="80%">
+    </a>
+    <br><br><br>
+    <a href="Picasso/imagen.html">
+        <img class="icono" src="img/Portfolio_Picasso.png" alt="Picasso" width="80%">
+    </a>
+    <br><br><br>
+    <a href="https://www.confecciowebsabadell.cat/jordi/?page_id=89">
+        <img class="icono" src="img/Portfolio_japon.png" alt="Japón" width="80%">
+    </a>
+    <br><br><br>
+    <a href="http://dulces930:iIWDQOFR@www.dulcesfrikis.com.mialias.net/">
+        <img class="icono" src="img/Portfolio_tienda.png" alt="Dulcesfriki" width="80%">
+    </a>
+    <br><br><br>
+    </article>
+</body>
+</html>

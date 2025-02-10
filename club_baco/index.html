@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <Header>
+        CLUB BACO
+    </Header>
+    <main>
+        <article>
+            <div>
+                <h1 class="espaciado">El regalo que todos amarán</h1>
+                <section>
+                    <img src="img/imagen1.jpg" alt="Vinos" width="280px" class="opaco"> <br> 
+                    <h2 class="blanco">DISCOVER CALIFORNIA WINES</h2>
+                    <h3 class="negrita">Recibe totalmente <span class="lila">GRATIS</span><br>
+                    la guía de los 75 mejores<br>
+                    vinos de California</h3><br>
+                </section>
+            </div>
+            <aside> 
+                <form action="enviardatos.php" method="post">
+                    <h4 class="tituloformulario">FORMULARIO DE CONTACTO</h4>
+                    <label for="Nombre">Nombre</label><br>
+                    <input type="text" size="40" placeholder="Anthony Peterson" title="Escribe tu nombre." name="Nombre" autofocus required/><br>
+                    <label for="mail">Email</label><br>
+                    <input type="email" size="40" placeholder="youemail@gmail.com" title="Escribe tu correo electronico." name="mail" required/><br>
+                    <label for="telefono">Teléfono de Contacto</label><br>
+                    <input type="tel" name="telefono" placeholder="123456789" size="40" title="Escribe tu número de móvil." required/><br>
+                    <label for="web">Página web</label><br>
+                    <input type="url" name="web" placeholder="yousite" size="40" title="Escribe tu página web."><br>
+                    <label for="comentario">Comentario</label><br>
+                    <textarea name="comentario" placeholder="Escribe aquí..." title="Escribe un comentario." rows="4" cols="40"></textarea> <br>
+                    <input type="submit" class="boton">
+                </form>
+            </aside>
+        </article>
+        <footer>
+            Wine Club of California Copyright © 2011-2016
+        </footer>
+    </main>
+</body>
+</html>
