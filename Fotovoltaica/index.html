@@ -32,19 +32,130 @@
         nav a:hover {
             background-color: #555;
         }
+        .container {
+            display: flex;
+            padding: 20px;
+            gap: 20px;
+            max-width: 50%;
+            justify-self: center;
+        }
+        .column {
+            flex: 1;
+        }
+        .slideshow {
+            position: relative;
+            max-width: 100%;
+            height: 300px;
+            overflow: hidden;
+        }
+        .barra-slideshow {
+            position: relative;
+            height: 512px;
+            width: 512px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .slides {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
+        .barra-slides {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
+        .active {
+            display: block;
+        }
+        p {
+            font-family: 'Georgia', serif; /* Cambia el tipo de fuente */
+            line-height: 1.6; /* Ajusta la distancia entre líneas */
+            font-size: 16px; /* Tamaño de fuente */
+            color: #333; /* Color del texto */
+            margin-bottom: 15px; /* Espaciado entre párrafos */
+        }
+        li:hover {
+            color: red; /* Cambia el color al pasar el mouse */
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Fotovoltaica</h1>
+        <h1>DIY Solar Home</h1><br>
+        <h3>(Do it Yourself) "Hazlo tú mismo, ilumina tu hogar."</h3>
         <nav>
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
+            <a href="#home">Inicio</a>
+            <a href="#materiales">Materiales</a>
+            <a href="#services">Instalación</a>
+            <a href="#projects">Mantenimiento</a>
+            <a href="#contact">Contacto</a>
             <a href="#faq">FAQ</a>
         </nav>
     </header>
+    <div class="container">
+        <div class="column">
+            <h2 id="Home">Bienvenido a DIY Solar Home</h2>
+            <p>Descubre cómo puedes instalar tu propio sistema de energía solar en casa. Aprende sobre los materiales necesarios, el proceso de instalación y cómo mantener tu sistema funcionando de manera eficiente.</p>
+            
+            <p><strong>¿Qué se necesita para instalar paneles solares?</strong></p>
+
+            <p>Para llevar a cabo una instalación de paneles solares de forma exitosa, es fundamental realizar una <strong>evaluación detallada del sitio</strong> donde se llevará a cabo el proyecto. Esta evaluación consiste en analizar la cantidad de luz solar que recibe el área a lo largo del año, así como la inclinación y orientación más adecuada para maximizar la captación de energía solar.</p>
+
+        </div>
+        <div class="column">
+            <div class="slideshow">
+                <img src="img/slide1.png" class="slides active" alt="casa con placas solares">
+                <img src="img/slide2.png" class="slides" alt="casa con placas solares">
+                <img src="img/slide3.png" class="slides" alt="casa con placas solares">
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="column">
+            <h2 id="materiales">Materiales necesarios</h2>
+            <p>También se necesita <strong>seleccionar paneles solares adecuados</strong>, ya que existen diferentes tipos y marcas en el mercado, por lo que es fundamental elegir aquellos que mejor se adapten a las necesidades del proyecto y que ofrezcan una buena relación entre el costo y la eficiencia. Además, se deben i<strong>nstalar estructuras de soporte adecuadas</strong> que mantengan los paneles seguros y correctamente posicionados. Estas estructuras pueden variar según el tipo de techo o terreno donde se instalen los paneles solares.</p>
+            <p>Para la instalación de un sistema solar fotovoltaico, necesitarás los siguientes materiales:</p>
+            <ul>
+                <li>Paneles solares</li>
+                <li>Inversor solar</li>
+                <li>Baterías (opcional)</li>
+                <li>Estructura de soporte</li>
+                <li>Cableado y conectores</li>
+                <li>Herramientas de instalación</li>
+            </ul>
+        </div>
+    </div>
+    <div class="barra-slideshow">
+            <img src="img/barra-slide1.png" class="barra-slides active" alt="casa con placas solares">
+            <img src="img/barra-slide2.png" class="barra-slides" alt="casa con placas solares">
+            <img src="img/barra-slide3.png" class="barra-slides" alt="casa con placas solares">
+            <img src="img/barra-slide4.png" class="barra-slides" alt="casa con placas solares">
+    </div>
+    <script>
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slides');
+
+        let barraslideIndex = 0;
+        const barraslides = document.querySelectorAll('.barra-slides');
+
+        function showSlides() {
+            slides.forEach((slide, index) => {
+                slide.style.display = index === slideIndex ? 'block' : 'none';
+            });
+            slideIndex = (slideIndex + 1) % slides.length;
+        }
+
+        function showBarraSlides() {
+            barraslides.forEach((slide, index) => {
+                slide.style.display = index === barraslideIndex ? 'block' : 'none';
+            });
+            barraslideIndex = (barraslideIndex + 1) % barraslides.length;
+        }
+        setInterval(showBarraSlides, 3000); // Cambia de diapositiva cada 3 segundos
+
+        setInterval(showSlides, 3000); // Cambia de diapositiva cada 3 segundos
+        showSlides();
+    </script>
 </body>
 </html>
