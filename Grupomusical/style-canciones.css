@@ -1,0 +1,67 @@
+*{
+
+    margin: 0px auto;
+    padding: 23px;
+}
+body{
+    display: block;
+    border: 10px solid gold;
+    border-radius: 80px;
+    width: 80%;
+    background-image: url(Imagenes/vinilo_fondo.jpg);
+    
+    
+}
+#Titulo{
+    display: flex;
+    border-radius: 60px 60px 0px 0px;
+    background-color: rgba(107, 103, 101,0.4);
+    justify-content: center;
+    color: gold;
+    font-size: 24px;
+}
+main{
+    display: flex;
+    background-color: rgba(107, 103, 101,0.4);
+    flex-direction: row;
+    justify-content: center;
+}
+.letra{
+    background-color: rgba(107, 103, 101,0.7);
+    font-size: 18px;
+    width: 800px;
+    height: 230px;
+    color: white;
+    padding: 5px;
+    overflow-y: scroll;
+    margin-left: 10px;
+}
+video{
+    
+    padding: 5px;
+}
+#Audio{
+    font-size: 20px;
+    background-color: rgba(107, 103, 101,0.7);
+    width: 417px;
+    border-radius: 0px 0px 0px 60px;
+    padding: 10px;
+    text-align: center;
+}
+section{
+    
+    display: flex;
+    background-color: rgba(107, 103, 101,0.4);
+    justify-content: center;
+    flex-direction: row;
+    border-radius: 0px 0px 60px 60px;
+}
+#gusta{
+    font-size: 20px;
+    background-color: rgba(107, 103, 101,0.7);
+    border-radius: 0px 0px 60px 0px;
+    margin-left: 10px;
+    width: 800px;
+    padding: 10px;
+    text-align: center;
+}
