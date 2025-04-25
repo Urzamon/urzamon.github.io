@@ -1,0 +1,64 @@
+#cielo1{
+    display: grid;
+    background-image: linear-gradient(to bottom, rgb(0, 110, 255), rgb(105, 170, 255));
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 1fr 2.5fr;
+}
+#cielo2{
+    display: grid;
+    background-image: linear-gradient(to bottom, rgb(105, 170, 255), rgb(182, 214, 255),rgb(255, 196, 108) 99%);  
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: 1fr 4fr;
+}
+#playa{
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: repeat(3,1fr);
+    background-image: url(imagenes/arena-playa-02.jpg);
+}
+#orilla{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    background-color: rgb(72, 187, 214);
+  }
+#mar{
+    display: grid;
+    background-image: linear-gradient(to bottom,rgb(72, 187, 214),blue);
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 0.5fr 3fr 0.5fr 0.5fr 0.1fr 3fr 0.5fr;
+}
+#entralmar{
+    display: grid;
+    background-image: radial-gradient(circle at bottom, rgb(178, 178, 248) 1%, rgb(77, 77, 255) 34%, blue, blue);
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 1fr;
+}
+#vidamarina24{
+    display: grid;
+    background-image: linear-gradient(to right, blue, rgb(178, 178, 248), blue);
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: repeat(3,1fr);
+}
+#vidamarina34{
+    display: grid;
+    background-image: linear-gradient(to right, blue, rgb(178, 178, 248), blue);
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: repeat(3,1fr);
+}
+#vidamarina44{
+    display: grid;
+    background-image: linear-gradient(to right, blue, rgb(178, 178, 248), blue);
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: repeat(4,1fr);
+}
+#vidamarina25{
+    display: grid;
+    background-image: linear-gradient(to right, blue, rgb(178, 178, 248), blue);
+    grid-template-columns: 10% 80% 10%;
+    grid-template-rows: 100vh;
+
+}
+.mar25{
+    
+}

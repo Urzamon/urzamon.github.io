@@ -1,0 +1,45 @@
+.cielo{
+    text-align: center;
+}
+.cielo2{
+    text-align: center;
+    align-content: flex-end;
+}
+.arena{
+    align-content: flex-start;
+}
+.centro{
+    text-align: center;
+}
+.arriba{
+    justify-content: flex-start;
+}
+.abajo{
+    justify-content: flex-end;
+}
+.derecha{
+    text-align: right;
+}
+.justificar{
+    text-align: justify;
+}
+.cangrejo{
+    text-align: start;
+}
+.olas{
+    text-align: center;
+    align-content: flex-start;
+}
+.entramar1{
+    text-align: start;
+    align-content: flex-start;
+}
+.mar24{
+}
+.mar34{
+    align-content: flex-start;
+
+}
+.mar44{
+    align-content: flex-start;
+}
