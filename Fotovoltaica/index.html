@@ -118,6 +118,46 @@
         animation-fill-mode: none; /* Reinicia la animación al comenzar de nuevo */
     }
 
+    .cables {
+        z-index: 1; /* Asegura que los cables estén por encima de la casa */
+        animation: moveCables 30s infinite normal;
+    }
+
+    .elice {
+        z-index: 3; /* Asegura que la elice esté por encima de la casa */
+        animation: moveElice 30s infinite normal;
+        animation-fill-mode: none; /* Reinicia la animación al comenzar de nuevo */
+        transform-origin: center; /* Establece el origen de la transformación en el centro de la elice */
+        
+        top: 40px; /* Ajusta la posición vertical de la elice */
+        left: -12px; /* Ajusta la posición horizontal de la elice */
+    }
+
+    .luz-aparato {
+        z-index: 3; /* Asegura que la luz del aparato esté por encima de la casa */
+        animation: moveLuz-aparato 30s infinite normal;
+    }
+
+    .aparato {
+        z-index: 2; /* Asegura que el aparato esté por encima de la casa */
+        animation: moveAparato 30s infinite normal;
+    }
+
+    .luz-bateria {
+        z-index: 3; /* Asegura que la luz de la batería esté por encima de la casa */
+        animation: moveLuz-bateria 30s infinite normal;
+    }
+    
+    .bateria {
+        z-index: 0; /* Asegura que la batería esté por encima de la casa */
+        animation: moveBateria 30s infinite normal;
+    }
+
+    .placas {
+        z-index: 1; /* Asegura que las placas estén por encima de la casa */
+        animation: movePlacas 30s infinite normal;
+    }
+
     /* Definición de animaciones */
     @keyframes moveLuna {
         0% { opacity: 0; }
@@ -136,17 +176,23 @@
     }
 
     @keyframes moveDia {
-        0% {  opacity: 1; }
-        49% {  opacity: 1; }
-        50% {  opacity: 0; }
-        100% { opacity: 0; }
+        0% {  opacity: 0,5; }
+        5% {  opacity: 1; }
+        45% {  opacity: 1; }
+        50% {  opacity: 0,5; }
+        55% {  opacity: 0; }
+        95% { opacity: 0; }
+        100% { opacity: 0.5; }
     }
 
     @keyframes moveNoche {
-        0% { opacity: 0; }
-        49% { opacity: 0; }
-        50% { opacity: 1; }
-        100% { opacity: 1; }
+        0% {  opacity: 0,5; }
+        5% {  opacity: 0; }
+        45% {  opacity: 0; }
+        50% {  opacity: 0,5; }
+        55% {  opacity: 1; }
+        95% { opacity: 1; }
+        100% { opacity: 0.5; }
     
     }
 
@@ -154,6 +200,89 @@
         0% { transform: translate(0, 0); }
         100% { transform: translate(0, 0); }
     }
+
+    @keyframes moveCables {
+        0% {  filter: invert(); }
+        5% {  filter: none; }
+        10% {  filter: invert(); }
+        15% {  filter: none; }
+        20% {  filter: invert(); }
+        25% {  filter: none; }
+        30% {  filter: invert(); }
+        35% {  filter: none; }
+        40% {  filter: invert(); }
+        45% {  filter: none; }
+        50% {  filter: invert(); }
+        100% {  filter: none; }
+    }
+    @keyframes moveElice {
+        0% { transform: rotate(0deg); }
+        55% { transform: rotate(3960deg); }
+        100% { transform: rotate(4000deg); }
+    }
+    @keyframes moveLuz-aparato {
+        0% {  filter: none;}
+        49% {  filter: none; }
+        50% {  filter: invert() }
+        100% { filter: invert() }
+    }
+    @keyframes moveAparato {
+        0% { transform: translate(0, 0); }
+        100% { transform: translate(0, 0); }
+    }
+    @keyframes moveLuz-bateria {
+        0% {  filter: none;}
+        49% {  filter: none; }
+        50% {  filter: invert() }
+        100% { filter: invert() }
+    }
+    @keyframes moveBateria {
+        0% { transform: translate(0, 0); }
+        100% { transform: translate(0, 0); }
+    }
+    /* Animación de las placas solares */
+    @keyframes movePlacas {
+        0% {  filter: hue-rotate(0deg); }
+        5% {  filter: hue-rotate(360deg); }
+        10% {  filter: hue-rotate(0deg); }
+        15% {  filter: hue-rotate(360deg); }
+        20% {  filter: hue-rotate(0deg); }
+        25% {  filter: hue-rotate(360deg); }
+        30% {  filter: hue-rotate(0deg); }
+        35% {  filter: hue-rotate(360deg); }
+        40% {  filter: hue-rotate(0deg); }
+        45% {  filter: hue-rotate(360deg); }
+        50% {  filter: hue-rotate(0deg); }
+        100% {  filter: hue-rotate(0deg); }
+}
+
+.popup-container {
+        position: relative; /* Necesario para posicionar el pop-up relativo al contenedor */
+        display: inline-block;
+    }
+
+    .popup-text {
+        visibility: hidden; /* Oculta el pop-up por defecto */
+        background-color: #333; /* Fondo del pop-up */
+        color: #fff; /* Color del texto */
+        text-align: center;
+        padding: 5px 10px;
+        border-radius: 5px;
+        position: absolute;
+        width: 200px; /* Define el ancho del pop-up */
+        z-index: 10;
+        bottom: 125%; /* Posiciona el pop-up arriba del elemento */
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0; /* Hace el pop-up invisible */
+        transition: opacity 0.3s; /* Transición suave */
+    }
+
+    .popup-container:hover .popup-text {
+        visibility: visible; /* Muestra el pop-up al hacer hover */
+        opacity: 1; /* Hace el pop-up visible */
+    }
+
     </style>
 </head>
 <body>
@@ -220,11 +349,166 @@
                     <img src="img/casaconplacas-dia.png" alt="dia" class="animated-image dia">
                     <img src="img/casaconplacas-noche.png" alt="noche" class="animated-image noche">
                     <img src="img/casaconplacas-sin cielo.png" alt="casa con placas solares" class="animated-image casa">
+                    <img src="img/cables.png" alt="cables" class="animated-image cables">
+                    <img src="img/elice.png" alt="elice" class="animated-image elice">
+                    <img src="img/luz-aparato.png" alt="luz del aparato" class="animated-image luz-aparato">
+                    <img src="img/aparato.png" alt="aparato" class="animated-image aparato">
+                    <img src="img/luz-bateria.png" alt="luz de bateria" class="animated-image luz-bateria">
+                    <img src="img/bateria.png" alt="bateria" class="animated-image bateria">
+                    <img src="img/placas.png" alt="placas" class="animated-image placas">
                 </div>
             </div>
+            <p>
+                Dependiendo de la normativa local, puede ser necesario obtener permisos para la instalación. En algunos lugares, existen incentivos gubernamentales o subvenciones para energías renovables.
+            </p>
+            <ul>
+                <li>Evaluación del sitio: Analizar la ubicación y la cantidad de luz solar disponible.</li>
+                <li>Selección de paneles solares: Elegir los paneles adecuados según las necesidades energéticas.</li>
+                <li>Instalación de estructuras de soporte: Asegurar los paneles en el tejado o superficie.</li>
+                <li>Conexión eléctrica: Conectar los paneles al inversor y a la red eléctrica.</li>
+                <li>Configuración de baterías: Si se utilizan, conectar y configurar las baterías.</li>
+                <li>Pruebas y puesta en marcha: Verificar el funcionamiento del sistema.</li>
+            </ul>
+            <p>Recuerda que la instalación de un sistema solar puede ser compleja y es recomendable contar con la ayuda de profesionales si no tienes experiencia en electricidad o instalaciones solares.</p>
         </div>
     </div>
-  
+    <br><br>
+    <div class="container">
+        <div class="column">
+            <h2 id="services">Mantenimiento</h2>
+            <p>El mantenimiento de un sistema solar fotovoltaico es esencial para garantizar su eficiencia y prolongar su vida útil. Aquí hay algunos consejos para el mantenimiento:</p>
+            <li>
+                <div class="popup-container">
+                    <strong>Inspección regular:</strong>
+                    <div class="popup-text">Revisa los paneles solares periódicamente para detectar suciedad, escombros o daños. Limpia los paneles si es necesario, especialmente en áreas con polvo o contaminación.</div>
+                </div> 
+            </li>
+            <li>
+                <div class="popup-container">
+                    <strong>Verificación de conexiones:</strong>
+                    <div class="popup-text">Asegúrate de que todas las conexiones eléctricas estén seguras y sin corrosión. Revisa los cables y conectores para detectar signos de desgaste.</div>
+                </div> 
+            </li>
+            <li>
+                <div class="popup-container">
+                    <strong>Monitoreo del rendimiento:</strong>
+                    <div class="popup-text">Utiliza un sistema de monitoreo para verificar el rendimiento de tu sistema solar. Si notas una disminución en la producción de energía, investiga la causa.</div>
+                </div> 
+            </li>
+            <li>
+                <div class="popup-container">
+                    <strong>Revisión del inversor:</strong>
+                    <div class="popup-text">Asegúrate de que el inversor esté funcionando correctamente. Algunos inversores tienen luces de advertencia que indican problemas.</div>
+                </div>
+            </li>
+            <li>
+                <div class="popup-container">
+                    <strong>Reemplazo de baterías:</strong>
+                    <div class="popup-text">Si tu sistema tiene baterías, verifica su estado y reemplázalas según las recomendaciones del fabricante.</div>
+                </div>
+            </li>
+            <li>
+                <div class="popup-container">
+                    <strong>Consulta a un profesional:</strong>
+                    <div class="popup-text">Si no estás seguro de cómo realizar el mantenimiento o si encuentras problemas, es recomendable consultar a un técnico especializado en energía solar.</div>
+            </li>
+        </div>
+    </div>    
+    <br><br>
+    <div class="container">
+        <div class="column">
+            <h2 id="contact">Contacto</h2>
+            <p>Si tienes preguntas o necesitas más información sobre la instalación de paneles solares, no dudes en ponerte en contacto con nosotros. Estamos aquí para ayudarte a hacer la transición hacia una energía más sostenible.</p>
+            <p>Email:
+                <a href="mailto:fotovoltaje@gmail.com">
+                </a>
+            </p>
+            <p>Teléfono: 123-456-7890</p>
+            <p>Dirección: Calle Energía Solar, Ciudad Verde</p>
+            <p>Horario de atención: Lunes a Viernes, 9:00 AM - 5:00 PM</p>
+            <p>Redes sociales: Síguenos en nuestras redes sociales para obtener más información y actualizaciones sobre energía solar.</p>
+            <p>Facebook: <a href="https://www.facebook.com/fotovoltaje">facebook.com/fotovoltaje</a></p>
+            <p>Twitter: <a href="https://twitter.com/fotovoltaje">twitter.com/fotovoltaje</a></p>
+            <p>Instagram: <a href="https://www.instagram.com/fotovoltaje">instagram.com/fotovoltaje</a></p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/company/fotovoltaje">linkedin.com/company/fotovoltaje</a></p>
+            <p>Youtube: <a href="https://www.youtube.com/fotovoltaje">youtube.com/fotovoltaje</a></p>
+            <p>¡Gracias por visitar nuestro sitio web! Esperamos poder ayudarte en tu camino hacia la energía solar.</p>
+            <br>
+            <form action="https://example.com/submit-form" method="post">
+                <label for="name">Nombre:</label><br>
+                <input type="text" id="name" name="name" required><br><br>
+
+                <label for="email">Correo Electrónico:</label><br>
+                <input type="email" id="email" name="email" required><br><br>
+
+                <label for="message">Mensaje:</label><br>
+                <textarea id="message" name="message" rows="4" required></textarea><br><br>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    <br><br>
+    <div class="container">
+        <div class="column">
+            <h2 id="faq">FAQ</h2>
+            <p>Si tienes preguntas sobre la instalación de paneles solares, aquí tienes algunas respuestas a preguntas frecuentes:</p>
+            <div>
+                <p><strong>¿Cuánto cuesta instalar paneles solares?</strong> 
+                    <button onclick="toggleAnswer('answer1')">+</button>
+                </p>
+                <p id="answer1" style="display: none;">El costo de la instalación de paneles solares varía según el tamaño del sistema, la ubicación y los materiales utilizados. En promedio, el costo puede oscilar entre $10,000 y $30,000.</p>
+
+                <p><strong>¿Cuánto tiempo tardará en pagarse el sistema solar?</strong> 
+                    <button onclick="toggleAnswer('answer2')">+</button>
+                </p>
+                <p id="answer2" style="display: none;">El tiempo de retorno de la inversión (ROI) depende del costo del sistema, los ahorros en la factura de electricidad y los incentivos fiscales. En general, puede tardar entre 5 y 10 años en pagarse.</p>
+
+                <p><strong>¿Los paneles solares funcionan en días nublados?</strong> 
+                    <button onclick="toggleAnswer('answer3')">+</button>
+                </p>
+                <p id="answer3" style="display: none;">Sí, los paneles solares pueden generar energía incluso en días nublados, aunque su eficiencia puede disminuir. La luz difusa aún puede ser captada por los paneles.</p>
+
+                <p><strong>¿Necesito baterías para un sistema solar?</strong> 
+                    <button onclick="toggleAnswer('answer4')">+</button>
+                </p>
+                <p id="answer4" style="display: none;">No necesariamente. Las baterías son opcionales y se utilizan para almacenar energía para su uso durante la noche o en días nublados. Si no tienes baterías, el sistema estará conectado a la red eléctrica.</p>
+
+                <p><strong>¿Puedo instalar paneles solares yo mismo?</strong> 
+                    <button onclick="toggleAnswer('answer5')">+</button>
+                </p>
+                <p id="answer5" style="display: none;">Es posible instalar paneles solares tú mismo, pero se recomienda contar con la ayuda de profesionales para garantizar una instalación segura y eficiente. Además, algunas garantías pueden requerir una instalación profesional.</p>
+
+                <p><strong>¿Cuánto tiempo duran los paneles solares?</strong> 
+                    <button onclick="toggleAnswer('answer6')">+</button>
+                </p>
+                <p id="answer6" style="display: none;">La mayoría de los paneles solares tienen una vida útil de 25 a 30 años. Sin embargo, su eficiencia puede disminuir con el tiempo.</p>
+
+                <p><strong>¿Qué sucede si hay una falla en el sistema solar?</strong> 
+                    <button onclick="toggleAnswer('answer7')">+</button>
+                </p>
+                <p id="answer7" style="display: none;">Si hay una falla en el sistema solar, es importante contactar a un técnico especializado para diagnosticar y reparar el problema. Algunos inversores tienen luces de advertencia que indican fallas.</p>
+
+                <p><strong>¿Los paneles solares requieren mantenimiento?</strong> 
+                    <button onclick="toggleAnswer('answer8')">+</button>
+                </p>
+                <p id="answer8" style="display: none;">Sí, los paneles solares requieren un mantenimiento mínimo, como la limpieza periódica y la inspección de conexiones. Es recomendable realizar un mantenimiento regular para garantizar su eficiencia.</p>
+
+                <p><strong>¿Puedo vender el exceso de energía generada?</strong> 
+                    <button onclick="toggleAnswer('answer9')">+</button>
+                </p>
+                <p id="answer9" style="display: none;">En muchos lugares, puedes vender el exceso de energía generada a la red eléctrica a través de un programa de medición neta. Esto te permite recibir créditos en tu factura de electricidad.</p>
+            </div>
+
+            <script>
+                function toggleAnswer(id) {
+                    const answer = document.getElementById(id);
+                    answer.style.display = answer.style.display === 'none' ? 'block' : 'none';
+                }
+            </script>
+        </div>
+    </div>
     <script>
         let slideIndex = 0;
         const slides = document.querySelectorAll('.slides');
