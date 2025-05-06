@@ -87,13 +87,14 @@
             position: relative;
             width: 100%;
             max-width: 512px;
-            height: auto;
+            height: 512px;
+            margin: 0 auto;
             overflow: hidden;
         }
 
         .animated-image {
             position: absolute;
-            width: 100%;
+            width: 512px;
             height: auto;
         }
 
@@ -101,11 +102,13 @@
         .luna {
             z-index: 1; /* Asegura que la luna esté por encima de la casa */
             animation: moveLuna 30s infinite normal;
+            animation-fill-mode: none; /* Reinicia la animación al comenzar de nuevo */
         }
 
         .sol {
             z-index: 2; /* Asegura que el sol esté por encima de la casa */
             animation: moveSol 30s infinite normal;
+            animation-fill-mode: none; /* Reinicia la animación al comenzar de nuevo */
         }
 
         .dia {
@@ -126,6 +129,7 @@
         .cables {
             z-index: 1; /* Asegura que los cables estén por encima de la casa */
             animation: moveCables 30s infinite normal;
+            animation-fill-mode: none; /* Reinicia la animación al comenzar de nuevo */
         }
 
         .elice {
@@ -133,7 +137,7 @@
             animation: moveElice 30s infinite normal;
             animation-fill-mode: none; /* Reinicia la animación al comenzar de nuevo */
             transform-origin: center; /* Establece el origen de la transformación en el centro de la elice */
-            
+            animation-fill-mode: none; /* Reinicia la animación al comenzar de nuevo */
             top: 40px; /* Ajusta la posición vertical de la elice */
             left: -12px; /* Ajusta la posición horizontal de la elice */
         }
@@ -141,26 +145,31 @@
         .luz-aparato {
             z-index: 3; /* Asegura que la luz del aparato esté por encima de la casa */
             animation: moveLuz-aparato 30s infinite normal;
+            animation-fill-mode: none; /* Reinicia la animación al comenzar de nuevo */
         }
 
         .aparato {
             z-index: 2; /* Asegura que el aparato esté por encima de la casa */
-            animation: moveAparato 30s infinite normal;
+            animation: moveAparato 30s infinite normal; 
+            animation-fill-mode: none; /* Reinicia la animación al comenzar de nuevo */ 
         }
 
         .luz-bateria {
             z-index: 3; /* Asegura que la luz de la batería esté por encima de la casa */
             animation: moveLuz-bateria 30s infinite normal;
+            animation-fill-mode: none; /* Reinicia la animación al comenzar de nuevo */
         }
         
         .bateria {
             z-index: 0; /* Asegura que la batería esté por encima de la casa */
             animation: moveBateria 30s infinite normal;
+            animation-fill-mode: none; /* Reinicia la animación al comenzar de nuevo */
         }
 
         .placas {
             z-index: 1; /* Asegura que las placas estén por encima de la casa */
             animation: movePlacas 30s infinite normal;
+            animation-fill-mode: none; /* Reinicia la animación al comenzar de nuevo */
         }
 
         /* Definición de animaciones */
@@ -181,23 +190,23 @@
         }
 
         @keyframes moveDia {
-            0% {  opacity: 0,5; }
+            0% {  opacity: 1; }
             5% {  opacity: 1; }
             45% {  opacity: 1; }
-            50% {  opacity: 0,5; }
+            50% {  opacity: 1; }
             55% {  opacity: 0; }
             95% { opacity: 0; }
-            100% { opacity: 0.5; }
+            100% { opacity: 0; }
         }
 
         @keyframes moveNoche {
-            0% {  opacity: 0,5; }
+            0% {  opacity: 0; }
             5% {  opacity: 0; }
             45% {  opacity: 0; }
-            50% {  opacity: 0,5; }
+            50% {  opacity: 1; }
             55% {  opacity: 1; }
             95% { opacity: 1; }
-            100% { opacity: 0.5; }
+            100% { opacity: 1; }
         
         }
 
@@ -318,6 +327,16 @@
                 width: 100%;
                 box-sizing: border-box;
             }
+            .image-container {
+                width: 100%;
+                max-width: 512px;
+                height: 512px;
+            }
+            .animated-image {
+                width: 100%;
+                max-width: 512px;
+                height: auto;
+            }
         }
         @media screen and (max-width: 480px) {
             nav a {
@@ -332,6 +351,16 @@
             }
             p {
                 font-size: 14px;
+            }
+            .image-container {
+                width: 100%;
+                max-width: 400px;
+                height: 400px;
+            }
+            .animated-image {
+                width: 100%;
+                max-width: 400px;
+                height: auto;
             }
         }
     </style>
