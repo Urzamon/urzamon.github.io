@@ -23,7 +23,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <!-- Logo y nombre del sitio -->
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="index.html">
                 <div class="logo-container">
                     <i class="bi bi-sun-fill logo-sun" style="color: #FFD700 !important;"></i>
                     <i class="bi logo-panel sol"></i>
@@ -37,16 +37,16 @@
             <!-- Menú de navegación -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#home">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#materiales">Materiales</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#services">Instalación</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#projects">Mantenimiento</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contacto</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="materiales.html">Materiales</a></li>
+                    <li class="nav-item"><a class="nav-link" href="instalacion.html">Instalación</a></li>
+                    <li class="nav-item"><a class="nav-link" href="mantenimiento.html">Mantenimiento</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
                 </ul>
             </div>
         </div>
-    </nav>
+        </nav>
 
     <!-- ===== SECCIÓN HERO ===== -->
     <!-- Sección principal con introducción y slideshow -->
@@ -56,113 +56,39 @@
             <div class="col-lg-6">
                 <h1 class="display-4">Bienvenido a DIY Solar Home</h1>
                 <p class="lead">Descubre cómo puedes instalar tu propio sistema de energía solar en casa. Aprende sobre los materiales necesarios, el proceso de instalación y cómo mantener tu sistema funcionando de manera eficiente.</p>
-                
-                <p><strong>¿Qué se necesita para instalar paneles solares?</strong></p>
-                <p>Para llevar a cabo una instalación de paneles solares de forma exitosa, es fundamental realizar una <strong>evaluación detallada del sitio</strong> donde se llevará a cabo el proyecto. Esta evaluación consiste en analizar la cantidad de luz solar que recibe el área a lo largo del año, así como la inclinación y orientación más adecuada para maximizar la captación de energía solar.</p>
-            </div>
+            
+            <p><strong>¿Qué se necesita para instalar paneles solares?</strong></p>
+            <p>Para llevar a cabo una instalación de paneles solares de forma exitosa, es fundamental realizar una <strong>evaluación detallada del sitio</strong> donde se llevará a cabo el proyecto. Esta evaluación consiste en analizar la cantidad de luz solar que recibe el área a lo largo del año, así como la inclinación y orientación más adecuada para maximizar la captación de energía solar.</p>
+        </div>
             <!-- Slideshow de imágenes -->
             <div class="col-lg-6">
-                <div class="slideshow">
-                    <img src="img/slide1.png" class="slides active" alt="casa con placas solares">
-                    <img src="img/slide2.png" class="slides" alt="casa con placas solares">
-                    <img src="img/slide3.png" class="slides" alt="casa con placas solares">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ===== SECCIÓN DE MATERIALES ===== -->
-    <!-- Lista de materiales necesarios con popups informativos -->
-    <div class="container" id="materiales">
-        <div class="row">
-            <div class="col-12">
-                <h2 class="mb-4">Materiales necesarios</h2>
-                <div class="card">
-                    <div class="card-body">
-                        <p>También se necesita <strong>seleccionar paneles solares adecuados</strong>, ya que existen diferentes tipos y marcas en el mercado, por lo que es fundamental elegir aquellos que mejor se adapten a las necesidades del proyecto y que ofrezcan una buena relación entre el costo y la eficiencia.</p>
-                        <!-- Lista de materiales con popups -->
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item material-item" data-material="paneles">
-                                <i class="bi bi-sun-fill" style="color: #2196F3; margin-left: 0px;"></i> Paneles solares
-                            </li>
-                            <li class="list-group-item material-item" data-material="inversor">
-                                <i class="bi bi-lightning-charge"></i> Inversor solar
-                            </li>
-                            <li class="list-group-item material-item" data-material="baterias">
-                                <i class="bi bi-battery-charging"></i> Baterías (opcional)
-                            </li>
-                            <li class="list-group-item material-item" data-material="estructura">
-                                <i class="bi bi-tools"></i> Estructura de soporte
-                            </li>
-                            <li class="list-group-item material-item" data-material="cableado">
-                                <i class="bi bi-diagram-3"></i> Cableado y conectores
-                            </li>
-                            <li class="list-group-item material-item" data-material="herramientas">
-                                <i class="bi bi-wrench"></i> Herramientas de instalación
-                            </li>
-                        </ul>
+            <div class="slideshow">
+                <img src="img/slide1.png" class="slides active" alt="casa con placas solares">
+                <img src="img/slide2.png" class="slides" alt="casa con placas solares">
+                <img src="img/slide3.png" class="slides" alt="casa con placas solares">
+                    
+                    <!-- Controles del slideshow -->
+                    <button class="slideshow-arrow slideshow-prev">
+                        <i class="bi bi-chevron-left"></i>
+                    </button>
+                    <button class="slideshow-arrow slideshow-next">
+                        <i class="bi bi-chevron-right"></i>
+                    </button>
+                    
+                    <!-- Indicadores -->
+                    <div class="slideshow-controls">
+                        <div class="slideshow-dot active"></div>
+                        <div class="slideshow-dot"></div>
+                        <div class="slideshow-dot"></div>
+                    </div>
+                    
+                    <!-- Barra de progreso -->
+                    <div class="slideshow-progress">
+                        <div class="slideshow-progress-bar"></div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- ===== POPUPS DE MATERIALES ===== -->
-    <!-- Ventanas emergentes con información detallada de cada material -->
-    <div class="popup-overlay"></div>
-    
-    <!-- Popup Paneles Solares -->
-    <div class="material-popup" id="paneles-popup">
-        <button class="close-popup">&times;</button>
-        <img src="img/paneles-solares.png" alt="Paneles Solares">
-        <h4>Paneles Solares</h4>
-        <p>Paneles solares de alta eficiencia para tu instalación. Disponibles en diferentes potencias y tamaños.</p>
-        <a href="https://www.amazon.es/paneles-solares" class="btn btn-primary" target="_blank">Ver en Amazon</a>
-    </div>
-
-    <!-- Popup Inversor -->
-    <div class="material-popup" id="inversor-popup">
-        <button class="close-popup">&times;</button>
-        <img src="img/inversor-solar.jpg" alt="Inversor Solar">
-        <h4>Inversor Solar</h4>
-        <p>Inversor de alta calidad para convertir la energía solar en electricidad utilizable.</p>
-        <a href="https://www.amazon.es/inversores-solares" class="btn btn-primary" target="_blank">Ver en Amazon</a>
-    </div>
-
-    <!-- Popup Baterías -->
-    <div class="material-popup" id="baterias-popup">
-        <button class="close-popup">&times;</button>
-        <img src="img/baterias-solares.jpg" alt="Baterías Solares">
-        <h4>Baterías Solares</h4>
-        <p>Baterías de ciclo profundo para almacenar la energía solar.</p>
-        <a href="https://www.amazon.es/baterias-solares" class="btn btn-primary" target="_blank">Ver en Amazon</a>
-    </div>
-
-    <!-- Popup Estructura -->
-    <div class="material-popup" id="estructura-popup">
-        <button class="close-popup">&times;</button>
-        <img src="img/estructura-soporte.jfif" alt="Estructura de Soporte">
-        <h4>Estructura de Soporte</h4>
-        <p>Sistema de montaje resistente para instalar los paneles solares.</p>
-        <a href="https://www.amazon.es/estructuras-solares" class="btn btn-primary" target="_blank">Ver en Amazon</a>
-    </div>
-
-    <!-- Popup Cableado -->
-    <div class="material-popup" id="cableado-popup">
-        <button class="close-popup">&times;</button>
-        <img src="img/cableado-solar.jfif" alt="Cableado Solar">
-        <h4>Cableado y Conectores</h4>
-        <p>Cables y conectores especializados para instalaciones solares.</p>
-        <a href="https://www.amazon.es/cableado-solar" class="btn btn-primary" target="_blank">Ver en Amazon</a>
-    </div>
-
-    <!-- Popup Herramientas -->
-    <div class="material-popup" id="herramientas-popup">
-        <button class="close-popup">&times;</button>
-        <img src="img/herramientas-solares.jpg" alt="Herramientas">
-        <h4>Herramientas de Instalación</h4>
-        <p>Kit completo de herramientas necesarias para la instalación.</p>
-        <a href="https://www.amazon.es/herramientas-solares" class="btn btn-primary" target="_blank">Ver en Amazon</a>
     </div>
 
     <!-- ===== SECCIÓN PARALLAX ===== -->
@@ -174,130 +100,41 @@
         </div>
     </div>
 
-    <!-- ===== SECCIÓN DE INSTALACIÓN ===== -->
-    <!-- Demostración animada del funcionamiento de los paneles solares -->
-    <div class="container" id="services">
+    <!-- ===== SECCIÓN FOTOVOLTAICA ACTUAL ===== -->
+    <div class="container" id="fotovoltaica-actual">
         <div class="row">
             <div class="col-12">
-                <h2 class="mb-4">Instalación</h2>
+                <div class="section-title">
+                    <h2>La Energía Fotovoltaica en la actualidad</h2>
+                </div>
                 <div class="card">
                     <div class="card-body">
-                        <p>Este es un ejemplo de instalación <strong>durante 24 horas</strong>, podemos ver como funciona las placas fotovoltaicas:</p>
-                        <!-- Contenedor de animación -->
-                        <div class="image-container mx-auto">
-                            <img src="img/casaconplacas-luna.png" alt="luna" class="animated-image luna">
-                            <img src="img/casaconplacas-sol.png" alt="sol" class="animated-image sol">
-                            <img src="img/casaconplacas-dia.png" alt="dia" class="animated-image dia">
-                            <img src="img/casaconplacas-noche.png" alt="noche" class="animated-image noche">
-                            <img src="img/casaconplacas-sin cielo.png" alt="casa con placas solares" class="animated-image casa">
-                            <img src="img/cables.png" alt="cables" class="animated-image cables">
-                            <img src="img/elice.png" alt="elice" class="animated-image elice">
-                            <img src="img/luz-aparato.png" alt="luz del aparato" class="animated-image luz-aparato">
-                            <img src="img/aparato.png" alt="aparato" class="animated-image aparato">
-                            <img src="img/luz-bateria.png" alt="luz de bateria" class="animated-image luz-bateria">
-                            <img src="img/bateria.png" alt="bateria" class="animated-image bateria">
-                            <img src="img/placas.png" alt="placas" class="animated-image placas">
-                        </div>
-                        <!-- Pasos de instalación -->
-                        <p class="mt-4">Dependiendo de la normativa local, puede ser necesario obtener permisos para la instalación. En algunos lugares, existen incentivos gubernamentales o subvenciones para energías renovables.</p>
-                        <ul class="list-group list-group-flush mt-4">
-                            <li class="list-group-item">Evaluación del sitio: Analizar la ubicación y la cantidad de luz solar disponible.</li>
-                            <li class="list-group-item">Selección de paneles solares: Elegir los paneles adecuados según las necesidades energéticas.</li>
-                            <li class="list-group-item">Instalación de estructuras de soporte: Asegurar los paneles en el tejado o superficie.</li>
-                            <li class="list-group-item">Conexión eléctrica: Conectar los paneles al inversor y a la red eléctrica.</li>
-                            <li class="list-group-item">Configuración de baterías: Si se utilizan, conectar y configurar las baterías.</li>
-                            <li class="list-group-item">Pruebas y puesta en marcha: Verificar el funcionamiento del sistema.</li>
+                        <p>La energía fotovoltaica está experimentando un auge sin precedentes en la actualidad. Con los avances tecnológicos y la creciente conciencia ambiental, cada vez más hogares y empresas están adoptando esta fuente de energía limpia y renovable.</p>
+                        
+                        <h4 class="mt-4">Tendencias Actuales</h4>
+                        <ul>
+                            <li><strong>Eficiencia Mejorada:</strong> Los paneles solares modernos alcanzan eficiencias superiores al 22%, un aumento significativo respecto a años anteriores.</li>
+                            <li><strong>Costos Reducidos:</strong> El precio de los sistemas fotovoltaicos ha disminuido más de un 80% en la última década, haciéndolos más accesibles.</li>
+                            <li><strong>Almacenamiento Inteligente:</strong> Las baterías de última generación permiten almacenar energía para uso nocturno o en días nublados.</li>
+                            <li><strong>Integración Arquitectónica:</strong> Nuevos diseños permiten integrar los paneles de forma estética en edificios y viviendas.</li>
                         </ul>
-                        <p class="mt-4">Recuerda que la instalación de un sistema solar puede ser compleja y es recomendable contar con la ayuda de profesionales si no tienes experiencia en electricidad o instalaciones solares.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- ===== SECCIÓN DE MANTENIMIENTO ===== -->
-    <!-- Consejos y guía de mantenimiento del sistema solar -->
-    <div class="container" id="projects">
-        <div class="row">
-            <div class="col-12">
-                <h2 class="mb-4">Mantenimiento</h2>
-                <div class="card">
-                    <div class="card-body">
-                        <p>El mantenimiento de un sistema solar fotovoltaico es esencial para garantizar su eficiencia y prolongar su vida útil. Aquí hay algunos consejos para el mantenimiento:</p>
-                        <div class="list-group">
-                            <div class="list-group-item">
-                                <h5 class="mb-1">Inspección regular</h5>
-                                <p class="mb-0">Revisa los paneles solares periódicamente para detectar suciedad, escombros o daños. Limpia los paneles si es necesario, especialmente en áreas con polvo o contaminación.</p>
-                            </div>
-                            <div class="list-group-item">
-                                <h5 class="mb-1">Verificación de conexiones</h5>
-                                <p class="mb-0">Asegúrate de que todas las conexiones eléctricas estén seguras y sin corrosión. Revisa los cables y conectores para detectar signos de desgaste.</p>
-                            </div>
-                            <div class="list-group-item">
-                                <h5 class="mb-1">Monitoreo del rendimiento</h5>
-                                <p class="mb-0">Utiliza un sistema de monitoreo para verificar el rendimiento de tu sistema solar. Si notas una disminución en la producción de energía, investiga la causa.</p>
-                            </div>
-                            <div class="list-group-item">
-                                <h5 class="mb-1">Revisión del inversor</h5>
-                                <p class="mb-0">Asegúrate de que el inversor esté funcionando correctamente. Algunos inversores tienen luces de advertencia que indican problemas.</p>
-                            </div>
-                            <div class="list-group-item">
-                                <h5 class="mb-1">Reemplazo de baterías</h5>
-                                <p class="mb-0">Si tu sistema tiene baterías, verifica su estado y reemplázalas según las recomendaciones del fabricante.</p>
-                            </div>
-                            <div class="list-group-item">
-                                <h5 class="mb-1">Consulta a un profesional</h5>
-                                <p class="mb-0">Si no estás seguro de cómo realizar el mantenimiento o si encuentras problemas, es recomendable consultar a un técnico especializado en energía solar.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                        <h4 class="mt-4">Beneficios Actuales</h4>
+                        <ul>
+                            <li><strong>Ahorro Económico:</strong> Reducción de hasta un 70% en la factura eléctrica mensual.</li>
+                            <li><strong>Independencia Energética:</strong> Mayor autonomía respecto a la red eléctrica convencional.</li>
+                            <li><strong>Valor de Propiedad:</strong> Aumento del valor de la vivienda con instalaciones solares.</li>
+                            <li><strong>Huella de Carbono:</strong> Reducción significativa de emisiones de CO2.</li>
+                        </ul>
 
-    <!-- ===== SECCIÓN FAQ ===== -->
-    <!-- Preguntas frecuentes con acordeón -->
-    <div class="container" id="faq">
-        <div class="row">
-            <div class="col-12">
-                <h2 class="mb-4">FAQ</h2>
-                <div class="accordion" id="faqAccordion">
-                    <!-- Las preguntas se generan dinámicamente con JavaScript -->
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ===== SECCIÓN DE CONTACTO ===== -->
-    <!-- Formulario de contacto y datos de contacto -->
-    <div class="container" id="contact">
-        <div class="row">
-            <div class="col-12">
-                <h2 class="mb-4">Contacto</h2>
-                <div class="card">
-                    <div class="card-body">
-                        <p>Si tienes preguntas o necesitas más información sobre la instalación de paneles solares, no dudes en ponerte en contacto con nosotros. Estamos aquí para ayudarte a hacer la transición hacia una energía más sostenible.</p>
-                        <p><i class="bi bi-envelope"></i> Email: <a href="mailto:fotovoltaje@gmail.com">fotovoltaje@gmail.com</a></p>
-                        <p><i class="bi bi-telephone"></i> Teléfono: 123-456-7890</p>
-                        <p><i class="bi bi-geo-alt"></i> Dirección: Calle Energía Solar, Ciudad Verde</p>
-                        <p><i class="bi bi-clock"></i> Horario de atención: Lunes a Viernes, 9:00 AM - 5:00 PM</p>
-                        <!-- Formulario de contacto -->
-                        <form>
-                            <div class="mb-3">
-                                <label for="name" class="form-label">Nombre:</label>
-                                <input type="text" class="form-control" id="name" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Correo Electrónico:</label>
-                                <input type="email" class="form-control" id="email" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="message" class="form-label">Mensaje:</label>
-                                <textarea class="form-control" id="message" rows="4" required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Enviar</button>
-                        </form>
+                        <h4 class="mt-4">Perspectivas de Futuro</h4>
+                        <p>El futuro de la energía fotovoltaica es prometedor, con investigaciones en curso sobre:</p>
+                        <ul>
+                            <li>Paneles solares transparentes para ventanas</li>
+                            <li>Materiales más eficientes y sostenibles</li>
+                            <li>Sistemas de gestión inteligente de energía</li>
+                            <li>Integración con vehículos eléctricos</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -307,7 +144,7 @@
     <!-- ===== FOOTER ===== -->
     <!-- Pie de página con información de contacto y redes sociales -->
     <footer class="text-center mt-5">
-        <div class="container">
+    <div class="container">
             <div class="row">
                 <!-- Información de contacto -->
                 <div class="col-md-4 mb-4">

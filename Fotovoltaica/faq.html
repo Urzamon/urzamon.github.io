@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Meta tags y título -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - DIY Solar Home</title>
+
+    <!-- Bootstrap y sus dependencias -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- ===== NAVEGACIÓN PRINCIPAL ===== -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <!-- Logo y nombre del sitio -->
+            <a class="navbar-brand" href="index.html">
+                <div class="logo-container">
+                    <i class="bi bi-sun-fill logo-sun" style="color: #FFD700 !important;"></i>
+                    <i class="bi logo-panel sol"></i>
+                </div>
+                DIY Solar Home
+            </a>
+            <!-- Botón hamburguesa para móvil -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Menú de navegación -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="materiales.html">Materiales</a></li>
+                    <li class="nav-item"><a class="nav-link" href="instalacion.html">Instalación</a></li>
+                    <li class="nav-item"><a class="nav-link" href="mantenimiento.html">Mantenimiento</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== HERO SECTION ===== -->
+    <div class="hero-section" style="background-image: url('img/faq-hero.jpg');">
+        <div class="hero-overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h1>Preguntas Frecuentes</h1>
+                        <p class="lead">Encuentra respuestas a todas tus dudas sobre energía solar</p>
+                        <!-- Barra de búsqueda -->
+                        <div class="search-container mt-4">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="Buscar preguntas..." id="faqSearch">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="bi bi-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECCIÓN FAQ ===== -->
+    <div class="container" id="faq">
+        <div class="row">
+            <div class="col-12">
+                <!-- Categorías -->
+                <div class="faq-categories mb-4">
+                    <div class="row g-3">
+                        <div class="col-md-3">
+                            <div class="category-card active" data-category="general">
+                                <i class="bi bi-question-circle"></i>
+                                <h5>General</h5>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="category-card" data-category="instalacion">
+                                <i class="bi bi-tools"></i>
+                                <h5>Instalación</h5>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="category-card" data-category="mantenimiento">
+                                <i class="bi bi-gear"></i>
+                                <h5>Mantenimiento</h5>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="category-card" data-category="legal">
+                                <i class="bi bi-file-earmark-text"></i>
+                                <h5>Legal</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Preguntas Frecuentes -->
+                <div class="accordion custom-accordion" id="faqAccordion">
+                    <!-- Categoría: General -->
+                    <div class="faq-category" data-category="general">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    <i class="bi bi-currency-euro me-2"></i>
+                                    ¿Cuánto cuesta instalar paneles solares?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <div class="faq-answer">
+                                        <p>El costo de instalación varía según el tamaño del sistema, la ubicación y los requisitos específicos. En general, un sistema residencial puede costar entre 5,000€ y 15,000€. Sin embargo, existen subvenciones y ayudas gubernamentales que pueden reducir significativamente este costo.</p>
+                                        <div class="faq-tags">
+                                            <span class="badge bg-primary">Costos</span>
+                                            <span class="badge bg-info">Subvenciones</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Categoría: Instalación -->
+                    <div class="faq-category" data-category="instalacion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    <i class="bi bi-clock me-2"></i>
+                                    ¿Cuánto tiempo tarda la instalación?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <div class="faq-answer">
+                                        <p>La instalación de un sistema solar típico puede completarse en 1-3 días, dependiendo del tamaño y complejidad del sistema. Esto incluye la instalación de paneles, inversor y conexiones eléctricas.</p>
+                                        <div class="faq-tags">
+                                            <span class="badge bg-primary">Tiempo</span>
+                                            <span class="badge bg-info">Proceso</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Categoría: Mantenimiento -->
+                    <div class="faq-category" data-category="mantenimiento">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    <i class="bi bi-tools me-2"></i>
+                                    ¿Qué mantenimiento requieren los paneles solares?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <div class="faq-answer">
+                                        <p>Los paneles solares requieren poco mantenimiento. Se recomienda una limpieza periódica para eliminar polvo y suciedad, y una inspección anual para verificar el funcionamiento óptimo del sistema.</p>
+                                        <div class="faq-tags">
+                                            <span class="badge bg-primary">Mantenimiento</span>
+                                            <span class="badge bg-info">Limpieza</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Categoría: General -->
+                    <div class="faq-category" data-category="general">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                    <i class="bi bi-cloud-sun me-2"></i>
+                                    ¿Funcionan los paneles en días nublados?
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <div class="faq-answer">
+                                        <p>Sí, los paneles solares siguen generando electricidad en días nublados, aunque con menor eficiencia. La producción puede reducirse entre un 10% y un 25% dependiendo de la densidad de las nubes.</p>
+                                        <div class="faq-tags">
+                                            <span class="badge bg-primary">Eficiencia</span>
+                                            <span class="badge bg-info">Clima</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Categoría: Legal -->
+                    <div class="faq-category" data-category="legal">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                                    <i class="bi bi-file-earmark-text me-2"></i>
+                                    ¿Necesito permisos para instalar paneles solares?
+                                </button>
+                            </h2>
+                            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <div class="faq-answer">
+                                        <p>Sí, generalmente se requieren permisos municipales y de la compañía eléctrica. El proceso de obtención de permisos puede variar según la ubicación y el tipo de instalación. Te ayudamos a gestionar todos los trámites necesarios.</p>
+                                        <div class="faq-tags">
+                                            <span class="badge bg-primary">Permisos</span>
+                                            <span class="badge bg-info">Legal</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sección de Preguntas no Resueltas -->
+                <div class="unanswered-questions mt-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="text-center mb-4">¿No encuentras tu respuesta?</h3>
+                            <p class="text-center">Si tienes alguna pregunta que no está en nuestra lista, no dudes en contactarnos.</p>
+                            <div class="text-center mt-3">
+                                <a href="contacto.html" class="btn btn-primary">
+                                    <i class="bi bi-envelope me-2"></i>Contáctanos
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="text-center mt-5">
+        <div class="container">
+            <div class="row">
+                <!-- Información de contacto -->
+                <div class="col-md-4 mb-4">
+                    <h5>Contacto</h5>
+                    <p class="mb-1"><i class="bi bi-envelope"></i> fotovoltaje@gmail.com</p>
+                    <p class="mb-1"><i class="bi bi-telephone"></i> 123-456-7890</p>
+                    <p class="mb-1"><i class="bi bi-geo-alt"></i> Calle Energía Solar, Ciudad Verde</p>
+                </div>
+                <!-- Redes sociales -->
+                <div class="col-md-4 mb-4">
+                    <h5>Síguenos</h5>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/fotovoltaje" class="social-link" title="Facebook">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="https://twitter.com/fotovoltaje" class="social-link" title="Twitter">
+                            <i class="bi bi-twitter"></i>
+                        </a>
+                        <a href="https://www.instagram.com/fotovoltaje" class="social-link" title="Instagram">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/fotovoltaje" class="social-link" title="LinkedIn">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                        <a href="https://www.youtube.com/fotovoltaje" class="social-link" title="YouTube">
+                            <i class="bi bi-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Horario -->
+                <div class="col-md-4 mb-4">
+                    <h5>Horario</h5>
+                    <p class="mb-1"><i class="bi bi-clock"></i> Lunes a Viernes</p>
+                    <p class="mb-1">9:00 AM - 5:00 PM</p>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <p class="mb-0">© 2024 DIY Solar Home. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- ===== BOTÓN VOLVER ARRIBA ===== -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 

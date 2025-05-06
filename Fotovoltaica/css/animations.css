@@ -15,41 +15,96 @@
     100% { transform: translateY(0px); }
 }
 
-/* Animaciones de la casa */
+/* Animaciones para la demostración de 24 horas */
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    margin: 2rem auto;
+    overflow: hidden;
+}
+
+.animated-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    overflow: hidden;
+}
+
+/* Luna */
+.luna {
+    animation: moveLuna 24s linear infinite;
+    opacity: 0;
+    z-index: 3;
+    overflow: hidden;
+}
+
 @keyframes moveLuna {
     0% { opacity: 0; }
     49% { opacity: 0; }
-    50% { transform: translate(-306px, 40px);opacity: 1; }
-    75% { transform: translate(0px, 5px);opacity: 1; }
-    100% { transform: translate(276px, 40px);opacity: 1; }
+    50% { transform: translate(-190px, 40px); opacity: 1; }
+    75% { transform: translate(0px, 5px); opacity: 1; }
+    100% { transform: translate(150px, 40px); opacity: 1; }
+}
+
+/* Sol */
+.sol {
+    animation: moveSol 24s linear infinite;
+    opacity: 0;
+    z-index: 3;
+    overflow: hidden;
 }
 
 @keyframes moveSol {
-    0% { transform: translate(-306px, 40px);opacity: 1; }
-    25% { transform: translate(0px, 5px);opacity: 1; }
-    49% { transform: translate(276px, 40px);opacity: 1; }
+    0% { transform: translate(-190px, 40px); opacity: 1; }
+    25% { transform: translate(0px, 5px); opacity: 1; }
+    49% { transform: translate(150px, 40px); opacity: 1; }
     50% { opacity: 0; }
     100% { opacity: 0; }
 }
 
+/* Día */
+.dia {
+    animation: moveDia 24s linear infinite;
+    opacity: 0;
+    z-index: 2;
+}
+
 @keyframes moveDia {
-    0% {  opacity: 1; }
-    5% {  opacity: 1; }
-    45% {  opacity: 1; }
-    50% {  opacity: 1; }
-    55% {  opacity: 0; }
+    0% { opacity: 1; }
+    5% { opacity: 1; }
+    45% { opacity: 1; }
+    50% { opacity: 1; }
+    55% { opacity: 0; }
     95% { opacity: 0; }
     100% { opacity: 0; }
 }
 
+/* Noche */
+.noche {
+    animation: moveNoche 24s linear infinite;
+    opacity: 0;
+    z-index: 2;
+}
+
 @keyframes moveNoche {
-    0% {  opacity: 0; }
-    5% {  opacity: 0; }
-    45% {  opacity: 0; }
-    50% {  opacity: 1; }
-    55% {  opacity: 1; }
+    0% { opacity: 0; }
+    5% { opacity: 0; }
+    45% { opacity: 0; }
+    50% { opacity: 1; }
+    55% { opacity: 1; }
     95% { opacity: 1; }
     100% { opacity: 1; }
+}
+
+/* Casa */
+.casa {
+    animation: moveCasa 24s linear infinite;
+    opacity: 1;
+    z-index: 1;
 }
 
 @keyframes moveCasa {
@@ -57,19 +112,36 @@
     100% { transform: translate(0, 0); }
 }
 
+/* Cables */
+.cables {
+    animation: moveCables 24s linear infinite;
+    opacity: 1;
+    z-index: 2;
+}
+
 @keyframes moveCables {
-    0% {  filter: invert(); }
-    5% {  filter: none; }
-    10% {  filter: invert(); }
-    15% {  filter: none; }
-    20% {  filter: invert(); }
-    25% {  filter: none; }
-    30% {  filter: invert(); }
-    35% {  filter: none; }
-    40% {  filter: invert(); }
-    45% {  filter: none; }
-    50% {  filter: invert(); }
-    100% {  filter: none; }
+    0% { filter: invert(); }
+    5% { filter: none; }
+    10% { filter: invert(); }
+    15% { filter: none; }
+    20% { filter: invert(); }
+    25% { filter: none; }
+    30% { filter: invert(); }
+    35% { filter: none; }
+    40% { filter: invert(); }
+    45% { filter: none; }
+    50% { filter: invert(); }
+    100% { filter: none; }
+}
+
+/* Elice */
+.elice {
+    animation: moveElice 24s linear infinite;
+    opacity: 1;
+    top: 30px;
+    left: -12px;
+    z-index: 3;
+    transform-origin: center;
 }
 
 @keyframes moveElice {
@@ -78,11 +150,25 @@
     100% { transform: rotate(4000deg); }
 }
 
+/* Luz del aparato */
+.luz-aparato {
+    animation: moveLuz-aparato 24s linear infinite;
+    opacity: 1;
+    z-index: 3;
+}
+
 @keyframes moveLuz-aparato {
-    0% {  filter: none;}
-    49% {  filter: none; }
-    50% {  filter: invert() }
-    100% { filter: invert() }
+    0% { filter: none; }
+    49% { filter: none; }
+    50% { filter: invert(); }
+    100% { filter: invert(); }
+}
+
+/* Aparato */
+.aparato {
+    animation: moveAparato 24s linear infinite;
+    opacity: 1;
+    z-index: 2;
 }
 
 @keyframes moveAparato {
@@ -90,11 +176,25 @@
     100% { transform: translate(0, 0); }
 }
 
+/* Luz de batería */
+.luz-bateria {
+    animation: moveLuz-bateria 24s linear infinite;
+    opacity: 1;
+    z-index: 3;
+}
+
 @keyframes moveLuz-bateria {
-    0% {  filter: none;}
-    49% {  filter: none; }
-    50% {  filter: invert() }
-    100% { filter: invert() }
+    0% { filter: none; }
+    49% { filter: none; }
+    50% { filter: invert(); }
+    100% { filter: invert(); }
+}
+
+/* Batería */
+.bateria {
+    animation: moveBateria 24s linear infinite;
+    opacity: 1;
+    z-index: 2;
 }
 
 @keyframes moveBateria {
@@ -102,22 +202,29 @@
     100% { transform: translate(0, 0); }
 }
 
-@keyframes movePlacas {
-    0% {  filter: hue-rotate(0deg); }
-    5% {  filter: hue-rotate(360deg); }
-    10% {  filter: hue-rotate(0deg); }
-    15% {  filter: hue-rotate(360deg); }
-    20% {  filter: hue-rotate(0deg); }
-    25% {  filter: hue-rotate(360deg); }
-    30% {  filter: hue-rotate(0deg); }
-    35% {  filter: hue-rotate(360deg); }
-    40% {  filter: hue-rotate(0deg); }
-    45% {  filter: hue-rotate(360deg); }
-    50% {  filter: hue-rotate(0deg); }
-    100% {  filter: hue-rotate(0deg); }
+/* Placas */
+.placas {
+    animation: movePlacas 24s linear infinite;
+    opacity: 1;
+    z-index: 2;
 }
 
-/* Animación de fade in para popups */
+@keyframes movePlacas {
+    0% { filter: hue-rotate(0deg); }
+    5% { filter: hue-rotate(360deg); }
+    10% { filter: hue-rotate(0deg); }
+    15% { filter: hue-rotate(360deg); }
+    20% { filter: hue-rotate(0deg); }
+    25% { filter: hue-rotate(360deg); }
+    30% { filter: hue-rotate(0deg); }
+    35% { filter: hue-rotate(360deg); }
+    40% { filter: hue-rotate(0deg); }
+    45% { filter: hue-rotate(360deg); }
+    50% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(0deg); }
+}
+
+/* Animación de aparición para popups */
 @keyframes fadeIn {
     from { opacity: 0; transform: translate(-50%, -60%); }
     to { opacity: 1; transform: translate(-50%, -50%); }
