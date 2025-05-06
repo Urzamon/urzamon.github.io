@@ -21,6 +21,7 @@
         nav {
             display: flex;
             gap: 15px;
+            flex-wrap: wrap;
         }
         nav a {
             color: white;
@@ -36,22 +37,25 @@
             display: flex;
             padding: 20px;
             gap: 20px;
-            max-width: 50%;
-            justify-self: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
         }
         .column {
             flex: 1;
+            min-width: 300px;
         }
         .slideshow {
             position: relative;
             max-width: 100%;
-            height: 300px;
+            height: auto;
             overflow: hidden;
         }
         .barra-slideshow {
             position: relative;
-            height: 512px;
-            width: 512px;
+            height: auto;
+            width: 100%;
+            max-width: 512px;
             margin: 0 auto;
             overflow: hidden;
         }
@@ -80,209 +84,256 @@
         }
 
         .image-container {
-        position: relative;
-        width: 512px; /* Ancho de la imagen contenedora */
-        height: 512px;
-        overflow: hidden;
-    }
+            position: relative;
+            width: 100%;
+            max-width: 512px;
+            height: auto;
+            overflow: hidden;
+        }
 
-    .animated-image {
-        position: absolute;
-        width: 512px;
-        height: auto;
-    }
+        .animated-image {
+            position: absolute;
+            width: 100%;
+            height: auto;
+        }
 
-    /* Animaciones independientes */
-    .luna {
-        z-index: 1; /* Asegura que la luna esté por encima de la casa */
-        animation: moveLuna 30s infinite normal;
-    }
+        /* Animaciones independientes */
+        .luna {
+            z-index: 1; /* Asegura que la luna esté por encima de la casa */
+            animation: moveLuna 30s infinite normal;
+        }
 
-    .sol {
-        z-index: 2; /* Asegura que el sol esté por encima de la casa */
-        animation: moveSol 30s infinite normal;
-    }
+        .sol {
+            z-index: 2; /* Asegura que el sol esté por encima de la casa */
+            animation: moveSol 30s infinite normal;
+        }
 
-    .dia {
-        animation: moveDia 30s infinite normal;
-        animation-fill-mode: none; /* Reinicia la animación al comenzar de nuevo */
-    }
+        .dia {
+            animation: moveDia 30s infinite normal;
+            animation-fill-mode: none; /* Reinicia la animación al comenzar de nuevo */
+        }
 
-    .noche {
-        animation: moveNoche 30s infinite normal;
-        animation-fill-mode: none; /* Reinicia la animación al comenzar de nuevo */
-    }
+        .noche {
+            animation: moveNoche 30s infinite normal;
+            animation-fill-mode: none; /* Reinicia la animación al comenzar de nuevo */
+        }
 
-    .casa {
-        animation: moveCasa 30s infinite normal;
-        animation-fill-mode: none; /* Reinicia la animación al comenzar de nuevo */
-    }
+        .casa {
+            animation: moveCasa 30s infinite normal;
+            animation-fill-mode: none; /* Reinicia la animación al comenzar de nuevo */
+        }
 
-    .cables {
-        z-index: 1; /* Asegura que los cables estén por encima de la casa */
-        animation: moveCables 30s infinite normal;
-    }
+        .cables {
+            z-index: 1; /* Asegura que los cables estén por encima de la casa */
+            animation: moveCables 30s infinite normal;
+        }
 
-    .elice {
-        z-index: 3; /* Asegura que la elice esté por encima de la casa */
-        animation: moveElice 30s infinite normal;
-        animation-fill-mode: none; /* Reinicia la animación al comenzar de nuevo */
-        transform-origin: center; /* Establece el origen de la transformación en el centro de la elice */
+        .elice {
+            z-index: 3; /* Asegura que la elice esté por encima de la casa */
+            animation: moveElice 30s infinite normal;
+            animation-fill-mode: none; /* Reinicia la animación al comenzar de nuevo */
+            transform-origin: center; /* Establece el origen de la transformación en el centro de la elice */
+            
+            top: 40px; /* Ajusta la posición vertical de la elice */
+            left: -12px; /* Ajusta la posición horizontal de la elice */
+        }
+
+        .luz-aparato {
+            z-index: 3; /* Asegura que la luz del aparato esté por encima de la casa */
+            animation: moveLuz-aparato 30s infinite normal;
+        }
+
+        .aparato {
+            z-index: 2; /* Asegura que el aparato esté por encima de la casa */
+            animation: moveAparato 30s infinite normal;
+        }
+
+        .luz-bateria {
+            z-index: 3; /* Asegura que la luz de la batería esté por encima de la casa */
+            animation: moveLuz-bateria 30s infinite normal;
+        }
         
-        top: 40px; /* Ajusta la posición vertical de la elice */
-        left: -12px; /* Ajusta la posición horizontal de la elice */
-    }
+        .bateria {
+            z-index: 0; /* Asegura que la batería esté por encima de la casa */
+            animation: moveBateria 30s infinite normal;
+        }
 
-    .luz-aparato {
-        z-index: 3; /* Asegura que la luz del aparato esté por encima de la casa */
-        animation: moveLuz-aparato 30s infinite normal;
-    }
+        .placas {
+            z-index: 1; /* Asegura que las placas estén por encima de la casa */
+            animation: movePlacas 30s infinite normal;
+        }
 
-    .aparato {
-        z-index: 2; /* Asegura que el aparato esté por encima de la casa */
-        animation: moveAparato 30s infinite normal;
-    }
+        /* Definición de animaciones */
+        @keyframes moveLuna {
+            0% { opacity: 0; }
+            49% { opacity: 0; }
+            50% { transform: translate(-306px, 40px);opacity: 1; }
+            75% { transform: translate(0px, 5px);opacity: 1; }
+            100% { transform: translate(276px, 40px);opacity: 1; }
+        }
 
-    .luz-bateria {
-        z-index: 3; /* Asegura que la luz de la batería esté por encima de la casa */
-        animation: moveLuz-bateria 30s infinite normal;
-    }
-    
-    .bateria {
-        z-index: 0; /* Asegura que la batería esté por encima de la casa */
-        animation: moveBateria 30s infinite normal;
-    }
+        @keyframes moveSol {
+            0% { transform: translate(-306px, 40px);opacity: 1; }
+            25% { transform: translate(0px, 5px);opacity: 1; }
+            49% { transform: translate(276px, 40px);opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 0; }
+        }
 
-    .placas {
-        z-index: 1; /* Asegura que las placas estén por encima de la casa */
-        animation: movePlacas 30s infinite normal;
-    }
+        @keyframes moveDia {
+            0% {  opacity: 0,5; }
+            5% {  opacity: 1; }
+            45% {  opacity: 1; }
+            50% {  opacity: 0,5; }
+            55% {  opacity: 0; }
+            95% { opacity: 0; }
+            100% { opacity: 0.5; }
+        }
 
-    /* Definición de animaciones */
-    @keyframes moveLuna {
-        0% { opacity: 0; }
-        49% { opacity: 0; }
-        50% { transform: translate(-306px, 40px);opacity: 1; }
-        75% { transform: translate(0px, 5px);opacity: 1; }
-        100% { transform: translate(276px, 40px);opacity: 1; }
-    }
+        @keyframes moveNoche {
+            0% {  opacity: 0,5; }
+            5% {  opacity: 0; }
+            45% {  opacity: 0; }
+            50% {  opacity: 0,5; }
+            55% {  opacity: 1; }
+            95% { opacity: 1; }
+            100% { opacity: 0.5; }
+        
+        }
 
-    @keyframes moveSol {
-        0% { transform: translate(-306px, 40px);opacity: 1; }
-        25% { transform: translate(0px, 5px);opacity: 1; }
-        49% { transform: translate(276px, 40px);opacity: 1; }
-        50% { opacity: 0; }
-        100% { opacity: 0; }
-    }
+        @keyframes moveCasa {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(0, 0); }
+        }
 
-    @keyframes moveDia {
-        0% {  opacity: 0,5; }
-        5% {  opacity: 1; }
-        45% {  opacity: 1; }
-        50% {  opacity: 0,5; }
-        55% {  opacity: 0; }
-        95% { opacity: 0; }
-        100% { opacity: 0.5; }
-    }
+        @keyframes moveCables {
+            0% {  filter: invert(); }
+            5% {  filter: none; }
+            10% {  filter: invert(); }
+            15% {  filter: none; }
+            20% {  filter: invert(); }
+            25% {  filter: none; }
+            30% {  filter: invert(); }
+            35% {  filter: none; }
+            40% {  filter: invert(); }
+            45% {  filter: none; }
+            50% {  filter: invert(); }
+            100% {  filter: none; }
+        }
+        @keyframes moveElice {
+            0% { transform: rotate(0deg); }
+            55% { transform: rotate(3960deg); }
+            100% { transform: rotate(4000deg); }
+        }
+        @keyframes moveLuz-aparato {
+            0% {  filter: none;}
+            49% {  filter: none; }
+            50% {  filter: invert() }
+            100% { filter: invert() }
+        }
+        @keyframes moveAparato {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(0, 0); }
+        }
+        @keyframes moveLuz-bateria {
+            0% {  filter: none;}
+            49% {  filter: none; }
+            50% {  filter: invert() }
+            100% { filter: invert() }
+        }
+        @keyframes moveBateria {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(0, 0); }
+        }
+        /* Animación de las placas solares */
+        @keyframes movePlacas {
+            0% {  filter: hue-rotate(0deg); }
+            5% {  filter: hue-rotate(360deg); }
+            10% {  filter: hue-rotate(0deg); }
+            15% {  filter: hue-rotate(360deg); }
+            20% {  filter: hue-rotate(0deg); }
+            25% {  filter: hue-rotate(360deg); }
+            30% {  filter: hue-rotate(0deg); }
+            35% {  filter: hue-rotate(360deg); }
+            40% {  filter: hue-rotate(0deg); }
+            45% {  filter: hue-rotate(360deg); }
+            50% {  filter: hue-rotate(0deg); }
+            100% {  filter: hue-rotate(0deg); }
+        }
 
-    @keyframes moveNoche {
-        0% {  opacity: 0,5; }
-        5% {  opacity: 0; }
-        45% {  opacity: 0; }
-        50% {  opacity: 0,5; }
-        55% {  opacity: 1; }
-        95% { opacity: 1; }
-        100% { opacity: 0.5; }
-    
-    }
+        .popup-container {
+            position: relative; /* Necesario para posicionar el pop-up relativo al contenedor */
+            display: inline-block;
+        }
 
-    @keyframes moveCasa {
-        0% { transform: translate(0, 0); }
-        100% { transform: translate(0, 0); }
-    }
+        .popup-text {
+            visibility: hidden; /* Oculta el pop-up por defecto */
+            background-color: #333; /* Fondo del pop-up */
+            color: #fff; /* Color del texto */
+            text-align: center;
+            padding: 5px 10px;
+            border-radius: 5px;
+            position: absolute;
+            width: 200px; /* Define el ancho del pop-up */
+            z-index: 10;
+            bottom: 125%; /* Posiciona el pop-up arriba del elemento */
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0; /* Hace el pop-up invisible */
+            transition: opacity 0.3s; /* Transición suave */
+        }
 
-    @keyframes moveCables {
-        0% {  filter: invert(); }
-        5% {  filter: none; }
-        10% {  filter: invert(); }
-        15% {  filter: none; }
-        20% {  filter: invert(); }
-        25% {  filter: none; }
-        30% {  filter: invert(); }
-        35% {  filter: none; }
-        40% {  filter: invert(); }
-        45% {  filter: none; }
-        50% {  filter: invert(); }
-        100% {  filter: none; }
-    }
-    @keyframes moveElice {
-        0% { transform: rotate(0deg); }
-        55% { transform: rotate(3960deg); }
-        100% { transform: rotate(4000deg); }
-    }
-    @keyframes moveLuz-aparato {
-        0% {  filter: none;}
-        49% {  filter: none; }
-        50% {  filter: invert() }
-        100% { filter: invert() }
-    }
-    @keyframes moveAparato {
-        0% { transform: translate(0, 0); }
-        100% { transform: translate(0, 0); }
-    }
-    @keyframes moveLuz-bateria {
-        0% {  filter: none;}
-        49% {  filter: none; }
-        50% {  filter: invert() }
-        100% { filter: invert() }
-    }
-    @keyframes moveBateria {
-        0% { transform: translate(0, 0); }
-        100% { transform: translate(0, 0); }
-    }
-    /* Animación de las placas solares */
-    @keyframes movePlacas {
-        0% {  filter: hue-rotate(0deg); }
-        5% {  filter: hue-rotate(360deg); }
-        10% {  filter: hue-rotate(0deg); }
-        15% {  filter: hue-rotate(360deg); }
-        20% {  filter: hue-rotate(0deg); }
-        25% {  filter: hue-rotate(360deg); }
-        30% {  filter: hue-rotate(0deg); }
-        35% {  filter: hue-rotate(360deg); }
-        40% {  filter: hue-rotate(0deg); }
-        45% {  filter: hue-rotate(360deg); }
-        50% {  filter: hue-rotate(0deg); }
-        100% {  filter: hue-rotate(0deg); }
-}
+        .popup-container:hover .popup-text {
+            visibility: visible; /* Muestra el pop-up al hacer hover */
+            opacity: 1; /* Hace el pop-up visible */
+        }
 
-.popup-container {
-        position: relative; /* Necesario para posicionar el pop-up relativo al contenedor */
-        display: inline-block;
-    }
-
-    .popup-text {
-        visibility: hidden; /* Oculta el pop-up por defecto */
-        background-color: #333; /* Fondo del pop-up */
-        color: #fff; /* Color del texto */
-        text-align: center;
-        padding: 5px 10px;
-        border-radius: 5px;
-        position: absolute;
-        width: 200px; /* Define el ancho del pop-up */
-        z-index: 10;
-        bottom: 125%; /* Posiciona el pop-up arriba del elemento */
-        left: 50%;
-        transform: translateX(-50%);
-        opacity: 0; /* Hace el pop-up invisible */
-        transition: opacity 0.3s; /* Transición suave */
-    }
-
-    .popup-container:hover .popup-text {
-        visibility: visible; /* Muestra el pop-up al hacer hover */
-        opacity: 1; /* Hace el pop-up visible */
-    }
-
+        /* Media queries para dispositivos móviles */
+        @media screen and (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+                padding: 10px;
+            }
+            nav {
+                margin-top: 10px;
+                justify-content: center;
+            }
+            .container {
+                padding: 10px;
+            }
+            .column {
+                flex: 100%;
+            }
+            .slideshow, .barra-slideshow {
+                height: auto;
+            }
+            .popup-text {
+                width: 150px;
+            }
+            form {
+                width: 100%;
+            }
+            input, textarea {
+                width: 100%;
+                box-sizing: border-box;
+            }
+        }
+        @media screen and (max-width: 480px) {
+            nav a {
+                padding: 5px 8px;
+                font-size: 14px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            p {
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 <body>
