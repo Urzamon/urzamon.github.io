@@ -1,0 +1,124 @@
+/* Rotación del logo */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Animación de flotación */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Animaciones de la casa */
+@keyframes moveLuna {
+    0% { opacity: 0; }
+    49% { opacity: 0; }
+    50% { transform: translate(-306px, 40px);opacity: 1; }
+    75% { transform: translate(0px, 5px);opacity: 1; }
+    100% { transform: translate(276px, 40px);opacity: 1; }
+}
+
+@keyframes moveSol {
+    0% { transform: translate(-306px, 40px);opacity: 1; }
+    25% { transform: translate(0px, 5px);opacity: 1; }
+    49% { transform: translate(276px, 40px);opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+@keyframes moveDia {
+    0% {  opacity: 1; }
+    5% {  opacity: 1; }
+    45% {  opacity: 1; }
+    50% {  opacity: 1; }
+    55% {  opacity: 0; }
+    95% { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+@keyframes moveNoche {
+    0% {  opacity: 0; }
+    5% {  opacity: 0; }
+    45% {  opacity: 0; }
+    50% {  opacity: 1; }
+    55% {  opacity: 1; }
+    95% { opacity: 1; }
+    100% { opacity: 1; }
+}
+
+@keyframes moveCasa {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(0, 0); }
+}
+
+@keyframes moveCables {
+    0% {  filter: invert(); }
+    5% {  filter: none; }
+    10% {  filter: invert(); }
+    15% {  filter: none; }
+    20% {  filter: invert(); }
+    25% {  filter: none; }
+    30% {  filter: invert(); }
+    35% {  filter: none; }
+    40% {  filter: invert(); }
+    45% {  filter: none; }
+    50% {  filter: invert(); }
+    100% {  filter: none; }
+}
+
+@keyframes moveElice {
+    0% { transform: rotate(0deg); }
+    55% { transform: rotate(3960deg); }
+    100% { transform: rotate(4000deg); }
+}
+
+@keyframes moveLuz-aparato {
+    0% {  filter: none;}
+    49% {  filter: none; }
+    50% {  filter: invert() }
+    100% { filter: invert() }
+}
+
+@keyframes moveAparato {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(0, 0); }
+}
+
+@keyframes moveLuz-bateria {
+    0% {  filter: none;}
+    49% {  filter: none; }
+    50% {  filter: invert() }
+    100% { filter: invert() }
+}
+
+@keyframes moveBateria {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(0, 0); }
+}
+
+@keyframes movePlacas {
+    0% {  filter: hue-rotate(0deg); }
+    5% {  filter: hue-rotate(360deg); }
+    10% {  filter: hue-rotate(0deg); }
+    15% {  filter: hue-rotate(360deg); }
+    20% {  filter: hue-rotate(0deg); }
+    25% {  filter: hue-rotate(360deg); }
+    30% {  filter: hue-rotate(0deg); }
+    35% {  filter: hue-rotate(360deg); }
+    40% {  filter: hue-rotate(0deg); }
+    45% {  filter: hue-rotate(360deg); }
+    50% {  filter: hue-rotate(0deg); }
+    100% {  filter: hue-rotate(0deg); }
+}
+
+/* Animación de fade in para popups */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translate(-50%, -60%); }
+    to { opacity: 1; transform: translate(-50%, -50%); }
+} 
