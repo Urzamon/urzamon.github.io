@@ -37,7 +37,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="materiales.html">Materiales</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="materiales.html">Materiales</a></li>
                     <li class="nav-item"><a class="nav-link" href="instalacion.html">Instalación</a></li>
                     <li class="nav-item"><a class="nav-link" href="mantenimiento.html">Mantenimiento</a></li>
                     <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
@@ -47,36 +47,126 @@
         </div>
     </nav>
 
-    <!-- ===== SECCIÓN DE MATERIALES ===== -->
-    <div class="container" id="materiales">
-        <div class="row">
-            <div class="col-12">
-                <div class="section-title">
-                    <h2>Materiales</h2>
+    <!-- ===== HERO SECTION ===== -->
+    <div class="hero-section" style="background-image: url('img/mantenimiento-hero.webp');">
+        <div class="hero-overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h1>Materiales para Instalación Solar</h1>
+                        <p class="lead">Descubre los componentes necesarios para tu sistema solar</p>
+                    </div>
                 </div>
-                <div class="card">
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECCIÓN COMPONENTES PRINCIPALES ===== -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2>Componentes Principales</h2>
+                <p class="lead">Los elementos esenciales para tu instalación solar</p>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <!-- Paneles Solares -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card material-card h-100">
+                    <div class="card-img-top">
+                        <img src="img/paneles-solares.png" alt="Paneles Solares" class="img-fluid">
+                    </div>
                     <div class="card-body">
-                        <p>También se necesita <strong>seleccionar paneles solares adecuados</strong>, ya que existen diferentes tipos y marcas en el mercado, por lo que es fundamental elegir aquellos que mejor se adapten a las necesidades del proyecto y que ofrezcan una buena relación entre el costo y la eficiencia.</p>
-                        <!-- Lista de materiales con popups -->
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item material-item" data-material="paneles">
-                                <i class="bi bi-sun-fill" style="color: #2196F3; margin-left: 0px;"></i> Paneles solares
-                            </li>
-                            <li class="list-group-item material-item" data-material="inversor">
-                                <i class="bi bi-lightning-charge"></i> Inversor solar
-                            </li>
-                            <li class="list-group-item material-item" data-material="baterias">
-                                <i class="bi bi-battery-charging"></i> Baterías (opcional)
-                            </li>
-                            <li class="list-group-item material-item" data-material="estructura">
-                                <i class="bi bi-tools"></i> Estructura de soporte
-                            </li>
-                            <li class="list-group-item material-item" data-material="cableado">
-                                <i class="bi bi-diagram-3"></i> Cableado y conectores
-                            </li>
-                            <li class="list-group-item material-item" data-material="herramientas">
-                                <i class="bi bi-wrench"></i> Herramientas de instalación
-                            </li>
+                        <h3>Paneles Solares</h3>
+                        <p>Componentes fotovoltaicos que convierten la luz solar en electricidad.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Alta eficiencia</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Durabilidad garantizada</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Resistencia climática</li>
+                        </ul>
+                        <button class="btn btn-primary mt-3" onclick="showMaterialDetails('paneles')">Ver Detalles</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Inversor -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card material-card h-100">
+                    <div class="card-img-top">
+                        <img src="img/inversor-solar.jpg" alt="Inversor" class="img-fluid">
+                    </div>
+                    <div class="card-body">
+                        <h3>Inversor</h3>
+                        <p>Convierte la corriente continua en corriente alterna para uso doméstico.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Alta eficiencia</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Monitoreo remoto</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Protección integrada</li>
+                        </ul>
+                        <button class="btn btn-primary mt-3" onclick="showMaterialDetails('inversor')">Ver Detalles</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Baterías -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card material-card h-100">
+                    <div class="card-img-top">
+                        <img src="img/baterias.jpg" alt="Baterías" class="img-fluid">
+                    </div>
+                    <div class="card-body">
+                        <h3>Baterías</h3>
+                        <p>Almacenan la energía para uso nocturno o en días nublados.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Larga vida útil</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Alta capacidad</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Bajo mantenimiento</li>
+                        </ul>
+                        <button class="btn btn-primary mt-3" onclick="showMaterialDetails('baterias')">Ver Detalles</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECCIÓN COMPONENTES ADICIONALES ===== -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2>Componentes Adicionales</h2>
+                <p class="lead">Elementos complementarios para tu instalación</p>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <!-- Estructura de Montaje -->
+            <div class="col-md-6">
+                <div class="card additional-material">
+                    <div class="card-body">
+                        <i class="bi bi-grid-3x3-gap material-icon"></i>
+                        <h4>Estructura de Montaje</h4>
+                        <p>Sistema de soporte para fijar los paneles al tejado o suelo.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Material resistente</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Fácil instalación</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Ajustable</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cableado -->
+            <div class="col-md-6">
+                <div class="card additional-material">
+                    <div class="card-body">
+                        <i class="bi bi-lightning-charge material-icon"></i>
+                        <h4>Cableado</h4>
+                        <p>Cables y conectores para la interconexión del sistema.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Resistente a UV</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Aislamiento de calidad</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Conectores seguros</li>
                         </ul>
                     </div>
                 </div>
@@ -84,61 +174,107 @@
         </div>
     </div>
 
-    <!-- ===== POPUPS DE MATERIALES ===== -->
-    <div class="popup-overlay"></div>
-    
-    <!-- Popup Paneles Solares -->
-    <div class="material-popup" id="paneles-popup">
-        <button class="close-popup">&times;</button>
-        <img src="img/paneles-solares.png" alt="Paneles Solares">
-        <h4>Paneles Solares</h4>
-        <p>Paneles solares de alta eficiencia para tu instalación. Disponibles en diferentes potencias y tamaños.</p>
-        <a href="https://www.amazon.es/paneles-solares" class="btn btn-primary" target="_blank">Ver en Amazon</a>
+    <!-- ===== POPUP DE DETALLES DE MATERIALES ===== -->
+    <div class="material-popup" id="materialPopup">
+        <div class="popup-content">
+            <button class="close-popup" onclick="closeMaterialPopup()">
+                <i class="bi bi-x-lg"></i>
+            </button>
+            <div id="popupContent"></div>
+        </div>
     </div>
+    <div class="popup-overlay" id="popupOverlay"></div>
 
-    <!-- Popup Inversor -->
-    <div class="material-popup" id="inversor-popup">
-        <button class="close-popup">&times;</button>
-        <img src="img/inversor-solar.jpg" alt="Inversor Solar">
-        <h4>Inversor Solar</h4>
-        <p>Inversor de alta calidad para convertir la energía solar en electricidad utilizable.</p>
-        <a href="https://www.amazon.es/inversores-solares" class="btn btn-primary" target="_blank">Ver en Amazon</a>
-    </div>
+    <!-- ===== SECCIÓN PRODUCTOS AMAZON ===== -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2>Productos Recomendados en Amazon</h2>
+                <p class="lead">Encuentra los mejores paneles solares para tu instalación</p>
+            </div>
+        </div>
 
-    <!-- Popup Baterías -->
-    <div class="material-popup" id="baterias-popup">
-        <button class="close-popup">&times;</button>
-        <img src="img/baterias-solares.jpg" alt="Baterías Solares">
-        <h4>Baterías Solares</h4>
-        <p>Baterías de ciclo profundo para almacenar la energía solar.</p>
-        <a href="https://www.amazon.es/baterias-solares" class="btn btn-primary" target="_blank">Ver en Amazon</a>
-    </div>
+        <div class="row g-4">
+            <!-- Panel Solar 1 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card amazon-product">
+                    <div class="card-img-top">
+                        <img src="img/amazon-panel1.jpg" alt="Panel Solar Amazon" class="img-fluid">
+                    </div>
+                    <div class="card-body">
+                        <h3>Panel Solar 400W</h3>
+                        <p class="product-description">Panel solar monocristalino de alta eficiencia, ideal para instalaciones residenciales.</p>
+                        <div class="product-features">
+                            <span class="badge bg-success">4.5/5 ⭐</span>
+                            <span class="badge bg-primary">Más Vendido</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price">€299.99</span>
+                            <span class="original-price">€399.99</span>
+                        </div>
+                        <a href="https://www.amazon.es/OUKITEL-plegables-estaci%C3%B3n-port%C3%A1til-fotovoltaico/dp/B0C37KZ54C/ref=sr_1_3_sspa?crid=86SWERP3XY4Q&dib=eyJ2IjoiMSJ9.8sXloHQeIaOatqhaW7-XG-Z69QK1uAY4pmE61LwmT3GL0FR4nE7UzdYAVOzmGkpW6sYqz7LWtLP9uhpHSub3v9G9hxLH2QOlPctLeDUnlkP6F0kuGWy5Thlbw55sPAJu_Qb7grNnlfseZ71SupLnrq7lELhzoV4ZwL1Ul7JmP8Ff3NXhmk7uN_D0H0dk7sj6RArtffdUnxlC5itcmO1Z0-cuzaK9u0m2-ELNVvlAXpJ93FNM-rTUHV89Ux1dXQoYAtZOCo9cXcUDGFxvS9MNI-8SJwX1Rg5sKGGfr7fGCP8.q0N74afzh5mOHiPSKXEntL4R7x-Oim52vdsTre6s2QA&dib_tag=se&keywords=panel+solar+400w&qid=1746601185&sprefix=Panel+Solar+400W%2Caps%2C554&sr=8-3-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1" class="btn btn-primary mt-3" target="_blank">
+                            <i class="bi bi-amazon"></i> Ver en Amazon
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-    <!-- Popup Estructura -->
-    <div class="material-popup" id="estructura-popup">
-        <button class="close-popup">&times;</button>
-        <img src="img/estructura-soporte.jfif" alt="Estructura de Soporte">
-        <h4>Estructura de Soporte</h4>
-        <p>Sistema de montaje resistente para instalar los paneles solares.</p>
-        <a href="https://www.amazon.es/estructuras-solares" class="btn btn-primary" target="_blank">Ver en Amazon</a>
-    </div>
+            <!-- Panel Solar 2 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card amazon-product">
+                    <div class="card-img-top">
+                        <img src="img/amazon-panel2.jpg" alt="Panel Solar Amazon" class="img-fluid">
+                    </div>
+                    <div class="card-body">
+                        <h3>Kit Solar Completo</h3>
+                        <p class="product-description">Kit completo con panel solar, inversor y batería para instalación inmediata.</p>
+                        <div class="product-features">
+                            <span class="badge bg-success">4.8/5 ⭐</span>
+                            <span class="badge bg-warning">Oferta</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price">€599.99</span>
+                            <span class="original-price">€799.99</span>
+                        </div>
+                        <a href="https://www.amazon.es/ECO-WORTHY-monocristalino-regulador-autocaravana-el%C3%A9ctrica/dp/B0C9PZ211H/ref=sr_1_24?crid=86SWERP3XY4Q&dib=eyJ2IjoiMSJ9.8sXloHQeIaOatqhaW7-XG-Z69QK1uAY4pmE61LwmT3GL0FR4nE7UzdYAVOzmGkpW6sYqz7LWtLP9uhpHSub3v9G9hxLH2QOlPctLeDUnlkP6F0kuGWy5Thlbw55sPAJu_Qb7grNnlfseZ71SupLnrq7lELhzoV4ZwL1Ul7JmP8Ff3NXhmk7uN_D0H0dk7sj6RArtffdUnxlC5itcmO1Z0-cuzaK9u0m2-ELNVvlAXpJ93FNM-rTUHV89Ux1dXQoYAtZOCo9cXcUDGFxvS9MNI-8SJwX1Rg5sKGGfr7fGCP8.q0N74afzh5mOHiPSKXEntL4R7x-Oim52vdsTre6s2QA&dib_tag=se&keywords=panel%2Bsolar%2B400w&qid=1746601185&sprefix=Panel%2BSolar%2B400W%2Caps%2C554&sr=8-24&th=1" class="btn btn-primary mt-3" target="_blank">
+                            <i class="bi bi-amazon"></i> Ver en Amazon
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-    <!-- Popup Cableado -->
-    <div class="material-popup" id="cableado-popup">
-        <button class="close-popup">&times;</button>
-        <img src="img/cableado-solar.jfif" alt="Cableado Solar">
-        <h4>Cableado y Conectores</h4>
-        <p>Cables y conectores especializados para instalaciones solares.</p>
-        <a href="https://www.amazon.es/cableado-solar" class="btn btn-primary" target="_blank">Ver en Amazon</a>
-    </div>
+            <!-- Panel Solar 3 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card amazon-product">
+                    <div class="card-img-top">
+                        <img src="img/amazon-panel3.jpg" alt="Panel Solar Amazon" class="img-fluid">
+                    </div>
+                    <div class="card-body">
+                        <h3>Panel Solar Flexible</h3>
+                        <p class="product-description">Panel solar flexible de alta eficiencia, perfecto para superficies curvas.</p>
+                        <div class="product-features">
+                            <span class="badge bg-success">4.6/5 ⭐</span>
+                            <span class="badge bg-info">Nuevo</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price">€249.99</span>
+                            <span class="original-price">€299.99</span>
+                        </div>
+                        <a href="https://www.amazon.es/Aysolar-Monocristalino-Caravanas-Superficies-Irregulares/dp/B0DWX56TNH/ref=sr_1_11?crid=86SWERP3XY4Q&dib=eyJ2IjoiMSJ9.8sXloHQeIaOatqhaW7-XG-Z69QK1uAY4pmE61LwmT3GL0FR4nE7UzdYAVOzmGkpW6sYqz7LWtLP9uhpHSub3v9G9hxLH2QOlPctLeDUnlkP6F0kuGWy5Thlbw55sPAJu_Qb7grNnlfseZ71SupLnrq7lELhzoV4ZwL1Ul7JmP8Ff3NXhmk7uN_D0H0dk7sj6RArtffdUnxlC5itcmO1Z0-cuzaK9u0m2-ELNVvlAXpJ93FNM-rTUHV89Ux1dXQoYAtZOCo9cXcUDGFxvS9MNI-8SJwX1Rg5sKGGfr7fGCP8.q0N74afzh5mOHiPSKXEntL4R7x-Oim52vdsTre6s2QA&dib_tag=se&keywords=panel%2Bsolar%2B400w&qid=1746601185&sprefix=Panel%2BSolar%2B400W%2Caps%2C554&sr=8-11&th=1" class="btn btn-primary mt-3" target="_blank">
+                            <i class="bi bi-amazon"></i> Ver en Amazon
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <!-- Popup Herramientas -->
-    <div class="material-popup" id="herramientas-popup">
-        <button class="close-popup">&times;</button>
-        <img src="img/herramientas-solares.jpg" alt="Herramientas">
-        <h4>Herramientas de Instalación</h4>
-        <p>Kit completo de herramientas necesarias para la instalación.</p>
-        <a href="https://www.amazon.es/herramientas-solares" class="btn btn-primary" target="_blank">Ver en Amazon</a>
+        <div class="row mt-4">
+            <div class="col-12 text-center">
+                <div class="amazon-disclaimer">
+                    <p><i class="bi bi-info-circle"></i> Como Asociado de Amazon, ganamos con las compras que cumplan los requisitos aplicables.</p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- ===== FOOTER ===== -->
@@ -168,9 +304,6 @@
                         <a href="https://www.linkedin.com/company/fotovoltaje" class="social-link" title="LinkedIn">
                             <i class="bi bi-linkedin"></i>
                         </a>
-                        <a href="https://www.youtube.com/fotovoltaje" class="social-link" title="YouTube">
-                            <i class="bi bi-youtube"></i>
-                        </a>
                     </div>
                 </div>
                 <!-- Horario -->
@@ -194,49 +327,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
-
-    <!-- Script para los popups de materiales -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Seleccionar todos los elementos de material
-            const materialItems = document.querySelectorAll('.material-item');
-            const popupOverlay = document.querySelector('.popup-overlay');
-            const closeButtons = document.querySelectorAll('.close-popup');
-
-            // Función para abrir el popup
-            function openPopup(materialId) {
-                const popup = document.getElementById(`${materialId}-popup`);
-                if (popup) {
-                    popup.style.display = 'block';
-                    popupOverlay.style.display = 'block';
-                }
-            }
-
-            // Función para cerrar el popup
-            function closePopup() {
-                const popups = document.querySelectorAll('.material-popup');
-                popups.forEach(popup => {
-                    popup.style.display = 'none';
-                });
-                popupOverlay.style.display = 'none';
-            }
-
-            // Añadir event listeners a los elementos de material
-            materialItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    const materialId = this.getAttribute('data-material');
-                    openPopup(materialId);
-                });
-            });
-
-            // Añadir event listeners a los botones de cerrar
-            closeButtons.forEach(button => {
-                button.addEventListener('click', closePopup);
-            });
-
-            // Cerrar popup al hacer clic en el overlay
-            popupOverlay.addEventListener('click', closePopup);
-        });
-    </script>
+    <script src="js/materiales.js"></script>
 </body>
 </html> 
