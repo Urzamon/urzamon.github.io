@@ -168,62 +168,308 @@
             position: relative;
             bottom: -8px;
         }
+        
+        /* Media queries para dispositivos móviles */
+        @media screen and (max-width: 768px) {
+            body {
+                background-size: auto;
+            }
+            
+            H1 {
+                position: relative;
+                top: 0;
+                right: 0;
+                font-size: 32px;
+                text-align: center;
+                margin: 20px 0;
+            }
+            
+            H2 {
+                position: relative;
+                top: 0;
+                right: 0;
+                font-size: 16px;
+                text-align: center;
+                margin: 10px 0;
+            }
+            
+            .perfil {
+                position: relative;
+                left: 0;
+                top: 0;
+                width: 100% !important;
+                max-width: 300px;
+                margin: 0 auto;
+                display: block;
+            }
+            
+            h3 {
+                position: relative;
+                top: 0;
+                padding: 0 20px;
+                font-size: 16px;
+                margin: 20px 0;
+            }
+            
+            article {
+                position: relative;
+                top: 0;
+                padding: 20px;
+            }
+            
+            .icono {
+                width: 100% !important;
+                max-width: 400px;
+                margin: 20px auto;
+            }
+            
+            .correo, .vitae, .movil, .whatsapp, .linkedin {
+                position: relative;
+                top: 0;
+                display: block;
+                margin: 10px 0;
+                text-align: center;
+            }
+        }
+
+        /* Estilos para el menú de navegación */
+        .nav-menu {
+            background-color: rgb(39, 24, 7);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-menu li {
+            margin: 0 15px;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: goldenrod;
+        }
+
+        /* Estilos para las secciones */
+        .section {
+            padding: 40px 20px;
+            margin: 20px 0;
+        }
+
+        .section-title {
+            color: goldenrod;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 32px;
+        }
+
+        /* Ajustes para móvil */
+        @media screen and (max-width: 768px) {
+            .nav-menu ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-menu li {
+                margin: 10px 0;
+            }
+        }
+
+        /* Estilos para la sección de contacto */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(39, 24, 7, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            transition: transform 0.3s, background-color 0.3s;
+            width: 100%;
+            text-align: left;
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-item img {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+        }
+
+        .contact-item a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .contact-item a:hover {
+            color: goldenrod;
+        }
+
+        @media screen and (max-width: 768px) {
+            .contact-info {
+                padding: 15px;
+            }
+
+            .contact-item {
+                padding: 8px 15px;
+            }
+
+            .contact-item a {
+                font-size: 16px;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
         Portfolio
     </header>
-    <img src="img/Esquina_superior.png" alt="Esquina superior" width="50%">
-    <h1 id="nombre">JORGE SELMA</h1>
-    <h2>Web Developer (Front-end)</h2>
-    <h2 class="correo trans"><a class="correo trans" href="mailto:jordi_selma@hotmail.com"><img class="baja" src="img/email-icon.png" alt="email icono" width="30px"> jordi_selma@hotmail.com</a></h2>
-    <h2 class="vitae trans"><a class="vitae trans" href="pdf/CV Jorge 2024 Web Developer.pdf" target="_blank"><img class="baja" src="img/CV-icon.png" alt="CV icono" width="35px"> Curriculum Vitae</a></h2>
-    <h2 class="movil trans"><a class="movil trans" href="tel:+34660858882"><img class="baja2" src="img/telefono-icon.png" alt="telefono icono" width="25px"> +34 660858882</a></h2>
-    <h2 class="whatsapp trans"><a class="whatsapp trans" href="https://wa.me/34660858882/?text=Hola,%20Quiero%20Contratarte."><img class="baja2" src="img/whatsapp.png" alt="Icono WhatsApp" width="25px"> WhatsApp</a></h2>
-    <h2 class="linkedin trans"><a class="linkedin trans" href="http://www.linkedin.com/in/jorge-selma-gabarra"><img class="baja2" src="img/linkedin-icon.png" alt="linkedin icono" width="27px"> Linkedin</a></h2>
-    <img class="perfil" id="jordi" src="img/Foto_perfil_2024.png" alt="jordi selma perfil selfie" width="30%">
-    <img class="perfil"  src="img/Foto_perfil_2024_solo.png" alt="jordi selma perfil selfie" width="30%">
-    <br>
-    <h3>Apasionado de las tecnologías, en especial la programación web. Pertenezco a la Generación X así que destaco por tener gran capacidad laboral, soy organizado y metódico, cuento con una amplia experiencia en el sector de la informática. Me caracterizo por ser una persona proactiva y asertiva.</h3>
-    <br><br><br><br>
-    <article>
-    <a href="club_baco/index.html">
-        <img class="icono" src="img/Portfolio_club_baco.png" alt="Club Baco" width="80%">
-    </a>
-    <br><br><br>
-    <a href="ECOMAR/index.html">
-        <img class="icono" src="img/Portfolio_EcoMar.png" alt="Ecomar Kids" width="80%">
-    </a>
-    <br><br><br>
-    <a href="horror-suegra/index.html">
-        <img class="icono" src="img/Portfolio_horror_suegra.png" alt="Club Baco" width="80%">
-    </a>
-    <br><br><br>
-    <a href="Newsletter/Newsletter.html">
-        <img class="icono" src="img/Portfolio_newsleter.png" alt="Newsletter" width="80%">
-    </a>
-    <br><br><br>
-    <a href="Grupomusical/Index.html">
-        <img class="icono" src="img/Portfolio_grupo_musical.png" alt="bee gees" width="80%">
-    </a>
-    <br><br><br>
-    <a href="Picasso/imagen.html">
-        <img class="icono" src="img/Portfolio_Picasso.png" alt="Picasso" width="80%">
-    </a>
-    <br><br><br>
-    <a href="Fotovoltaica/index.html">
-        <img class="icono" src="img/Portfolio_fotovoltaica.png" alt="Fotovoltaica" width="80%">
-    </a>
-    <br><br><br>
-    <a href="https://www.confecciowebsabadell.cat/jordi/?page_id=89">
-        <img class="icono" src="img/Portfolio_japon.png" alt="Japón" width="80%">
-    </a>
-    <br><br><br>
-    <a href="http://dulces930:iIWDQOFR@www.dulcesfrikis.com.mialias.net/">
-        <img class="icono" src="img/Portfolio_tienda.png" alt="Dulcesfriki" width="80%">
-    </a>
-    <br><br><br>
-    </article>
+    
+    <nav class="nav-menu">
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#sobre-mi">Sobre Mí</a></li>
+            <li><a href="#experiencia">Experiencia</a></li>
+            <li><a href="#estudios">Estudios</a></li>
+            <li><a href="#proyectos">Proyectos</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <section id="inicio" class="section">
+        <img src="img/Esquina_superior.png" alt="Esquina superior" width="50%">
+        <h1 id="nombre">JORGE SELMA</h1>
+        <h2>Web Developer (Front-end)</h2>
+        <img class="perfil" id="jordi" src="img/Foto_perfil_2024.png" alt="jordi selma perfil selfie" width="30%">
+        <img class="perfil" src="img/Foto_perfil_2024_solo.png" alt="jordi selma perfil selfie" width="30%">
+    </section>
+
+    <section id="sobre-mi" class="section">
+        <h2 class="section-title">Sobre Mí</h2>
+        <h3>Apasionado de las tecnologías, en especial la programación web. Pertenezco a la Generación X así que destaco por tener gran capacidad laboral, soy organizado y metódico, cuento con una amplia experiencia en el sector de la informática. Me caracterizo por ser una persona proactiva y asertiva.</h3>
+    </section>
+
+    <section id="experiencia" class="section">
+        <h2 class="section-title">Experiencia Laboral</h2>
+        <!-- Aquí irá el contenido de experiencia -->
+    </section>
+
+    <section id="estudios" class="section">
+        <h2 class="section-title">Estudios</h2>
+        <!-- Aquí irá el contenido de estudios -->
+    </section>
+
+    <section id="proyectos" class="section">
+        <h2 class="section-title">Proyectos</h2>
+        <article>
+            <a href="club_baco/index.html">
+                <img class="icono" src="img/Portfolio_club_baco.png" alt="Club Baco" width="80%">
+            </a>
+            <br><br><br>
+            <a href="ECOMAR/index.html">
+                <img class="icono" src="img/Portfolio_EcoMar.png" alt="Ecomar Kids" width="80%">
+            </a>
+            <br><br><br>
+            <a href="horror-suegra/index.html">
+                <img class="icono" src="img/Portfolio_horror_suegra.png" alt="Club Baco" width="80%">
+            </a>
+            <br><br><br>
+            <a href="Newsletter/Newsletter.html">
+                <img class="icono" src="img/Portfolio_newsleter.png" alt="Newsletter" width="80%">
+            </a>
+            <br><br><br>
+            <a href="Grupomusical/Index.html">
+                <img class="icono" src="img/Portfolio_grupo_musical.png" alt="bee gees" width="80%">
+            </a>
+            <br><br><br>
+            <a href="Picasso/imagen.html">
+                <img class="icono" src="img/Portfolio_Picasso.png" alt="Picasso" width="80%">
+            </a>
+            <br><br><br>
+            <a href="Fotovoltaica/index.html">
+                <img class="icono" src="img/Portfolio_fotovoltaica.png" alt="Fotovoltaica" width="80%">
+            </a>
+            <br><br><br>
+            <a href="https://www.confecciowebsabadell.cat/jordi/?page_id=89">
+                <img class="icono" src="img/Portfolio_japon.png" alt="Japón" width="80%">
+            </a>
+            <br><br><br>
+            <a href="http://dulces930:iIWDQOFR@www.dulcesfrikis.com.mialias.net/">
+                <img class="icono" src="img/Portfolio_tienda.png" alt="Dulcesfriki" width="80%">
+            </a>
+        </article>
+    </section>
+
+    <section id="contacto" class="section">
+        <h2 class="section-title">Contacto</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                <a href="tel:+34660858882">
+                    <img src="img/telefono-icon.png" alt="Teléfono">
+                    <span>+34 660 85 88 82</span>
+                </a>
+            </div>
+            <div class="contact-item">
+                <a href="mailto:jordi_selma@hotmail.com">
+                    <img src="img/email-icon.png" alt="Email">
+                    <span>jordi_selma@hotmail.com</span>
+                </a>
+            </div>
+            <div class="contact-item">
+                <a href="http://www.linkedin.com/in/jorge-selma-gabarra" target="_blank">
+                    <img src="img/linkedin-icon.png" alt="LinkedIn">
+                    <span>LinkedIn: Jorge Selma Gabarra</span>
+                </a>
+            </div>
+            <div class="contact-item">
+                <a href="https://wa.me/34660858882/?text=Hola,%20Quiero%20Contratarte." target="_blank">
+                    <img src="img/whatsapp.png" alt="WhatsApp">
+                    <span>WhatsApp</span>
+                </a>
+            </div>
+            <div class="contact-item">
+                <a href="pdf/CV Jorge 2024 Web Developer.pdf" target="_blank">
+                    <img src="img/CV-icon.png" alt="CV">
+                    <span>Descargar CV</span>
+                </a>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
