@@ -769,51 +769,17 @@ footer a:hover {
     margin-top: 56px;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .hero-section.index-hero {
     min-height: 60vh;
     align-items: center;
+    justify-content: center;
     padding-top: 0;
-}
-
-.hero-section.index-hero .container {
-    padding-top: 160px;
-}
-
-.hero-section.index-hero h1 {
-    margin-bottom: 0.2rem;
-}
-
-.hero-section.index-hero .lead {
-    margin-bottom: 0.3rem;
-}
-
-.hero-section.index-hero .hero-buttons {
-    margin-top: 0.3rem;
-}
-
-.hero-video-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: 0;
-    background: #000;
-}
-
-.hero-video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    transform: translateX(-50%) translateY(-50%);
-    object-fit: cover;
+    background-image: url('../img/hero-mobile.jpg');
+    background-size: cover;
+    background-position: center;
 }
 
 .hero-overlay {
@@ -824,18 +790,22 @@ footer a:hover {
     bottom: 0;
     background: rgba(0, 0, 0, 0.5);
     z-index: 1;
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .hero-section .container {
     position: relative;
     z-index: 2;
-    padding-top: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
 }
 
 .hero-section .row {
-    margin-top: 0;
+    width: 100%;
 }
 
 .hero-section h1 {
@@ -843,27 +813,16 @@ footer a:hover {
     font-size: 3rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.8s ease forwards;
 }
 
 .hero-section .lead {
     color: white;
     font-size: 1.3rem;
     margin-bottom: 1.5rem;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.8s ease forwards 0.3s;
 }
 
 .hero-buttons {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.8s ease forwards 0.6s;
     margin-top: 0.3rem;
-    position: relative;
-    z-index: 3;
 }
 
 .hero-buttons .btn {
@@ -878,48 +837,15 @@ footer a:hover {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* AOS Animations for Hero */
-[data-aos="fade-up"] {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.8s ease;
-}
-
-[data-aos="fade-up"].aos-animate {
-    opacity: 1;
-    transform: translateY(0);
-}
-
 /* Media Queries para Hero */
 @media (max-width: 768px) {
     .hero-section.index-hero {
         min-height: 50vh;
-        background-image: url('../img/hero-mobile.jpg') !important;
-        background-size: cover !important;
-        background-position: center !important;
     }
     
-    .hero-section.index-hero .hero-video-container {
-        display: none !important;
-    }
-    
-    .hero-section.index-hero .hero-video {
-        display: none !important;
-    }
-    
-    .hero-section.index-hero .container {
-        padding-top: 120px;
+    .hero-section .container {
+        min-height: 50vh;
+        padding: 0 1rem;
     }
     
     .hero-section.index-hero h1 {
@@ -949,30 +875,25 @@ footer a:hover {
 }
 
 @media (max-width: 576px) {
-    .hero-section {
-        min-height: 40vh;
-        padding: 20px 0;
-    }
-    
     .hero-section.index-hero {
         min-height: 40vh;
     }
     
     .hero-section .container {
-        padding-top: 100px;
+        min-height: 40vh;
     }
     
-    .hero-section h1 {
+    .hero-section.index-hero h1 {
         font-size: 1.8rem;
         margin-bottom: 0.5rem;
     }
     
-    .hero-section .lead {
+    .hero-section.index-hero .lead {
         font-size: 0.9rem;
         margin-bottom: 1rem;
     }
 
-    .hero-buttons .btn {
+    .hero-section.index-hero .hero-buttons .btn {
         max-width: 200px;
         padding: 0.5rem 1.2rem;
         font-size: 0.9rem;
