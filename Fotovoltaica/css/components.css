@@ -258,42 +258,44 @@
 
 @media (max-width: 768px) {
     .hero-section {
-        min-height: 60vh;
+        min-height: 45vh;
+        padding: 30px 0;
+        background-image: url('../img/hero-mobile.jpg');
+        background-size: cover;
+        background-position: center;
     }
     
     .hero-section.index-hero {
-        min-height: 70vh;
+        min-height: 50vh;
     }
     
     .hero-section .container {
-        padding: 2rem 1rem;
+        padding-top: 120px;
     }
     
     .hero-section h1 {
         font-size: 2rem;
+        margin-bottom: 0.5rem;
     }
     
     .hero-section .lead {
         font-size: 1rem;
+        margin-bottom: 1rem;
     }
-    
-    .testimonial-card {
-        margin-bottom: 1.5rem;
+
+    .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
     }
-    
-    .whatsapp-button {
-        width: 50px;
-        height: 50px;
-        right: 15px;
-        bottom: 15px;
-    }
-    
-    .whatsapp-button i {
-        font-size: 1.8rem;
-    }
-    
-    .whatsapp-tooltip {
-        display: none;
+
+    .hero-buttons .btn {
+        width: 100%;
+        max-width: 250px;
+        margin: 0;
+        padding: 0.6rem 1.5rem;
+        font-size: 1rem;
     }
 }
 
