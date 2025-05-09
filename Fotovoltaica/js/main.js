@@ -1,7 +1,7 @@
 // Slideshow
 let slideIndex = 0;
 let slideInterval;
-const slideDuration = 10000; // 5 segundos por slide
+const slideDuration = 10000; // 10 segundos por slide
 
 let barraslideIndex = 0;
 const barraslides = document.querySelectorAll('.barra-slides');
@@ -11,15 +11,18 @@ function showSlides() {
     const dots = document.getElementsByClassName("slideshow-dot");
     const progressBar = document.querySelector(".slideshow-progress-bar");
     
+    // Verificar si los elementos existen
+    if (!slides.length || !dots.length || !progressBar) return;
+    
     // Ocultar todas las diapositivas
     for (let i = 0; i < slides.length; i++) {
         slides[i].classList.remove("active");
-        dots[i].classList.remove("active");
+        if (dots[i]) dots[i].classList.remove("active");
     }
     
     // Mostrar la diapositiva actual
     slides[slideIndex].classList.add("active");
-    dots[slideIndex].classList.add("active");
+    if (dots[slideIndex]) dots[slideIndex].classList.add("active");
     
     // Actualizar la barra de progreso
     progressBar.style.width = "0%";
@@ -31,6 +34,8 @@ function showSlides() {
 }
 
 function showBarraSlides() {
+    if (!barraslides.length) return;
+    
     barraslides.forEach((slide, index) => {
         slide.style.display = index === barraslideIndex ? 'block' : 'none';
     });
@@ -40,6 +45,8 @@ function showBarraSlides() {
 // Función para cambiar a la siguiente diapositiva
 function nextSlide() {
     const slides = document.getElementsByClassName("slides");
+    if (!slides.length) return;
+    
     slideIndex = (slideIndex + 1) % slides.length;
     showSlides();
 }
@@ -47,43 +54,56 @@ function nextSlide() {
 // Función para cambiar a la diapositiva anterior
 function prevSlide() {
     const slides = document.getElementsByClassName("slides");
+    if (!slides.length) return;
+    
     slideIndex = (slideIndex - 1 + slides.length) % slides.length;
     showSlides();
 }
 
 // Iniciar el slideshow automático
 function startSlideshow() {
+    const slides = document.getElementsByClassName("slides");
+    if (!slides.length) return;
+    
     showSlides();
     slideInterval = setInterval(nextSlide, slideDuration);
 }
 
 // Detener el slideshow automático
 function stopSlideshow() {
-    clearInterval(slideInterval);
+    if (slideInterval) {
+        clearInterval(slideInterval);
+    }
 }
 
 // Event listeners para los controles
 document.addEventListener("DOMContentLoaded", function() {
-    const prevButton = document.querySelector(".slideshow-prev");
-    const nextButton = document.querySelector(".slideshow-next");
-    const dots = document.getElementsByClassName("slideshow-dot");
     const slideshow = document.querySelector(".slideshow");
+    if (!slideshow) return;
+    
+    const prevButton = slideshow.querySelector(".slideshow-prev");
+    const nextButton = slideshow.querySelector(".slideshow-next");
+    const dots = slideshow.getElementsByClassName("slideshow-dot");
     
     // Iniciar el slideshow
     startSlideshow();
     
     // Event listeners para los botones
-    prevButton.addEventListener("click", () => {
-        stopSlideshow();
-        prevSlide();
-        startSlideshow();
-    });
+    if (prevButton) {
+        prevButton.addEventListener("click", () => {
+            stopSlideshow();
+            prevSlide();
+            startSlideshow();
+        });
+    }
     
-    nextButton.addEventListener("click", () => {
-        stopSlideshow();
-        nextSlide();
-        startSlideshow();
-    });
+    if (nextButton) {
+        nextButton.addEventListener("click", () => {
+            stopSlideshow();
+            nextSlide();
+            startSlideshow();
+        });
+    }
     
     // Event listeners para los dots
     for (let i = 0; i < dots.length; i++) {
@@ -100,9 +120,14 @@ document.addEventListener("DOMContentLoaded", function() {
     slideshow.addEventListener("mouseleave", startSlideshow);
 });
 
-// Iniciar slideshows
-setInterval(showBarraSlides, 6000);
-startSlideshow();
+// Iniciar slideshows solo si existen los elementos necesarios
+if (document.querySelector('.barra-slides')) {
+    setInterval(showBarraSlides, 6000);
+}
+
+if (document.querySelector('.slideshow')) {
+    startSlideshow();
+}
 
 // FAQ Accordion
 const faqItems = [
@@ -257,5 +282,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             });
         });
+    }
+});
+
+// Manejo del video de fondo
+document.addEventListener('DOMContentLoaded', function() {
+    const video = document.querySelector('.hero-video');
+    if (video) {
+        video.play();
     }
 }); 

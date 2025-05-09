@@ -9,6 +9,9 @@
     <!-- Bootstrap y sus dependencias -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- AOS - Animate On Scroll -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <!-- Estilos personalizados -->
     <link rel="stylesheet" href="css/variables.css">
@@ -28,10 +31,8 @@
 </head>
 <body>
     <!-- ===== NAVEGACIÓN PRINCIPAL ===== -->
-    <!-- Barra de navegación con logo y menú -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
-            <!-- Logo y nombre del sitio -->
             <a class="navbar-brand" href="index.html">
                 <div class="logo-container">
                     <i class="bi bi-sun-fill logo-sun" style="color: #FFD700 !important;"></i>
@@ -39,14 +40,12 @@
                 </div>
                 DIY Solar Home
             </a>
-            <!-- Botón hamburguesa para móvil -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <!-- Menú de navegación -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link" href="materiales.html">Materiales</a></li>
                     <li class="nav-item"><a class="nav-link" href="instalacion.html">Instalación</a></li>
                     <li class="nav-item"><a class="nav-link" href="mantenimiento.html">Mantenimiento</a></li>
@@ -57,100 +56,221 @@
         </div>
         </nav>
 
-    <!-- ===== SECCIÓN HERO ===== -->
-    <!-- Sección principal con introducción y slideshow -->
-    <div class="container" id="home">
-        <div class="row align-items-center">
-            <!-- Texto de introducción -->
-            <div class="col-lg-6">
-                <h1 class="display-4">Bienvenido a DIY Solar Home</h1>
-                <p class="lead">Descubre cómo puedes instalar tu propio sistema de energía solar en casa. Aprende sobre los materiales necesarios, el proceso de instalación y cómo mantener tu sistema funcionando de manera eficiente.</p>
-            
-            <p><strong>¿Qué se necesita para instalar paneles solares?</strong></p>
-            <p>Para llevar a cabo una instalación de paneles solares de forma exitosa, es fundamental realizar una <strong>evaluación detallada del sitio</strong> donde se llevará a cabo el proyecto. Esta evaluación consiste en analizar la cantidad de luz solar que recibe el área a lo largo del año, así como la inclinación y orientación más adecuada para maximizar la captación de energía solar.</p>
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero-section index-hero">
+        <div class="hero-video-container">
+            <video autoplay muted loop playsinline class="hero-video">
+                <source src="videos/hero-background.mp4" type="video/mp4">
+                <source src="videos/hero-background.webm" type="video/webm">
+            </video>
         </div>
-            <!-- Slideshow de imágenes -->
-            <div class="col-lg-6">
-            <div class="slideshow">
-                <img src="img/slide1.png" class="slides active" alt="casa con placas solares">
-                <img src="img/slide2.png" class="slides" alt="casa con placas solares">
-                <img src="img/slide3.png" class="slides" alt="casa con placas solares">
-                    
-                    <!-- Controles del slideshow -->
-                    <button class="slideshow-arrow slideshow-prev">
-                        <i class="bi bi-chevron-left"></i>
-                    </button>
-                    <button class="slideshow-arrow slideshow-next">
-                        <i class="bi bi-chevron-right"></i>
-                    </button>
-                    
-                    <!-- Indicadores -->
-                    <div class="slideshow-controls">
-                        <div class="slideshow-dot active"></div>
-                        <div class="slideshow-dot"></div>
-                        <div class="slideshow-dot"></div>
-                    </div>
-                    
-                    <!-- Barra de progreso -->
-                    <div class="slideshow-progress">
-                        <div class="slideshow-progress-bar"></div>
+        <div class="hero-overlay">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-8 mx-auto text-center" data-aos="fade-up">
+                        <h1 class="display-3 fw-bold text-white mb-4">Energía Solar para tu Hogar</h1>
+                        <p class="lead text-white mb-5">Transforma tu casa en un hogar sostenible con energía limpia y renovable</p>
+                        <div class="hero-buttons">
+                            <a href="#servicios" class="btn btn-primary btn-lg me-3">Comenzar</a>
+                            <a href="#contacto" class="btn btn-outline-light btn-lg">Contactar</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- ===== SECCIÓN PARALLAX ===== -->
-    <!-- Sección con efecto parallax para mostrar imagen de fondo -->
-    <div class="parallax-section">
-        <div class="parallax-content">
-            <h2>Energía Solar para tu Hogar</h2>
-            <h5>Transforma tu casa en un hogar sostenible</h5>
-        </div>
-    </div>
-
-    <!-- ===== SECCIÓN FOTOVOLTAICA ACTUAL ===== -->
-    <div class="container" id="fotovoltaica-actual">
-        <div class="row">
-            <div class="col-12">
-                <div class="section-title">
-                    <h2>La Energía Fotovoltaica en la actualidad</h2>
+    <!-- ===== SECCIÓN SERVICIOS ===== -->
+    <section id="servicios" class="py-5">
+    <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center" data-aos="fade-up">
+                    <h2 class="display-4 mb-3">Nuestros Servicios</h2>
+                    <p class="lead">Soluciones completas para tu sistema solar</p>
                 </div>
-                <div class="card">
-                    <div class="card-body">
-                        <p>La energía fotovoltaica está experimentando un auge sin precedentes en la actualidad. Con los avances tecnológicos y la creciente conciencia ambiental, cada vez más hogares y empresas están adoptando esta fuente de energía limpia y renovable.</p>
-                        
-                        <h4 class="mt-4">Tendencias Actuales</h4>
-                        <ul>
-                            <li><strong>Eficiencia Mejorada:</strong> Los paneles solares modernos alcanzan eficiencias superiores al 22%, un aumento significativo respecto a años anteriores.</li>
-                            <li><strong>Costos Reducidos:</strong> El precio de los sistemas fotovoltaicos ha disminuido más de un 80% en la última década, haciéndolos más accesibles.</li>
-                            <li><strong>Almacenamiento Inteligente:</strong> Las baterías de última generación permiten almacenar energía para uso nocturno o en días nublados.</li>
-                            <li><strong>Integración Arquitectónica:</strong> Nuevos diseños permiten integrar los paneles de forma estética en edificios y viviendas.</li>
-                        </ul>
-
-                        <h4 class="mt-4">Beneficios Actuales</h4>
-                        <ul>
-                            <li><strong>Ahorro Económico:</strong> Reducción de hasta un 70% en la factura eléctrica mensual.</li>
-                            <li><strong>Independencia Energética:</strong> Mayor autonomía respecto a la red eléctrica convencional.</li>
-                            <li><strong>Valor de Propiedad:</strong> Aumento del valor de la vivienda con instalaciones solares.</li>
-                            <li><strong>Huella de Carbono:</strong> Reducción significativa de emisiones de CO2.</li>
-                        </ul>
-
-                        <h4 class="mt-4">Perspectivas de Futuro</h4>
-                        <p>El futuro de la energía fotovoltaica es prometedor, con investigaciones en curso sobre:</p>
-                        <ul>
-                            <li>Paneles solares transparentes para ventanas</li>
-                            <li>Materiales más eficientes y sostenibles</li>
-                            <li>Sistemas de gestión inteligente de energía</li>
-                            <li>Integración con vehículos eléctricos</li>
-                        </ul>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card">
+                        <div class="icon-wrapper">
+                            <i class="bi bi-tools"></i>
+                        </div>
+                        <h3>Instalación</h3>
+                        <p>Instalación profesional de sistemas solares residenciales y comerciales.</p>
+                        <a href="instalacion.html" class="btn btn-outline-primary">Saber más</a>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card">
+                        <div class="icon-wrapper">
+                            <i class="bi bi-gear"></i>
+                        </div>
+                        <h3>Mantenimiento</h3>
+                        <p>Servicios de mantenimiento y reparación para optimizar el rendimiento.</p>
+                        <a href="mantenimiento.html" class="btn btn-outline-primary">Saber más</a>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card">
+                        <div class="icon-wrapper">
+                            <i class="bi bi-lightbulb"></i>
+                        </div>
+                        <h3>Asesoría</h3>
+                        <p>Consultoría personalizada para elegir el mejor sistema para tu hogar.</p>
+                        <a href="contacto.html" class="btn btn-outline-primary">Saber más</a>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
+
+    <!-- ===== SECCIÓN ESTADÍSTICAS ===== -->
+    <section class="stats-section py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-3" data-aos="fade-up">
+                    <div class="stat-card">
+                        <i class="bi bi-house-check"></i>
+                        <h3>1000+</h3>
+                        <p>Instalaciones Completadas</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stat-card">
+                        <i class="bi bi-lightning-charge"></i>
+                        <h3>5MW+</h3>
+                        <p>Energía Generada</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-card">
+                        <i class="bi bi-people"></i>
+                        <h3>5000+</h3>
+                        <p>Clientes Satisfechos</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stat-card">
+                        <i class="bi bi-award"></i>
+                        <h3>15+</h3>
+                        <p>Años de Experiencia</p>
+                    </div>
+        </div>
     </div>
+    </div>
+    </section>
+
+    <!-- ===== SECCIÓN BENEFICIOS ===== -->
+    <section class="benefits-section py-5">
+    <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <h2 class="display-4 mb-4">¿Por qué energía solar?</h2>
+                    <div class="benefits-list">
+                        <div class="benefit-item">
+                            <i class="bi bi-currency-dollar"></i>
+                            <div>
+                                <h4>Ahorro Económico</h4>
+                                <p>Reduce hasta un 70% tu factura de electricidad</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="bi bi-tree"></i>
+                            <div>
+                                <h4>Energía Limpia</h4>
+                                <p>Reduce tu huella de carbono y ayuda al medio ambiente</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="bi bi-house-heart"></i>
+                            <div>
+                                <h4>Valor de Propiedad</h4>
+                                <p>Aumenta el valor de tu vivienda</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="benefits-image">
+                        <img src="img/beneficios_fotovoltaica.jpg" alt="Beneficios de la energía solar" class="img-fluid rounded-3 shadow">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECCIÓN TESTIMONIOS ===== -->
+    <section class="testimonials-section py-5">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center" data-aos="fade-up">
+                    <h2 class="display-4">Lo que dicen nuestros clientes</h2>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <i class="bi bi-quote"></i>
+                            <p>La instalación fue rápida y profesional. El ahorro en la factura de luz es notable.</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="img/testimonial1.jpg" alt="Cliente 1">
+                            <div>
+                                <h5>María García</h5>
+                                <p>Madrid</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <i class="bi bi-quote"></i>
+                            <p>Excelente servicio post-venta. El mantenimiento es sencillo y efectivo.</p>
+    </div>
+                        <div class="testimonial-author">
+                            <img src="img/testimonial2.avif" alt="Cliente 2">
+                            <div>
+                                <h5>Juan Pérez</h5>
+                                <p>Barcelona</p>
+                </div> 
+                </div> 
+                </div> 
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <i class="bi bi-quote"></i>
+                            <p>La asesoría fue clave para elegir el mejor sistema para mi hogar.</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="img/testimonial3.jpg" alt="Cliente 3">
+                            <div>
+                                <h5>Ana Martínez</h5>
+                                <p>Valencia</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECCIÓN CTA ===== -->
+    <section class="cta-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center" data-aos="zoom-in">
+                    <h2 class="display-4 text-white mb-4">¿Listo para comenzar tu proyecto solar?</h2>
+                    <p class="lead text-white mb-4">Contáctanos hoy para una consulta gratuita</p>
+                    <a href="contacto.html" class="btn btn-light btn-lg">Contactar Ahora</a>
+        </div>
+    </div>    
+        </div>
+    </section>
+
     <!-- ===== CHAT BOT ===== -->
-
     <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
     <df-messenger
       chat-icon="https:&#x2F;&#x2F;static.vecteezy.com&#x2F;system&#x2F;resources&#x2F;previews&#x2F;045&#x2F;548&#x2F;962&#x2F;large_2x&#x2F;3d-artificial-intelligence-chatbot-orange-on-transparent-background-free-png.png"
@@ -160,49 +280,53 @@
     ></df-messenger>
 
     <!-- ===== FOOTER ===== -->
-    <!-- Pie de página con información de contacto y redes sociales -->
-    <footer class="text-center mt-5">
+    <footer class="footer">
     <div class="container">
-            <div class="row">
-                <!-- Información de contacto -->
-                <div class="col-md-4 mb-4">
-                    <h5>Contacto</h5>
-                    <p class="mb-1"><i class="bi bi-envelope"></i> fotovoltaje@gmail.com</p>
-                    <p class="mb-1"><i class="bi bi-telephone"></i> 123-456-7890</p>
-                    <p class="mb-1"><i class="bi bi-geo-alt"></i> Calle Energía Solar, Ciudad Verde</p>
-                </div>
-                <!-- Redes sociales -->
-                <div class="col-md-4 mb-4">
-                    <h5>Síguenos</h5>
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/fotovoltaje" class="social-link" title="Facebook">
-                            <i class="bi bi-facebook"></i>
-                        </a>
-                        <a href="https://twitter.com/fotovoltaje" class="social-link" title="Twitter">
-                            <i class="bi bi-twitter"></i>
-                        </a>
-                        <a href="https://www.instagram.com/fotovoltaje" class="social-link" title="Instagram">
-                            <i class="bi bi-instagram"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/company/fotovoltaje" class="social-link" title="LinkedIn">
-                            <i class="bi bi-linkedin"></i>
-                        </a>
-                        <a href="https://www.youtube.com/fotovoltaje" class="social-link" title="YouTube">
-                            <i class="bi bi-youtube"></i>
-                        </a>
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="footer-info">
+                        <h3>DIY Solar Home</h3>
+                        <p>Transformando hogares con energía solar sostenible</p>
+                        <div class="social-links">
+                            <a href="#"><i class="bi bi-facebook"></i></a>
+                            <a href="#"><i class="bi bi-twitter"></i></a>
+                            <a href="#"><i class="bi bi-instagram"></i></a>
+                            <a href="#"><i class="bi bi-linkedin"></i></a>
+                        </div>
                     </div>
                 </div>
-                <!-- Horario -->
-                <div class="col-md-4 mb-4">
-                    <h5>Horario</h5>
-                    <p class="mb-1"><i class="bi bi-clock"></i> Lunes a Viernes</p>
-                    <p class="mb-1">9:00 AM - 5:00 PM</p>
+                <div class="col-lg-4">
+                    <div class="footer-links">
+                        <h4>Enlaces Rápidos</h4>
+                        <ul>
+                            <li><a href="index.html">Inicio</a></li>
+                            <li><a href="materiales.html">Materiales</a></li>
+                            <li><a href="instalacion.html">Instalación</a></li>
+                            <li><a href="mantenimiento.html">Mantenimiento</a></li>
+                            <li><a href="contacto.html">Contacto</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="footer-contact">
+                        <h4>Contacto</h4>
+                        <p><i class="bi bi-geo-alt"></i> Calle Energía Solar, Ciudad Verde</p>
+                        <p><i class="bi bi-envelope"></i> fotovoltaje@gmail.com</p>
+                        <p><i class="bi bi-telephone"></i> 123-456-7890</p>
+                    </div>
                 </div>
             </div>
-            <hr class="footer-divider">
-            <p class="mb-0">© 2024 DIY Solar Home. Todos los derechos reservados.</p>
+            <div class="footer-bottom">
+                <p>&copy; 2024 DIY Solar Home. Todos los derechos reservados.</p>
+            </div>
         </div>
     </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/34660858882" class="whatsapp-button" target="_blank">
+        <i class="bi bi-whatsapp"></i>
+        <span class="whatsapp-tooltip">¿Necesitas ayuda? ¡Chatea con nosotros!</span>
+    </a>
 
     <!-- ===== BOTÓN VOLVER ARRIBA ===== -->
     <a href="#" class="back-to-top" id="backToTop">
@@ -212,6 +336,13 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/main.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
 </body>
 </html>
