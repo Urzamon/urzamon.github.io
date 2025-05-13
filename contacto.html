@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | Portfolio de Jordi Selma</title>
+    <style>
+        body{
+            margin: 0px;
+            padding: 0px;
+            background-image: url(img/Fondo_de_Portfolio.png);
+            background-size: cover;
+        }
+        header{
+            background-color: rgb(39, 24, 7);
+            color: white;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-style: normal;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            text-shadow: 5px 5px 10px black, -5px -5px 10px white;
+            padding: 5px;
+        }
+        H1{
+            color: gold;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-style: normal;
+            font-size: 46px;
+            font-weight: bold;
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            text-shadow: 5px 5px 10px black, -5px -5px 10px goldenrod;
+        }
+        H2{
+            color: white;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-style: normal;
+            font-size: 20px;
+            font-weight: bold;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            text-shadow: 5px 5px 10px black, -5px -5px 10px white;
+        }
+        .perfil{
+            position: absolute;
+            left: 5px;
+            top: 100px;
+        }
+        .movil{
+            text-decoration: none;
+            color: yellow;
+            top: 200px;
+            font-weight: normal;
+            
+        }
+        .movil:hover{
+            color:goldenrod;
+            text-shadow:  1px 0px 0px black,0px 1px 0px black,-1px 0px 0px black,0px -1px 0px black;
+
+            
+        }
+        .whatsapp{
+            text-decoration: none;
+            color: green;
+            top: 240px;
+            font-weight: bolder;
+           
+            text-shadow:  1px 0px 0px white,0px 1px 0px white,-1px 0px 0px white,0px -1px 0px white;
+        }
+        .whatsapp:hover{
+            color: white;
+            text-shadow:  1px 0px 0px green,0px 1px 0px green,-1px 0px 0px green,0px -1px 0px green;
+    
+        }
+        .correo{
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            top: 110px;
+        }
+        .correo:hover{
+            color: goldenrod;
+            text-shadow:  1px 0px 0px black,0px 1px 0px black,-1px 0px 0px black,0px -1px 0px black;
+
+        }
+        .linkedin{
+            text-decoration: none;
+            color: blue;
+            font-size: 22px;
+            top: 280px;
+            text-shadow:  1px 0px 0px white,0px 1px 0px white,-1px 0px 0px white,0px -1px 0px white;
+        }
+        .linkedin:hover{
+            color: white;
+            text-shadow:  1px 0px 0px blue,0px 1px 0px blue,-1px 0px 0px blue,0px -1px 0px blue;
+
+        }
+        .vitae{
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            top: 150px;
+        }
+        .vitae:hover{
+            color: goldenrod;
+            text-shadow:  1px 0px 0px black,0px 1px 0px black,-1px 0px 0px black,0px -1px 0px black;
+
+        }
+        h3{
+            position: relative;
+            top: 100px;
+            color: white;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-style: normal;
+            padding-left: 10%;
+            padding-right: 38px;
+            text-align: justify;
+        }
+        .icono{
+            position: relative;
+            top: -100px;
+        }
+        article{
+            position: relative;
+            top: 120px;
+            text-align: center;
+        }
+        #jordi{
+            animation-delay: 2s;
+            animation-iteration-count: infinite;
+            animation-name: logogira;
+            animation-duration: 6s;
+            
+        }
+        @keyframes logogira {
+            0% {transform: rotate(0deg);}
+            33.33% {transform: rotate(360deg);}
+            49.99% {transform: rotate(-0deg);}
+            83.33% {transform: rotate(-360deg);}
+            100% {transform: rotate(0deg);}
+
+        }
+        #nombre{
+            animation-delay: 2s;
+            animation-iteration-count: infinite;
+            animation-name: palpita;
+            animation-duration: 6s;
+        }
+        @keyframes palpita {
+            0% {transform: scale(1,1);}
+            33.33% {transform: scale(0.8,0.8);}
+            49.99% {transform: scale(1,1);}
+            83.33% {transform: scale(0.8,0.8);}
+            100% {transform: scale(1,1);}
+
+        }
+        .trans{
+            transition: 2s;
+        }
+        .baja{
+            position: relative;
+            bottom: -10px;
+        }
+        .baja2{
+            position: relative;
+            bottom: -8px;
+        }
+        
+        /* Media queries para dispositivos móviles */
+        @media screen and (max-width: 768px) {
+            body {
+                background-size: auto;
+            }
+            
+            H1 {
+                position: relative;
+                top: 0;
+                right: 0;
+                font-size: 32px;
+                text-align: center;
+                margin: 20px 0;
+            }
+            
+            H2 {
+                position: relative;
+                top: 0;
+                right: 0;
+                font-size: 16px;
+                text-align: center;
+                margin: 10px 0;
+            }
+            
+            .perfil {
+                position: relative;
+                left: 0;
+                top: 0;
+                width: 100% !important;
+                max-width: 300px;
+                margin: 0 auto;
+                display: block;
+            }
+            
+            h3 {
+                position: relative;
+                top: 0;
+                padding: 0 20px;
+                font-size: 16px;
+                margin: 20px 0;
+            }
+            
+            article {
+                position: relative;
+                top: 0;
+                padding: 20px;
+            }
+            
+            .icono {
+                width: 100% !important;
+                max-width: 400px;
+                margin: 20px auto;
+            }
+            
+            .correo, .vitae, .movil, .whatsapp, .linkedin {
+                position: relative;
+                top: 0;
+                display: block;
+                margin: 10px 0;
+                text-align: center;
+            }
+        }
+
+        /* Estilos para el menú de navegación */
+        .nav-menu {
+            background-color: rgb(39, 24, 7);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-menu li {
+            margin: 0 15px;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: goldenrod;
+        }
+
+        /* Estilos para las secciones */
+        .section {
+            padding: 40px 20px;
+            margin: 20px 0;
+        }
+
+        .section-title {
+            color: goldenrod;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 32px;
+        }
+
+        /* Ajustes para móvil */
+        @media screen and (max-width: 768px) {
+            .nav-menu ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-menu li {
+                margin: 10px 0;
+            }
+        }
+
+        /* Estilos para la sección de contacto */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(39, 24, 7, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            transition: transform 0.3s, background-color 0.3s;
+            width: 100%;
+            text-align: left;
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-item img {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+        }
+
+        .contact-item a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .contact-item a:hover {
+            color: goldenrod;
+        }
+
+        @media screen and (max-width: 768px) {
+            .contact-info {
+                padding: 15px;
+            }
+
+            .contact-item {
+                padding: 8px 15px;
+            }
+
+            .contact-item a {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Portfolio
+    </header>
+    
+    <nav class="nav-menu">
+        <ul>
+            <li><a href="index.html#inicio">Inicio</a></li>
+            <li><a href="index.html#sobre-mi">Sobre Mí</a></li>
+            <li><a href="index.html#experiencia">Experiencia</a></li>
+            <li><a href="index.html#estudios">Estudios</a></li>
+            <li><a href="index.html#proyectos">Proyectos</a></li>
+            <li><a href="contacto.html" style="color:goldenrod;">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <section id="contacto" class="section">
+        <h2 class="section-title">Contacto</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                <a href="tel:+34660858882">
+                    <img src="img/telefono-icon.png" alt="Teléfono">
+                    <span>+34 660 85 88 82</span>
+                </a>
+            </div>
+            <div class="contact-item">
+                <a href="mailto:jordi_selma@hotmail.com">
+                    <img src="img/email-icon.png" alt="Email">
+                    <span>jordi_selma@hotmail.com</span>
+                </a>
+            </div>
+            <div class="contact-item">
+                <a href="http://www.linkedin.com/in/jorge-selma-gabarra" target="_blank">
+                    <img src="img/linkedin-icon.png" alt="LinkedIn">
+                    <span>LinkedIn: Jorge Selma Gabarra</span>
+                </a>
+            </div>
+            <div class="contact-item">
+                <a href="https://wa.me/34660858882/?text=Hola,%20Quiero%20Contratarte." target="_blank">
+                    <img src="img/whatsapp.png" alt="WhatsApp">
+                    <span>WhatsApp</span>
+                </a>
+            </div>
+            <div class="contact-item">
+                <a href="pdf/CV Jorge 2024 Web Developer.pdf" target="_blank">
+                    <img src="img/CV-icon.png" alt="CV">
+                    <span>Descargar CV</span>
+                </a>
+            </div>
+        </div>
+    </section>
+</body>
+</html> 
