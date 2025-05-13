@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio de Jordi Selma</title>
+    <title>Sobre Mí - Portfolio de Jordi Selma</title>
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- Custom CSS -->
@@ -21,8 +21,8 @@
             <i class="bi bi-list"></i>
         </button>
         <ul class="nav-links">
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="sobre-mi.html">Sobre Mí</a></li>
+            <li><a href="index.html#inicio">Inicio</a></li>
+            <li><a href="sobre-mi.html" style="color: goldenrod;">Sobre Mí</a></li>
             <li><a href="experiencia.html">Experiencia</a></li>
             <li><a href="estudios.html">Estudios</a></li>
             <li><a href="proyectos.html">Proyectos</a></li>
@@ -30,26 +30,48 @@
         </ul>
     </nav>
 
-    <section id="inicio" class="section hero-section">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1 id="nombre">Jordi Selma</h1>
-                <h2>Web Developer <span class="highlight">Front-end</span></h2>
-                <p class="hero-description">
-                    Apasionado de las tecnologías, en especial la programación web. Pertenezco a la Generación X así que destaco por tener gran capacidad laboral, soy organizado y metódico, cuento con una amplia experiencia en el sector de la informática. Me caracterizo por ser una persona proactiva y asertiva.</p>
-                <div class="hero-buttons">
-                    <a href="contacto.html" class="btn btn-primary">Contactar</a>
-                    <a href="proyectos.html" class="btn btn-secondary">Ver Proyectos</a>
+    <section id="sobre-mi" class="section">
+        <h2 class="section-title">Resumen Profesional</h2>
+        <div class="estudios-container">
+            <div class="estudio-card">
+                <div class="estudio-header">
+                    <i class="bi bi-person-badge"></i>
+                    <h3>Perfil Profesional</h3>
+                </div>
+                <div class="estudio-details">
+                    <p>Profesional con amplia experiencia en programación informática, soporte técnico y desarrollo web. Gran capacidad de organización, resolución de problemas y adaptación a nuevas tecnologías. Busco una nueva oportunidad laboral en el área de IT, donde pueda aportar mis conocimientos en desarrollo, soporte, postproducción audiovisual y sistemas.</p>
+                </div>
             </div>
+
+            <div class="estudio-card">
+                <div class="estudio-header">
+                    <i class="bi bi-translate"></i>
+                    <h3>Idiomas</h3>
+                </div>
+                <div class="estudio-details">
+                    <ul class="experiencia-lista">
+                        <li><strong>Español:</strong> Nativo</li>
+                        <li><strong>Catalán:</strong> Nativo</li>
+                        <li><strong>Inglés Técnico:</strong> Intermedio</li>
+                    </ul>
+                </div>
             </div>
-            <div class="hero-image">
-                <img class="profile-image" id="jordi" src="img/Foto_perfil_2024.png" alt="borde de jordi selma perfil selfie">
-                <img class="profile-selfie" id="selfie" src="img/Foto_perfil_2024_solo.png" alt="jordi selma perfil selfie">
+
+            <div class="estudio-card">
+                <div class="estudio-header">
+                    <i class="bi bi-info-circle"></i>
+                    <h3>Otros Datos</h3>
+                </div>
+                <div class="estudio-details">
+                    <ul class="experiencia-lista">
+                        <li><i class="bi bi-car-front"></i> Carnet de Conducir AM, A1, A2, A, B, C1</li>
+                        <li><i class="bi bi-truck"></i> Vehículo propio y disponibilidad para viajar</li>
+                        <li><i class="bi bi-clock"></i> Disponibilidad inmediata</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
-
-
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {

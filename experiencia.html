@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiencia - Portfolio de Jordi Selma</title>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="nav-menu">
+        <div class="logo-container">
+            <i class="bi bi-briefcase"></i>
+            <div class="logo-text">
+                Portafolio <span>Jordi Selma</span>
+            </div>
+        </div>
+        <button class="menu-toggle" aria-label="Toggle menu">
+            <i class="bi bi-list"></i>
+        </button>
+        <ul class="nav-links">
+            <li><a href="index.html#inicio">Inicio</a></li>
+            <li><a href="sobre-mi.html">Sobre Mí</a></li>
+            <li><a href="experiencia.html" style="color: goldenrod;">Experiencia</a></li>
+            <li><a href="estudios.html">Estudios</a></li>
+            <li><a href="proyectos.html">Proyectos</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <section id="experiencia" class="section">
+        <h2 class="section-title">Experiencia Laboral</h2>
+        <div class="estudios-container">
+            <div class="estudio-card">
+                <div class="estudio-header">
+                    <i class="bi bi-code-square"></i>
+                    <h3>Web Developer – Desarrollo Web y Aplicaciones Móviles</h3>
+                </div>
+                <div class="estudio-details">
+                    <p><i class="bi bi-building"></i> Eco Clic Hardware & Printing Solutions</p>
+                    <p><i class="bi bi-calendar3"></i> Últimos 6 meses</p>
+                    <ul class="experiencia-lista">
+                        <li>Desarrollo web y aplicaciones móviles con tecnologías como HTML, CSS, JavaScript y Python.</li>
+                        <li>Implementación de módulos Odoo y desarrollo de aplicaciones con Glide.</li>
+                        <li>Creación de agentes de IA con n8n.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="estudio-card">
+                <div class="estudio-header">
+                    <i class="bi bi-camera-video"></i>
+                    <h3>Programador Audiovisual – Postproducción de Cine</h3>
+                </div>
+                <div class="estudio-details">
+                    <p><i class="bi bi-building"></i> Paycom Multimedia, Sonilab Studios, Dubbing Films, DVD Spain</p>
+                    <p><i class="bi bi-calendar3"></i> Octubre 2009 – Diciembre 2017</p>
+                    <ul class="experiencia-lista">
+                        <li>Programador de Authoring de DVD y Blu-ray en MacOS y Windows.</li>
+                        <li>Edición de video en Adobe Premiere y sincronización de subtítulos.</li>
+                        <li>Conversión y captura de formatos NTSC a PAL.</li>
+                        <li>Control de calidad de procesos en postproducción audiovisual.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="estudio-card">
+                <div class="estudio-header">
+                    <i class="bi bi-pc-display"></i>
+                    <h3>Técnico Informático – Soporte y Redes</h3>
+                </div>
+                <div class="estudio-details">
+                    <p><i class="bi bi-building"></i> Microblau, T-Systems, CSI Consultoría de Servicios Integrales, Net Center</p>
+                    <p><i class="bi bi-calendar3"></i> Noviembre 2007 – Mayo 2008; Junio 2005 – Diciembre 2006; Julio 1999 – Septiembre 2001</p>
+                    <ul class="experiencia-lista">
+                        <li>Soporte técnico en Windows, MacOS y Linux.</li>
+                        <li>Reparación y mantenimiento de hardware, impresoras, escáneres, fotocopiadoras, plotters, servidores y redes.</li>
+                        <li>Instalación y configuración de software para clientes.</li>
+                        <li>Administración y gestión de servidores y sistemas en red.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="estudio-card">
+                <div class="estudio-header">
+                    <i class="bi bi-lightning-charge"></i>
+                    <h3>Técnico Electricista – Instalaciones y Robótica</h3>
+                </div>
+                <div class="estudio-details">
+                    <p><i class="bi bi-building"></i> La Menorquina, Eltec S.A., J.J. Tecnologías, ABB Flexible Automation</p>
+                    <p><i class="bi bi-calendar3"></i> Septiembre 1991 – Julio 1999</p>
+                    <ul class="experiencia-lista">
+                        <li>Mantenimiento y reparación de equipos eléctricos y electrónicos.</li>
+                        <li>Instalación de sistemas automatizados en entornos industriales.</li>
+                        <li>Verificación y ajuste de maquinaria de vending y TPV.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            menuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                // Cambiar el ícono del botón
+                const icon = menuToggle.querySelector('i');
+                if (navLinks.classList.contains('active')) {
+                    icon.classList.remove('bi-list');
+                    icon.classList.add('bi-x-lg');
+                } else {
+                    icon.classList.remove('bi-x-lg');
+                    icon.classList.add('bi-list');
+                }
+            });
+
+            // Cerrar el menú al hacer clic en un enlace
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    const icon = menuToggle.querySelector('i');
+                    icon.classList.remove('bi-x-lg');
+                    icon.classList.add('bi-list');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

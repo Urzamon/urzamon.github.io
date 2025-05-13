@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyectos - Portfolio de Jordi Selma</title>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="nav-menu">
+        <div class="logo-container">
+            <i class="bi bi-briefcase"></i>
+            <div class="logo-text">
+                Portafolio <span>Jordi Selma</span>
+            </div>
+        </div>
+        <button class="menu-toggle" aria-label="Toggle menu">
+            <i class="bi bi-list"></i>
+        </button>
+        <ul class="nav-links">
+            <li><a href="index.html#inicio">Inicio</a></li>
+            <li><a href="sobre-mi.html">Sobre Mí</a></li>
+            <li><a href="experiencia.html">Experiencia</a></li>
+            <li><a href="estudios.html">Estudios</a></li>
+            <li><a href="proyectos.html" style="color: goldenrod;">Proyectos</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <section id="proyectos" class="section">
+        <h2 class="section-title">Proyectos</h2>
+        <h3>Estos son algunos de los proyectos que he podido desarrollar, durante mi trayectoria como programador web.</h3>
+        <article class="proyectos-grid">
+            <a href="club_baco/index.html" class="proyecto-item">
+                <img class="icono" src="img/Portfolio_club_baco.png" alt="Club Baco">
+                <h3>Club Baco</h3>
+                <h4>Club de cine y cultura popular</h4>   
+            </a>
+            <a href="ECOMAR/index.html" class="proyecto-item">
+                <img class="icono" src="img/Portfolio_EcoMar.png" alt="Ecomar Kids">
+                <h3>Ecomar Kids</h3>
+                <h4>Tienda online de ropa para niños</h4>
+            </a>
+            <a href="horror-suegra/index.html" class="proyecto-item">
+                <img class="icono" src="img/Portfolio_horror_suegra.png" alt="Horror Suegra">
+                <h3>Horror Suegra</h3>
+                <h4>Sitio web de terror</h4>
+            </a>
+            <a href="Newsletter/Newsletter.html" class="proyecto-item">
+                <img class="icono" src="img/Portfolio_newsleter.png" alt="Newsletter">
+                <h3>Newsletter</h3>
+                <h4>Newsletter de un grupo musical</h4>
+            </a>
+            <a href="Grupomusical/Index.html" class="proyecto-item">
+                <img class="icono" src="img/Portfolio_grupo_musical.png" alt="Grupo Musical">
+                <h3>Grupo Musical</h3>
+                <h4>Sitio web de un grupo musical</h4>
+            </a>
+            <a href="Picasso/imagen.html" class="proyecto-item">
+                <img class="icono" src="img/Portfolio_Picasso.png" alt="Picasso">
+                <h3>Picasso</h3>
+                <h4>Sitio web de un pintor</h4>
+            </a>
+            <a href="Fotovoltaica/index.html" class="proyecto-item">
+                <img class="icono" src="img/Portfolio_fotovoltaica.png" alt="Fotovoltaica">
+                <h3>Fotovoltaica</h3>
+                <h4>Sitio web de una empresa de fotovoltaica</h4>
+            </a>
+            <a href="https://www.confecciowebsabadell.cat/jordi/?page_id=89" class="proyecto-item">
+                <img class="icono" src="img/Portfolio_japon.png" alt="Japón">
+                <h3>Japón</h3>
+                <h4>Sitio web de un viaje a Japón</h4>
+            </a>
+            <a href="http://dulces930:iIWDQOFR@www.dulcesfrikis.com.mialias.net/" class="proyecto-item">
+                <img class="icono" src="img/Portfolio_tienda.png" alt="Dulcesfriki">
+                <h3>Dulcesfriki</h3>
+                <h4>Sitio web de una tienda de dulces</h4>
+            </a>
+        </article>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            menuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                // Cambiar el ícono del botón
+                const icon = menuToggle.querySelector('i');
+                if (navLinks.classList.contains('active')) {
+                    icon.classList.remove('bi-list');
+                    icon.classList.add('bi-x-lg');
+                } else {
+                    icon.classList.remove('bi-x-lg');
+                    icon.classList.add('bi-list');
+                }
+            });
+
+            // Cerrar el menú al hacer clic en un enlace
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    const icon = menuToggle.querySelector('i');
+                    icon.classList.remove('bi-x-lg');
+                    icon.classList.add('bi-list');
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

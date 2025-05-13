@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudios - Portfolio de Jordi Selma</title>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="nav-menu">
+        <div class="logo-container">
+            <i class="bi bi-briefcase"></i>
+            <div class="logo-text">
+                Portafolio <span>Jordi Selma</span>
+            </div>
+        </div>
+        <button class="menu-toggle" aria-label="Toggle menu">
+            <i class="bi bi-list"></i>
+        </button>
+        <ul class="nav-links">
+            <li><a href="index.html#inicio">Inicio</a></li>
+            <li><a href="sobre-mi.html">Sobre Mí</a></li>
+            <li><a href="experiencia.html">Experiencia</a></li>
+            <li><a href="estudios.html" style="color: goldenrod;">Estudios</a></li>
+            <li><a href="proyectos.html">Proyectos</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <section id="estudios" class="section">
+        <h2 class="section-title">Formación Académica</h2>
+        <div class="estudios-container">
+            <div class="estudio-card">
+                <div class="estudio-header">
+                    <i class="bi bi-mortarboard-fill"></i>
+                    <h3>F.P. Grado Superior en Confección y Publicación Web</h3>
+                </div>
+                <div class="estudio-details">
+                    <p><i class="bi bi-building"></i> Can Molins de Sabadell</p>
+                    <p><i class="bi bi-calendar3"></i> 2024 - 2025</p>
+                </div>
+            </div>
+
+            <div class="estudio-card">
+                <div class="estudio-header">
+                    <i class="bi bi-pc-display"></i>
+                    <h3>F.P. Técnico en Informática y Sistemas Automáticos y Robótica</h3>
+                </div>
+                <div class="estudio-details">
+                    <p><i class="bi bi-building"></i> Escola Industrial de Sabadell</p>
+                    <p><i class="bi bi-calendar3"></i> 1988 – 1995</p>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Certificaciones y Cursos Técnicos</h2>
+        <div class="certificaciones-container">
+            <div class="certificacion-card">
+                <i class="bi bi-award"></i>
+                <p>Certificado de Profesionalidad en Confección y Publicación Web (Front-End)</p>
+            </div>
+            <div class="certificacion-card">
+                <i class="bi bi-cpu"></i>
+                <p>Técnico en Hardware, Microinformática y Redes</p>
+            </div>
+            <div class="certificacion-card">
+                <i class="bi bi-code-square"></i>
+                <p>Programación en PHP, MySQL, C++, ActionScript</p>
+            </div>
+            <div class="certificacion-card">
+                <i class="bi bi-windows"></i>
+                <p>Manejo avanzado de Windows, Office, AutoCAD</p>
+            </div>
+            <div class="certificacion-card">
+                <i class="bi bi-database"></i>
+                <p>Desarrollo web y administración de bases de datos</p>
+            </div>
+            <div class="certificacion-card">
+                <i class="bi bi-robot"></i>
+                <p>Certificación en Robótica y Programación en IBM</p>
+            </div>
+            <div class="certificacion-card">
+                <i class="bi bi-tools"></i>
+                <p>Diplomados en Autocad, PHP, MySQL, Flash, ActionScript</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">Habilidades y Competencias</h2>
+        <div class="habilidades-container">
+            <div class="habilidad-card">
+                <i class="bi bi-code-slash"></i>
+                <h3>Des. de Software</h3>
+                <p>Programación en múltiples lenguajes</p>
+            </div>
+            <div class="habilidad-card">
+                <i class="bi bi-hdd-network"></i>
+                <h3>Hardware y Redes</h3>
+                <p>Diagnóstico y reparación</p>
+            </div>
+            <div class="habilidad-card">
+                <i class="bi bi-server"></i>
+                <h3>Admin. de Sistemas</h3>
+                <p>Windows, Linux y MacOS</p>
+            </div>
+            <div class="habilidad-card">
+                <i class="bi bi-camera-video"></i>
+                <h3>Audiovisual</h3>
+                <p>Edición y postproducción</p>
+            </div>
+            <div class="habilidad-card">
+                <i class="bi bi-kanban"></i>
+                <h3>Gest. de Proyectos</h3>
+                <p>Resolución de problemas tecnológicos</p>
+            </div>
+            <div class="habilidad-card">
+                <i class="bi bi-globe"></i>
+                <h3>Desarrollo Web</h3>
+                <p>HTML5, CSS3, JavaScript, React, PHP, MySQL, WordPress y Joomla</p>
+            </div>
+            <div class="habilidad-card">
+                <i class="bi bi-robot"></i>
+                <h3>Int. Artificial</h3>
+                <p>Implementación de Agentes IA con n8n</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            menuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                // Cambiar el ícono del botón
+                const icon = menuToggle.querySelector('i');
+                if (navLinks.classList.contains('active')) {
+                    icon.classList.remove('bi-list');
+                    icon.classList.add('bi-x-lg');
+                } else {
+                    icon.classList.remove('bi-x-lg');
+                    icon.classList.add('bi-list');
+                }
+            });
+
+            // Cerrar el menú al hacer clic en un enlace
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    const icon = menuToggle.querySelector('i');
+                    icon.classList.remove('bi-x-lg');
+                    icon.classList.add('bi-list');
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
