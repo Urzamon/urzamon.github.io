@@ -270,7 +270,7 @@
     }
     
     .hero-section .container {
-        padding-top: 120px;
+        padding-top: 60px;
     }
     
     .hero-section h1 {
@@ -801,7 +801,7 @@ footer a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 60vh;
+    min-height: 30vh;
 }
 
 .hero-section .row {
@@ -844,7 +844,7 @@ footer a:hover {
     }
     
     .hero-section .container {
-        min-height: 50vh;
+        min-height: 30vh;
         padding: 0 1rem;
     }
     
@@ -880,7 +880,7 @@ footer a:hover {
     }
     
     .hero-section .container {
-        min-height: 40vh;
+        min-height: 30vh;
     }
     
     .hero-section.index-hero h1 {
@@ -1601,7 +1601,7 @@ footer a:hover {
 .navbar .nav-link {
     color: white !important;
     font-weight: 500;
-    padding: 0.5rem 1rem;
+    padding: 0.25rem 0.5rem;
     transition: all 0.3s ease;
     position: relative;
 }
@@ -1937,5 +1937,62 @@ footer a:hover {
     
     .news-title {
         font-size: 1.2rem;
+    }
+}
+
+/* Media query para pantallas muy pequeñas */
+@media (max-width: 420px) {
+    .navbar {
+        padding: 0.25rem 0;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    
+    .navbar .container {
+        padding-left: 10px;
+        padding-right: 10px;
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .navbar-brand {
+        font-size: 0.9rem;
+        padding: 0.25rem 0;
+    }
+    
+    .logo-container {
+        height: 18px;
+    }
+    
+    .navbar-nav {
+        width: 100%;
+    }
+    
+    .navbar-toggler {
+        padding: 0.125rem 0.25rem;
+        border: none;
+    }
+    
+    /* Asegurar que nada se desborde */
+    .navbar-collapse {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .nav-link {
+        padding: 0.25rem 0.5rem;
+    }
+}
+
+/* Para todas las pantallas móviles */
+@media (max-width: 768px) {
+    .navbar {
+        overflow-x: hidden;
+    }
+    
+    .container {
+        max-width: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
     }
 } 
