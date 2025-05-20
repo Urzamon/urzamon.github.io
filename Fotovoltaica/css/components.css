@@ -1619,7 +1619,7 @@ footer a:hover {
 }
 
 .navbar .nav-link:hover::after {
-    width: 80%;
+    width: 100%;
 }
 
 .navbar .nav-link.active {
@@ -1627,7 +1627,7 @@ footer a:hover {
 }
 
 .navbar .nav-link.active::after {
-    width: 80%;
+    width: 100%;
     background: #FFD700;
 }
 
