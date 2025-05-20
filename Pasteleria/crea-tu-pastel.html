@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crea tu Pastel - Dulce Tentación</title>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .crear-pastel {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .pasos {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .pasos::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--primary-color);
+            z-index: 1;
+        }
+
+        .paso {
+            background: var(--light-color);
+            padding: 1rem;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+            border: 2px solid var(--primary-color);
+            cursor: pointer;
+        }
+
+        .paso.activo {
+            background: var(--primary-color);
+            color: var(--light-color);
+        }
+
+        .formulario-paso {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .formulario-paso.activo {
+            display: block;
+        }
+
+        .opciones {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .opcion {
+            background: var(--light-color);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .opcion:hover {
+            transform: translateY(-5px);
+        }
+
+        .opcion.seleccionada {
+            border: 2px solid var(--primary-color);
+        }
+
+        .opcion img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+
+        .opcion h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .opcion p {
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+
+        .opcion .precio {
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        .botones-navegacion {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+
+        .resumen {
+            background: var(--light-color);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin-top: 2rem;
+        }
+
+        .resumen h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .resumen-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .total {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 2px solid var(--primary-color);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="bi bi-cake2"></i>
+            <span>Dulce Tentación</span>
+        </div>
+        <button class="menu-toggle" aria-label="Toggle menu">
+            <i class="bi bi-list"></i>
+        </button>
+        <ul class="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="crea-tu-pastel.html" class="active">Crea tu Pastel</a></li>
+            <li><a href="temporada.html">Pasteles de Temporada</a></li>
+            <li><a href="clasicos.html">Pasteles Clásicos</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <div class="crear-pastel">
+        <h1>Crea tu Pastel Perfecto</h1>
+        
+        <div class="pasos">
+            <div class="paso activo" data-paso="1">1</div>
+            <div class="paso" data-paso="2">2</div>
+            <div class="paso" data-paso="3">3</div>
+            <div class="paso" data-paso="4">4</div>
+        </div>
+
+        <!-- Paso 1: Base del Pastel -->
+        <div class="formulario-paso activo" id="paso1">
+            <h2>Elige la Base de tu Pastel</h2>
+            <div class="opciones">
+                <div class="opcion" data-precio="15">
+                    <img src="img/base-chocolate.jpg" alt="Base de Chocolate">
+                    <h3>Chocolate</h3>
+                    <p>Deliciosa base de chocolate negro con un toque de vainilla</p>
+                    <span class="precio">15€</span>
+                </div>
+                <div class="opcion" data-precio="12">
+                    <img src="img/base-vainilla.jpg" alt="Base de Vainilla">
+                    <h3>Vainilla</h3>
+                    <p>Suave y esponjosa base de vainilla natural</p>
+                    <span class="precio">12€</span>
+                </div>
+                <div class="opcion" data-precio="14">
+                    <img src="img/base-red-velvet.jpg" alt="Base Red Velvet">
+                    <h3>Red Velvet</h3>
+                    <p>Base de terciopelo rojo con un toque de cacao</p>
+                    <span class="precio">14€</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Paso 2: Relleno -->
+        <div class="formulario-paso" id="paso2">
+            <h2>Elige el Relleno</h2>
+            <div class="opciones">
+                <div class="opcion" data-precio="8">
+                    <img src="img/relleno-crema.jpg" alt="Crema">
+                    <h3>Crema</h3>
+                    <p>Suave crema pastelera con vainilla</p>
+                    <span class="precio">8€</span>
+                </div>
+                <div class="opcion" data-precio="10">
+                    <img src="img/relleno-chocolate.jpg" alt="Chocolate">
+                    <h3>Chocolate</h3>
+                    <p>Ganache de chocolate negro</p>
+                    <span class="precio">10€</span>
+                </div>
+                <div class="opcion" data-precio="9">
+                    <img src="img/relleno-frutas.jpg" alt="Frutas">
+                    <h3>Frutas</h3>
+                    <p>Mezcla de frutas frescas de temporada</p>
+                    <span class="precio">9€</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Paso 3: Cobertura -->
+        <div class="formulario-paso" id="paso3">
+            <h2>Elige la Cobertura</h2>
+            <div class="opciones">
+                <div class="opcion" data-precio="12">
+                    <img src="img/cobertura-fondant.jpg" alt="Fondant">
+                    <h3>Fondant</h3>
+                    <p>Cobertura suave y lisa</p>
+                    <span class="precio">12€</span>
+                </div>
+                <div class="opcion" data-precio="10">
+                    <img src="img/cobertura-chocolate.jpg" alt="Chocolate">
+                    <h3>Chocolate</h3>
+                    <p>Ganache de chocolate</p>
+                    <span class="precio">10€</span>
+                </div>
+                <div class="opcion" data-precio="8">
+                    <img src="img/cobertura-crema.jpg" alt="Crema">
+                    <h3>Crema</h3>
+                    <p>Crema batida decorativa</p>
+                    <span class="precio">8€</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Paso 4: Decoración -->
+        <div class="formulario-paso" id="paso4">
+            <h2>Elige la Decoración</h2>
+            <div class="opciones">
+                <div class="opcion" data-precio="15">
+                    <img src="img/decoracion-flores.jpg" alt="Flores">
+                    <h3>Flores</h3>
+                    <p>Flores comestibles y decorativas</p>
+                    <span class="precio">15€</span>
+                </div>
+                <div class="opcion" data-precio="12">
+                    <img src="img/decoracion-frutas.jpg" alt="Frutas">
+                    <h3>Frutas</h3>
+                    <p>Frutas frescas y confitadas</p>
+                    <span class="precio">12€</span>
+                </div>
+                <div class="opcion" data-precio="10">
+                    <img src="img/decoracion-chocolate.jpg" alt="Chocolate">
+                    <h3>Chocolate</h3>
+                    <p>Decoraciones de chocolate</p>
+                    <span class="precio">10€</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resumen del Pedido -->
+        <div class="resumen">
+            <h3>Resumen de tu Pedido</h3>
+            <div class="resumen-item">
+                <span>Base:</span>
+                <span id="resumen-base">-</span>
+            </div>
+            <div class="resumen-item">
+                <span>Relleno:</span>
+                <span id="resumen-relleno">-</span>
+            </div>
+            <div class="resumen-item">
+                <span>Cobertura:</span>
+                <span id="resumen-cobertura">-</span>
+            </div>
+            <div class="resumen-item">
+                <span>Decoración:</span>
+                <span id="resumen-decoracion">-</span>
+            </div>
+            <div class="total">
+                <span>Total:</span>
+                <span id="total-precio">0€</span>
+            </div>
+        </div>
+
+        <div class="botones-navegacion">
+            <button class="btn-secondary" id="btn-anterior" style="display: none;">Anterior</button>
+            <button class="btn-primary" id="btn-siguiente">Siguiente</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const pasos = document.querySelectorAll('.paso');
+            const formularios = document.querySelectorAll('.formulario-paso');
+            const btnAnterior = document.getElementById('btn-anterior');
+            const btnSiguiente = document.getElementById('btn-siguiente');
+            let pasoActual = 1;
+            let selecciones = {
+                base: null,
+                relleno: null,
+                cobertura: null,
+                decoracion: null
+            };
+
+            // Función para actualizar el paso activo
+            function actualizarPaso(paso) {
+                pasos.forEach(p => p.classList.remove('activo'));
+                formularios.forEach(f => f.classList.remove('activo'));
+                
+                document.querySelector(`.paso[data-paso="${paso}"]`).classList.add('activo');
+                document.getElementById(`paso${paso}`).classList.add('activo');
+                
+                btnAnterior.style.display = paso === 1 ? 'none' : 'block';
+                btnSiguiente.textContent = paso === 4 ? 'Finalizar' : 'Siguiente';
+            }
+
+            // Función para actualizar el resumen
+            function actualizarResumen() {
+                document.getElementById('resumen-base').textContent = selecciones.base || '-';
+                document.getElementById('resumen-relleno').textContent = selecciones.relleno || '-';
+                document.getElementById('resumen-cobertura').textContent = selecciones.cobertura || '-';
+                document.getElementById('resumen-decoracion').textContent = selecciones.decoracion || '-';
+                
+                const total = Object.values(selecciones).reduce((sum, val) => {
+                    return sum + (val ? parseFloat(val.split('€')[0]) : 0);
+                }, 0);
+                
+                document.getElementById('total-precio').textContent = `${total}€`;
+            }
+
+            // Event listeners para las opciones
+            document.querySelectorAll('.opcion').forEach(opcion => {
+                opcion.addEventListener('click', function() {
+                    const paso = this.closest('.formulario-paso').id.replace('paso', '');
+                    const tipo = ['base', 'relleno', 'cobertura', 'decoracion'][paso - 1];
+                    
+                    // Remover selección anterior
+                    this.parentElement.querySelectorAll('.opcion').forEach(o => o.classList.remove('seleccionada'));
+                    this.classList.add('seleccionada');
+                    
+                    // Actualizar selección
+                    selecciones[tipo] = `${this.querySelector('h3').textContent} (${this.querySelector('.precio').textContent})`;
+                    actualizarResumen();
+                });
+            });
+
+            // Event listeners para los botones
+            btnAnterior.addEventListener('click', () => {
+                if (pasoActual > 1) {
+                    pasoActual--;
+                    actualizarPaso(pasoActual);
+                }
+            });
+
+            btnSiguiente.addEventListener('click', () => {
+                if (pasoActual < 4) {
+                    pasoActual++;
+                    actualizarPaso(pasoActual);
+                } else {
+                    // Aquí iría la lógica para finalizar el pedido
+                    alert('¡Gracias por tu pedido! Te contactaremos pronto para confirmar los detalles.');
+                }
+            });
+
+            // Inicializar
+            actualizarPaso(1);
+        });
+    </script>
+</body>
+</html> 

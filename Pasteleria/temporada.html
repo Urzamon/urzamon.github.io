@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasteles de Temporada - Dulce Tentación</title>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .temporada-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .temporada-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .temporada-card {
+            background: var(--light-color);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .temporada-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .temporada-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .temporada-info {
+            padding: 1.5rem;
+        }
+
+        .temporada-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .temporada-info p {
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+
+        .temporada-info .precio {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .temporada-info .ingredientes {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .temporada-info .disponibilidad {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: var(--accent-color);
+            color: var(--dark-color);
+            border-radius: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="bi bi-cake2"></i>
+            <span>Dulce Tentación</span>
+        </div>
+        <button class="menu-toggle" aria-label="Toggle menu">
+            <i class="bi bi-list"></i>
+        </button>
+        <ul class="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="crea-tu-pastel.html">Crea tu Pastel</a></li>
+            <li><a href="temporada.html" class="active">Pasteles de Temporada</a></li>
+            <li><a href="clasicos.html">Pasteles Clásicos</a></li>
+            <li><a href="galeria.html">Galería</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li>
+                <div class="carrito-icon" id="carrito-toggle">
+                    <i class="bi bi-cart3"></i>
+                    <span id="carrito-contador">0</span>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Carrito de Compras -->
+    <div class="carrito-overlay" id="carrito-overlay"></div>
+    <div class="carrito-panel" id="carrito-panel">
+        <div class="carrito-header">
+            <h3>Tu Carrito</h3>
+            <button class="carrito-cerrar" id="carrito-cerrar">
+                <i class="bi bi-x"></i>
+            </button>
+        </div>
+        <div id="carrito-lista"></div>
+        <div class="carrito-total">
+            Total: <span id="carrito-total">0€</span>
+        </div>
+        <button class="carrito-vaciar" onclick="carrito.vaciarCarrito()">Vaciar Carrito</button>
+    </div>
+
+    <div class="temporada-container">
+        <h1>Pasteles de Temporada</h1>
+        <p>Descubre nuestras creaciones especiales para cada época del año</p>
+
+        <div class="temporada-grid">
+            <div class="temporada-card">
+                <img src="img/roscon-reyes.jpg" alt="Roscón de Reyes">
+                <div class="temporada-info">
+                    <h3>Roscón de Reyes</h3>
+                    <p>Delicioso roscón tradicional con nata y trufa</p>
+                    <div class="ingredientes">
+                        <strong>Ingredientes:</strong> Harina, mantequilla, huevos, azúcar, nata, trufa
+                    </div>
+                    <span class="precio">25€</span>
+                    <span class="disponibilidad">Disponible: Enero</span>
+                    <button class="btn-secondary" onclick="agregarAlCarrito({
+                        id: '${pastel.id}',
+                        nombre: '${pastel.nombre}',
+                        precio: ${pastel.precio},
+                        imagen: '${pastel.imagen}'
+                    })">Agregar al Carrito</button>
+                </div>
+            </div>
+
+            <div class="temporada-card">
+                <img src="img/tarta-navidad.jpg" alt="Tarta de Navidad">
+                <div class="temporada-info">
+                    <h3>Tarta de Navidad</h3>
+                    <p>Chocolate negro, frutos rojos y menta</p>
+                    <div class="ingredientes">
+                        <strong>Ingredientes:</strong> Chocolate negro, frutos rojos, menta, crema
+                    </div>
+                    <span class="precio">35€</span>
+                    <span class="disponibilidad">Disponible: Diciembre</span>
+                    <button class="btn-secondary" onclick="agregarAlCarrito({
+                        id: '${pastel.id}',
+                        nombre: '${pastel.nombre}',
+                        precio: ${pastel.precio},
+                        imagen: '${pastel.imagen}'
+                    })">Agregar al Carrito</button>
+                </div>
+            </div>
+
+            <div class="temporada-card">
+                <img src="img/tarta-pascua.jpg" alt="Tarta de Pascua">
+                <div class="temporada-info">
+                    <h3>Tarta de Pascua</h3>
+                    <p>Bizcocho de chocolate con huevos de Pascua</p>
+                    <div class="ingredientes">
+                        <strong>Ingredientes:</strong> Chocolate, huevos de Pascua, crema
+                    </div>
+                    <span class="precio">30€</span>
+                    <span class="disponibilidad">Disponible: Marzo/Abril</span>
+                    <button class="btn-secondary" onclick="agregarAlCarrito({
+                        id: '${pastel.id}',
+                        nombre: '${pastel.nombre}',
+                        precio: ${pastel.precio},
+                        imagen: '${pastel.imagen}'
+                    })">Agregar al Carrito</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/carrito.js"></script>
+    <script>
+        // Menú móvil
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Carrito
+        const carritoPanel = document.getElementById('carrito-panel');
+        const carritoOverlay = document.getElementById('carrito-overlay');
+        const carritoToggle = document.getElementById('carrito-toggle');
+        const carritoCerrar = document.getElementById('carrito-cerrar');
+
+        function toggleCarrito() {
+            carritoPanel.classList.toggle('active');
+            carritoOverlay.classList.toggle('active');
+        }
+
+        carritoToggle.addEventListener('click', toggleCarrito);
+        carritoCerrar.addEventListener('click', toggleCarrito);
+        carritoOverlay.addEventListener('click', toggleCarrito);
+    </script>
+</body>
+</html> 

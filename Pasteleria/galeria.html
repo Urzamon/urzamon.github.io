@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería - Dulce Tentación</title>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Lightbox CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .galeria-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .galeria-filtros {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filtro-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 20px;
+            background: var(--light-color);
+            color: var(--text-color);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filtro-btn.active {
+            background: var(--primary-color);
+            color: var(--light-color);
+        }
+
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .galeria-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .galeria-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .galeria-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .galeria-item-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: var(--light-color);
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .galeria-item:hover .galeria-item-info {
+            transform: translateY(0);
+        }
+
+        .lightbox-caption {
+            font-size: 1.2rem;
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="bi bi-cake2"></i>
+            <span>Dulce Tentación</span>
+        </div>
+        <button class="menu-toggle" aria-label="Toggle menu">
+            <i class="bi bi-list"></i>
+        </button>
+        <ul class="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="crea-tu-pastel.html">Crea tu Pastel</a></li>
+            <li><a href="temporada.html">Pasteles de Temporada</a></li>
+            <li><a href="clasicos.html">Pasteles Clásicos</a></li>
+            <li><a href="galeria.html" class="active">Galería</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li>
+                <div class="carrito-icon" id="carrito-toggle">
+                    <i class="bi bi-cart3"></i>
+                    <span id="carrito-contador">0</span>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Carrito de Compras -->
+    <div class="carrito-overlay" id="carrito-overlay"></div>
+    <div class="carrito-panel" id="carrito-panel">
+        <div class="carrito-header">
+            <h3>Tu Carrito</h3>
+            <button class="carrito-cerrar" id="carrito-cerrar">
+                <i class="bi bi-x"></i>
+            </button>
+        </div>
+        <div id="carrito-lista"></div>
+        <div class="carrito-total">
+            Total: <span id="carrito-total">0€</span>
+        </div>
+        <button class="carrito-vaciar" onclick="carrito.vaciarCarrito()">Vaciar Carrito</button>
+    </div>
+
+    <div class="galeria-container">
+        <h1>Galería de Creaciones</h1>
+        <p>Descubre nuestras mejores creaciones y momentos especiales</p>
+
+        <div class="galeria-filtros">
+            <button class="filtro-btn active" data-filter="todos">Todos</button>
+            <button class="filtro-btn" data-filter="bodas">Bodas</button>
+            <button class="filtro-btn" data-filter="cumpleanos">Cumpleaños</button>
+            <button class="filtro-btn" data-filter="eventos">Eventos</button>
+        </div>
+
+        <div class="galeria-grid">
+            <a href="img/galeria/boda1.jpg" data-lightbox="galeria" data-title="Pastel de Boda Clásico" class="galeria-item" data-categoria="bodas">
+                <img src="img/galeria/boda1.jpg" alt="Pastel de Boda">
+                <div class="galeria-item-info">
+                    <h3>Pastel de Boda Clásico</h3>
+                    <p>Diseño elegante con flores naturales</p>
+                </div>
+            </a>
+
+            <a href="img/galeria/cumple1.jpg" data-lightbox="galeria" data-title="Pastel de Cumpleaños" class="galeria-item" data-categoria="cumpleanos">
+                <img src="img/galeria/cumple1.jpg" alt="Pastel de Cumpleaños">
+                <div class="galeria-item-info">
+                    <h3>Pastel de Cumpleaños</h3>
+                    <p>Diseño colorido y festivo</p>
+                </div>
+            </a>
+
+            <a href="img/galeria/evento1.jpg" data-lightbox="galeria" data-title="Pastel para Evento" class="galeria-item" data-categoria="eventos">
+                <img src="img/galeria/evento1.jpg" alt="Pastel para Evento">
+                <div class="galeria-item-info">
+                    <h3>Pastel para Evento</h3>
+                    <p>Diseño moderno y minimalista</p>
+                </div>
+            </a>
+
+            <!-- Agregar más imágenes según sea necesario -->
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/carrito.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <script>
+        // Menú móvil
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Carrito
+        const carritoPanel = document.getElementById('carrito-panel');
+        const carritoOverlay = document.getElementById('carrito-overlay');
+        const carritoToggle = document.getElementById('carrito-toggle');
+        const carritoCerrar = document.getElementById('carrito-cerrar');
+
+        function toggleCarrito() {
+            carritoPanel.classList.toggle('active');
+            carritoOverlay.classList.toggle('active');
+        }
+
+        carritoToggle.addEventListener('click', toggleCarrito);
+        carritoCerrar.addEventListener('click', toggleCarrito);
+        carritoOverlay.addEventListener('click', toggleCarrito);
+
+        // Filtros de galería
+        document.querySelectorAll('.filtro-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Actualizar botones activos
+                document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                // Filtrar imágenes
+                const categoria = this.dataset.filter;
+                document.querySelectorAll('.galeria-item').forEach(item => {
+                    if (categoria === 'todos' || item.dataset.categoria === categoria) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Configuración de Lightbox
+        lightbox.option({
+            'resizeDuration': 200,
+            'wrapAround': true,
+            'albumLabel': 'Imagen %1 de %2'
+        });
+    </script>
+</body>
+</html> 
