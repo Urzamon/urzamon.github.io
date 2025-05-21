@@ -3,18 +3,314 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dulce Tentación - Pastelería Artesanal</title>
+    <title>Divina Tarta - Pastelería Artesanal</title>
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
+    <!-- Firebase -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getFirestore, doc, setDoc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        // Tu configuración de Firebase
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            const firebaseConfig = {
+            apiKey: "AIzaSyCbuHAKkLVfrQwrI5g7iLgpy_nK1OC7CZM",
+            authDomain: "divina-tarta.firebaseapp.com",
+            projectId: "divina-tarta",
+            storageBucket: "divina-tarta.firebasestorage.app",
+            messagingSenderId: "676183370068",
+            appId: "1:676183370068:web:b6e4b8fb9c6122841d40c1",
+            measurementId: "G-KH27KY66KR"
+            };
+        // Inicializar Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const provider = new GoogleAuthProvider();
+
+        // Clase Carrito
+        class Carrito {
+            constructor() {
+                this.items = [];
+                this.userId = null;
+                this.init();
+            }
+
+            async init() {
+                auth.onAuthStateChanged(async (user) => {
+                    if (user) {
+                        this.userId = user.uid;
+                        await this.cargarCarrito();
+                    }
+                });
+            }
+
+            async iniciarSesion() {
+                try {
+                    const result = await signInWithPopup(auth, provider);
+                    this.userId = result.user.uid;
+                    await this.cargarCarrito();
+                    return true;
+                } catch (error) {
+                    console.error("Error al iniciar sesión:", error);
+                    return false;
+                }
+            }
+
+            async cargarCarrito() {
+                if (!this.userId) return;
+
+                const carritoRef = doc(db, "carritos", this.userId);
+                const carritoDoc = await getDoc(carritoRef);
+
+                if (carritoDoc.exists()) {
+                    this.items = carritoDoc.data().items;
+                } else {
+                    this.items = [];
+                    await this.guardarCarrito();
+                }
+
+                this.actualizarContador();
+                this.renderizarCarrito();
+            }
+
+            async guardarCarrito() {
+                if (!this.userId) return;
+
+                const carritoRef = doc(db, "carritos", this.userId);
+                await setDoc(carritoRef, {
+                    items: this.items,
+                    ultimaActualizacion: new Date()
+                });
+            }
+
+            async agregarItem(producto) {
+                if (!this.userId) {
+                    const iniciado = await this.iniciarSesion();
+                    if (!iniciado) return;
+                }
+
+                const itemExistente = this.items.find(item => item.id === producto.id);
+                
+                if (itemExistente) {
+                    itemExistente.cantidad += 1;
+                } else {
+                    this.items.push({
+                        id: producto.id,
+                        nombre: producto.nombre,
+                        precio: producto.precio,
+                        cantidad: 1,
+                        imagen: producto.imagen
+                    });
+                }
+                
+                await this.guardarCarrito();
+                this.actualizarContador();
+                this.renderizarCarrito();
+                this.mostrarNotificacion('Producto agregado al carrito');
+            }
+
+            async eliminarItem(id) {
+                if (!this.userId) return;
+
+                this.items = this.items.filter(item => item.id !== id);
+                await this.guardarCarrito();
+                this.actualizarContador();
+                this.renderizarCarrito();
+                this.mostrarNotificacion('Producto eliminado del carrito');
+            }
+
+            async actualizarCantidad(id, cantidad) {
+                if (!this.userId) return;
+
+                const item = this.items.find(item => item.id === id);
+                if (item) {
+                    item.cantidad = cantidad;
+                    if (item.cantidad <= 0) {
+                        await this.eliminarItem(id);
+                    } else {
+                        await this.guardarCarrito();
+                        this.actualizarContador();
+                        this.renderizarCarrito();
+                    }
+                }
+            }
+
+            async vaciarCarrito() {
+                if (!this.userId) return;
+
+                this.items = [];
+                await this.guardarCarrito();
+                this.actualizarContador();
+                this.renderizarCarrito();
+                this.mostrarNotificacion('Carrito vaciado');
+            }
+
+            actualizarContador() {
+                const contador = document.getElementById('carrito-contador');
+                const totalItems = this.items.reduce((total, item) => total + item.cantidad, 0);
+                contador.textContent = totalItems;
+            }
+
+            renderizarCarrito() {
+                const listaCarrito = document.getElementById('carrito-lista');
+                if (!listaCarrito) return;
+
+                listaCarrito.innerHTML = '';
+                
+                if (this.items.length === 0) {
+                    listaCarrito.innerHTML = '<p class="carrito-vacio">Tu carrito está vacío</p>';
+                    return;
+                }
+
+                this.items.forEach(item => {
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'carrito-item';
+                    itemElement.innerHTML = `
+                        <img src="${item.imagen}" alt="${item.nombre}" class="carrito-item-imagen">
+                        <div class="carrito-item-info">
+                            <h4>${item.nombre}</h4>
+                            <p>${item.precio.toFixed(2)}€</p>
+                            <div class="carrito-item-cantidad">
+                                <button onclick="carrito.actualizarCantidad('${item.id}', ${item.cantidad - 1})">-</button>
+                                <span>${item.cantidad}</span>
+                                <button onclick="carrito.actualizarCantidad('${item.id}', ${item.cantidad + 1})">+</button>
+                            </div>
+                        </div>
+                        <button class="carrito-item-eliminar" onclick="carrito.eliminarItem('${item.id}')">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    `;
+                    listaCarrito.appendChild(itemElement);
+                });
+            }
+
+            mostrarNotificacion(mensaje) {
+                const notificacion = document.createElement('div');
+                notificacion.className = 'notificacion-carrito';
+                notificacion.textContent = mensaje;
+                document.body.appendChild(notificacion);
+
+                setTimeout(() => {
+                    notificacion.remove();
+                }, 2000);
+            }
+        }
+
+        // Inicializar el carrito y hacerlo global
+        window.carrito = new Carrito();
+    </script>
+    <style>
+        /* Estilos del carrito */
+        .carrito-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+            gap: 1rem;
+        }
+
+        .carrito-item-imagen {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .carrito-item-info {
+            flex: 1;
+        }
+
+        .carrito-item-info h4 {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .carrito-item-cantidad {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .carrito-item-cantidad button {
+            background: #f0f0f0;
+            border: none;
+            padding: 0.25rem 0.5rem;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .carrito-item-eliminar {
+            background: none;
+            border: none;
+            color: #ff4444;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .carrito-vacio {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+        }
+
+        .notificacion-carrito {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #4CAF50;
+            color: white;
+            padding: 1rem;
+            border-radius: 5px;
+            animation: slideIn 0.3s ease-out;
+            z-index: 1000;
+        }
+
+        .btn-login {
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: background-color 0.3s;
+        }
+
+        .btn-login:hover {
+            background-color: #357abd;
+        }
+
+        .btn-login i {
+            font-size: 18px;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navegación -->
     <nav class="navbar">
         <div class="logo">
             <i class="bi bi-cake2"></i>
-            <span>Dulce Tentación</span>
+            <span>Divina Tarta</span>
         </div>
         <button class="menu-toggle" aria-label="Toggle menu">
             <i class="bi bi-list"></i>
@@ -54,7 +350,7 @@
     <!-- Hero Section -->
     <section id="inicio" class="hero">
         <div class="hero-content">
-            <h1>Dulce Tentación</h1>
+            <h1>Divina Tarta</h1>
             <p>Pastelería artesanal con los mejores ingredientes</p>
             <a href="crea-tu-pastel.html" class="btn-primary">Crea tu Pastel</a>
         </div>
@@ -69,14 +365,24 @@
                 <h3>Pack Cumpleaños</h3>
                 <p>Pastel + 12 cupcakes - 20% descuento</p>
                 <span class="precio">45€</span>
-                <a href="#" class="btn-secondary">Pedir Ahora</a>
+                <button onclick="carrito.agregarItem({
+                    id: 'pack-cumpleanos',
+                    nombre: 'Pack Cumpleaños',
+                    precio: 45,
+                    imagen: 'img/oferta1.jpg'
+                })" class="btn-secondary">Pedir Ahora</button>
             </div>
             <div class="oferta-card">
                 <img src="img/oferta2.jpg" alt="Oferta Especial">
                 <h3>Pack Boda</h3>
                 <p>Pastel principal + 50 cupcakes - 15% descuento</p>
                 <span class="precio">299€</span>
-                <a href="#" class="btn-secondary">Pedir Ahora</a>
+                <button onclick="carrito.agregarItem({
+                    id: 'pack-boda',
+                    nombre: 'Pack Boda',
+                    precio: 299,
+                    imagen: 'img/oferta2.jpg'
+                })" class="btn-secondary">Pedir Ahora</button>
             </div>
         </div>
     </section>
@@ -90,14 +396,24 @@
                 <h3>Roscón de Reyes</h3>
                 <p>Delicioso roscón tradicional con nata y trufa</p>
                 <span class="precio">25€</span>
-                <a href="#" class="btn-secondary">Pedir Ahora</a>
+                <button onclick="carrito.agregarItem({
+                    id: 'roscon-reyes',
+                    nombre: 'Roscón de Reyes',
+                    precio: 25,
+                    imagen: 'img/temporada1.jpg'
+                })" class="btn-secondary">Pedir Ahora</button>
             </div>
             <div class="pastel-card">
                 <img src="img/temporada2.jpg" alt="Pastel de Temporada">
                 <h3>Tarta de Navidad</h3>
                 <p>Chocolate negro, frutos rojos y menta</p>
                 <span class="precio">35€</span>
-                <a href="#" class="btn-secondary">Pedir Ahora</a>
+                <button onclick="carrito.agregarItem({
+                    id: 'tarta-navidad',
+                    nombre: 'Tarta de Navidad',
+                    precio: 35,
+                    imagen: 'img/temporada2.jpg'
+                })" class="btn-secondary">Pedir Ahora</button>
             </div>
         </div>
     </section>
@@ -132,7 +448,7 @@
                 <h3>Contacto</h3>
                 <p><i class="bi bi-geo-alt"></i> Calle Principal 123</p>
                 <p><i class="bi bi-telephone"></i> 123-456-789</p>
-                <p><i class="bi bi-envelope"></i> info@dulcetentacion.com</p>
+                <p><i class="bi bi-envelope"></i> info@divinatarta.com</p>
             </div>
             <div class="footer-section">
                 <h3>Horario</h3>
@@ -150,11 +466,15 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Dulce Tentación. Todos los derechos reservados.</p>
+            <p>&copy; 2024 Divina Tarta. Todos los derechos reservados.</p>
         </div>
     </footer>
 
-    <script src="js/carrito.js"></script>
+    <!-- Botón de Login de Google -->
+    <button onclick="carrito.iniciarSesion()" class="btn-login" style="position: fixed; bottom: 20px; left: 20px; z-index: 1000;">
+        <i class="bi bi-google"></i> Iniciar sesión con Google
+    </button>
+
     <script>
         // Menú móvil
         document.querySelector('.menu-toggle').addEventListener('click', function() {

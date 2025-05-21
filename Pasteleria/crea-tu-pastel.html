@@ -378,8 +378,34 @@
                     pasoActual++;
                     actualizarPaso(pasoActual);
                 } else {
-                    // Aquí iría la lógica para finalizar el pedido
-                    alert('¡Gracias por tu pedido! Te contactaremos pronto para confirmar los detalles.');
+                    // Crear un ID único para el pastel personalizado
+                    const pastelId = 'personalizado-' + Date.now();
+                    const nombre = 'Pastel Personalizado';
+                    let precio = 0;
+                    let imagen = 'img/pastel-personalizado.jpg';
+
+                    // Calcular el precio total
+                    Object.values(selecciones).forEach(seleccion => {
+                        if (seleccion) {
+                            const precioStr = seleccion.match(/\((\d+)€\)/);
+                            if (precioStr) {
+                                precio += parseInt(precioStr[1]);
+                            }
+                        }
+                    });
+
+                    // Añadir al carrito
+                    if (window.carrito) {
+                        window.carrito.agregarItem({
+                            id: pastelId,
+                            nombre: nombre,
+                            precio: precio,
+                            imagen: imagen
+                        });
+                        alert('¡Tu pastel personalizado ha sido añadido al carrito!');
+                    } else {
+                        alert('Error: El carrito no está disponible. Por favor, recarga la página.');
+                    }
                 }
             });
 

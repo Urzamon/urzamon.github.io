@@ -95,10 +95,69 @@
             border: none;
         }
 
+        .notificacion {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            z-index: 1000;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .notificacion.success {
+            background-color: #4CAF50;
+        }
+
+        .notificacion.error {
+            background-color: #f44336;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
         @media (max-width: 768px) {
             .contacto-grid {
                 grid-template-columns: 1fr;
             }
+        }
+
+        .form-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+        }
+
+        .btn-whatsapp i {
+            font-size: 1.2rem;
         }
     </style>
 </head>
@@ -128,22 +187,6 @@
         </ul>
     </nav>
 
-    <!-- Carrito de Compras -->
-    <div class="carrito-overlay" id="carrito-overlay"></div>
-    <div class="carrito-panel" id="carrito-panel">
-        <div class="carrito-header">
-            <h3>Tu Carrito</h3>
-            <button class="carrito-cerrar" id="carrito-cerrar">
-                <i class="bi bi-x"></i>
-            </button>
-        </div>
-        <div id="carrito-lista"></div>
-        <div class="carrito-total">
-            Total: <span id="carrito-total">0€</span>
-        </div>
-        <button class="carrito-vaciar" onclick="carrito.vaciarCarrito()">Vaciar Carrito</button>
-    </div>
-
     <div class="contacto-container">
         <h1>Contacto</h1>
         <p>Estamos aquí para ayudarte con tu pedido especial</p>
@@ -161,7 +204,7 @@
 
             <div class="formulario-contacto">
                 <h3>Envíanos un Mensaje</h3>
-                <form id="contacto-form">
+                <form id="contacto-form" onsubmit="return false;">
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
                         <input type="text" id="nombre" name="nombre" required>
@@ -178,7 +221,12 @@
                         <label for="mensaje">Mensaje</label>
                         <textarea id="mensaje" name="mensaje" required></textarea>
                     </div>
-                    <button type="submit" class="btn-primary">Enviar Mensaje</button>
+                    <div class="form-buttons">
+                        <button type="button" onclick="enviarEmail()" class="btn-primary">Enviar Email</button>
+                        <button type="button" onclick="enviarWhatsApp()" class="btn-whatsapp">
+                            <i class="bi bi-whatsapp"></i> Enviar por WhatsApp
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -188,51 +236,49 @@
         </div>
     </div>
 
-    <!-- Scripts -->
-    <script src="js/carrito.js"></script>
     <script>
+        // Función para enviar email
+        function enviarEmail() {
+            const nombre = document.getElementById('nombre').value;
+            const email = document.getElementById('email').value;
+            const telefono = document.getElementById('telefono').value;
+            const mensaje = document.getElementById('mensaje').value;
+
+            if (!nombre || !email || !mensaje) {
+                alert('Por favor, completa los campos requeridos');
+                return;
+            }
+
+            const subject = `Nuevo mensaje de contacto de ${nombre}`;
+            const body = `Nombre: ${nombre}\n` +
+                        `Email: ${email}\n` +
+                        `Teléfono: ${telefono}\n` +
+                        `Mensaje: ${mensaje}`;
+
+            const mailtoLink = `mailto:akeladinelia@hotmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.location.href = mailtoLink;
+        }
+
+        // Función para enviar WhatsApp
+        function enviarWhatsApp() {
+            const nombre = document.getElementById('nombre').value;
+            const email = document.getElementById('email').value;
+            const telefono = document.getElementById('telefono').value;
+            const mensaje = document.getElementById('mensaje').value;
+
+            if (!nombre || !email || !mensaje) {
+                alert('Por favor, completa los campos requeridos');
+                return;
+            }
+
+            const whatsappMensaje = `Nuevo mensaje de contacto:\n\nNombre: ${nombre}\nEmail: ${email}\nTeléfono: ${telefono}\nMensaje: ${mensaje}`;
+            const whatsappUrl = `https://wa.me/34625950857?text=${encodeURIComponent(whatsappMensaje)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
         // Menú móvil
         document.querySelector('.menu-toggle').addEventListener('click', function() {
             document.querySelector('.nav-links').classList.toggle('active');
-        });
-
-        // Carrito
-        const carritoPanel = document.getElementById('carrito-panel');
-        const carritoOverlay = document.getElementById('carrito-overlay');
-        const carritoToggle = document.getElementById('carrito-toggle');
-        const carritoCerrar = document.getElementById('carrito-cerrar');
-
-        function toggleCarrito() {
-            carritoPanel.classList.toggle('active');
-            carritoOverlay.classList.toggle('active');
-        }
-
-        carritoToggle.addEventListener('click', toggleCarrito);
-        carritoCerrar.addEventListener('click', toggleCarrito);
-        carritoOverlay.addEventListener('click', toggleCarrito);
-
-        // Formulario de contacto
-        document.getElementById('contacto-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = new FormData(this);
-            
-            fetch('php/contacto.php', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    mostrarNotificacion(data.message);
-                    this.reset();
-                } else {
-                    mostrarNotificacion(data.message, 'error');
-                }
-            })
-            .catch(error => {
-                mostrarNotificacion('Error al enviar el mensaje. Por favor, inténtalo de nuevo.', 'error');
-            });
         });
     </script>
 </body>
