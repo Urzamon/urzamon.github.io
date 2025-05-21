@@ -218,100 +218,12 @@
         // Inicializar el carrito y hacerlo global
         window.carrito = new Carrito();
     </script>
-    <style>
-        .temporada-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .temporada-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .temporada-card {
-            background: var(--light-color);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s;
-        }
-
-        .temporada-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .temporada-card img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-
-        .temporada-info {
-            padding: 1.5rem;
-        }
-
-        .temporada-info h3 {
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .temporada-info p {
-            color: var(--text-color);
-            margin-bottom: 1rem;
-        }
-
-        .temporada-info .precio {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--secondary-color);
-            margin-bottom: 1rem;
-        }
-
-        .temporada-info .ingredientes {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 1rem;
-        }
-
-        .temporada-info .disponibilidad {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background: var(--accent-color);
-            color: var(--dark-color);
-            border-radius: 20px;
-            font-weight: bold;
-        }
-    </style>
+    <!-- Navbar Script -->
+    <script src="js/navbar.js"></script>
 </head>
 <body>
-    <!-- Navegación -->
-    <nav class="navbar">
-        <div class="logo">
-            <i class="bi bi-cake2"></i>
-            <span>Dulce Tentación</span>
-        </div>
-        <button class="menu-toggle" aria-label="Toggle menu">
-            <i class="bi bi-list"></i>
-        </button>
-        <ul class="nav-links">
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="crea-tu-pastel.html">Crea tu Pastel</a></li>
-            <li><a href="temporada.html" class="active">Pasteles de Temporada</a></li>
-            <li><a href="clasicos.html">Pasteles Clásicos</a></li>
-            <li><a href="galeria.html">Galería</a></li>
-            <li><a href="contacto.html">Contacto</a></li>
-            <li>
-                <div class="carrito-icon" id="carrito-toggle">
-                    <i class="bi bi-cart3"></i>
-                    <span id="carrito-contador">0</span>
-                </div>
-            </li>
-        </ul>
-    </nav>
+    <!-- Contenedor del menú de navegación -->
+    <div id="navbar-container"></div>
 
     <!-- Carrito de Compras -->
     <div class="carrito-overlay" id="carrito-overlay"></div>

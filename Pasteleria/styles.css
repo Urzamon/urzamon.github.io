@@ -2,14 +2,14 @@
 :root {
     --primary-color: #ff6b6b;
     --secondary-color: #4ecdc4;
-    --accent-color: #ffd93d;
-    --text-color: #2d3436;
+    --accent-color: #ffe66d;
+    --dark-color: #2c3e50;
     --light-color: #ffffff;
-    --dark-color: #2d3436;
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --text-color: #333333;
+    --shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* Reset y estilos base */
+/* Estilos generales */
 * {
     margin: 0;
     padding: 0;
@@ -17,26 +17,26 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Arial', sans-serif;
     line-height: 1.6;
     color: var(--text-color);
-    padding-top: 80px; /* Añadir padding-top al body para compensar el navbar fijo */
+    padding-top: 80px; /* Compensar la navbar fija */
 }
 
-/* Navegación */
+/* Navbar */
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
+    width: 100%;
     background: var(--light-color);
     padding: 1rem 2rem;
+    box-shadow: var(--shadow);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: var(--shadow);
     z-index: 1000;
-    height: 80px; /* Altura fija del navbar */
+    height: 80px;
 }
 
 .logo {
@@ -44,7 +44,6 @@ body {
     align-items: center;
     gap: 0.5rem;
     font-size: 1.5rem;
-    font-weight: bold;
     color: var(--primary-color);
 }
 
@@ -61,72 +60,82 @@ body {
     transition: color 0.3s;
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a.active {
     color: var(--primary-color);
 }
 
 .menu-toggle {
     display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
 }
 
 /* Hero Section */
 .hero {
-    margin-top: -80px; /* Compensar el padding-top del body */
-    padding-top: 0;
-    min-height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-                url('img/hero-bg.webp') center/cover;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('img/hero-bg.webp');
+    background-size: cover;
+    background-position: center;
+    height: calc(100vh - 80px);
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: var(--light-color);
+    margin-top: -80px; /* Compensar el padding-top del body */
 }
 
-.hero-content h1 {
-    font-size: 4rem;
+.hero-content {
+    max-width: 800px;
+    padding: 2rem;
+}
+
+.hero h1 {
+    font-size: 3rem;
     margin-bottom: 1rem;
 }
 
-.hero-content p {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-}
-
 /* Botones */
-.btn-primary, .btn-secondary {
+.btn-primary {
+    background: var(--primary-color);
+    color: var(--light-color);
     padding: 1rem 2rem;
-    border-radius: 50px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
     text-decoration: none;
-    font-weight: bold;
-    transition: transform 0.3s, box-shadow 0.3s;
+    display: inline-block;
+    transition: background-color 0.3s;
 }
 
-.btn-primary {
-    background-color: var(--primary-color);
-    color: var(--light-color);
+.btn-primary:hover {
+    background: #ff5252;
 }
 
 .btn-secondary {
-    background-color: var(--secondary-color);
+    background: var(--secondary-color);
     color: var(--light-color);
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.btn-primary:hover, .btn-secondary:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow);
+.btn-secondary:hover {
+    background: #3dbeb6;
 }
 
 /* Secciones */
 section {
-    padding: 5rem 2rem;
-    margin-top: 0; /* Eliminar el margin-top que teníamos antes */
+    padding: 4rem 2rem;
 }
 
 section h2 {
     text-align: center;
     margin-bottom: 3rem;
-    font-size: 2.5rem;
     color: var(--primary-color);
 }
 
@@ -141,7 +150,7 @@ section h2 {
 
 .oferta-card {
     background: var(--light-color);
-    border-radius: 10px;
+    border-radius: 15px;
     overflow: hidden;
     box-shadow: var(--shadow);
     transition: transform 0.3s;
@@ -158,20 +167,26 @@ section h2 {
 }
 
 .oferta-card h3 {
-    padding: 1rem;
     color: var(--primary-color);
+    margin: 1rem;
 }
 
 .oferta-card p {
-    padding: 0 1rem;
+    margin: 0 1rem 1rem;
+    color: var(--text-color);
 }
 
-.precio {
+.oferta-card .precio {
     display: block;
-    padding: 1rem;
     font-size: 1.5rem;
     font-weight: bold;
     color: var(--secondary-color);
+    margin: 1rem;
+}
+
+.oferta-card button {
+    margin: 1rem;
+    width: calc(100% - 2rem);
 }
 
 /* Proceso */
@@ -181,14 +196,11 @@ section h2 {
     gap: 2rem;
     max-width: 1200px;
     margin: 0 auto;
-    text-align: center;
 }
 
 .step {
+    text-align: center;
     padding: 2rem;
-    background: var(--light-color);
-    border-radius: 10px;
-    box-shadow: var(--shadow);
 }
 
 .step i {
@@ -199,9 +211,9 @@ section h2 {
 
 /* Footer */
 footer {
-    background-color: var(--dark-color);
+    background: var(--dark-color);
     color: var(--light-color);
-    padding: 3rem 2rem 1rem;
+    padding: 4rem 2rem 2rem;
 }
 
 .footer-content {
@@ -213,8 +225,8 @@ footer {
 }
 
 .footer-section h3 {
+    color: var(--primary-color);
     margin-bottom: 1rem;
-    color: var(--accent-color);
 }
 
 .social-links {
@@ -230,17 +242,92 @@ footer {
 }
 
 .social-links a:hover {
-    color: var(--accent-color);
+    color: var(--primary-color);
 }
 
 .footer-bottom {
     text-align: center;
     margin-top: 2rem;
     padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255,255,255,0.1);
 }
 
 /* Carrito de Compras */
+.carrito-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 999;
+}
+
+.carrito-overlay.active {
+    display: block;
+}
+
+.carrito-panel {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 400px;
+    height: 100%;
+    background: white;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+.carrito-panel.active {
+    right: 0;
+}
+
+.carrito-header {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.carrito-cerrar {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+#carrito-lista {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.carrito-total {
+    padding: 1rem;
+    border-top: 1px solid #eee;
+    font-weight: bold;
+    text-align: right;
+}
+
+.carrito-vaciar {
+    margin: 1rem;
+    padding: 0.5rem;
+    background: #ff4444;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.carrito-vaciar:hover {
+    background: #cc0000;
+}
+
 .carrito-icon {
     position: relative;
     cursor: pointer;
@@ -251,61 +338,25 @@ footer {
     top: -8px;
     right: -8px;
     background: var(--primary-color);
-    color: var(--light-color);
+    color: white;
     border-radius: 50%;
     width: 20px;
     height: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.8rem;
-}
-
-.carrito-panel {
-    position: fixed;
-    top: 0;
-    right: -400px;
-    width: 400px;
-    height: 100vh;
-    background: var(--light-color);
-    box-shadow: -2px 0 5px rgba(0,0,0,0.1);
-    padding: 2rem;
-    transition: right 0.3s;
-    z-index: 1000;
-}
-
-.carrito-panel.active {
-    right: 0;
-}
-
-.carrito-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-}
-
-.carrito-header h3 {
-    color: var(--primary-color);
-}
-
-.carrito-cerrar {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: var(--text-color);
+    font-size: 12px;
 }
 
 .carrito-item {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    padding: 1rem 0;
+    padding: 1rem;
     border-bottom: 1px solid #eee;
+    gap: 1rem;
 }
 
-.carrito-item img {
+.carrito-item-imagen {
     width: 60px;
     height: 60px;
     object-fit: cover;
@@ -318,69 +369,356 @@ footer {
 
 .carrito-item-info h4 {
     margin: 0;
-    color: var(--text-color);
+    font-size: 1rem;
 }
 
 .carrito-item-cantidad {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    margin-top: 0.5rem;
 }
 
 .carrito-item-cantidad button {
-    background: var(--light-color);
-    border: 1px solid #ddd;
-    width: 25px;
-    height: 25px;
-    border-radius: 5px;
+    background: #f0f0f0;
+    border: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: 3px;
     cursor: pointer;
 }
 
-.carrito-item .eliminar {
+.carrito-item-eliminar {
     background: none;
     border: none;
-    color: var(--primary-color);
+    color: #ff4444;
     cursor: pointer;
+    padding: 0.5rem;
 }
 
-.carrito-total {
-    margin-top: 2rem;
-    padding-top: 1rem;
-    border-top: 2px solid var(--primary-color);
-    text-align: right;
-    font-size: 1.2rem;
-    font-weight: bold;
+.carrito-vacio {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
 }
 
-.carrito-vaciar {
-    width: 100%;
-    padding: 1rem;
-    margin-top: 1rem;
-    background: var(--light-color);
-    border: 2px solid var(--primary-color);
-    color: var(--primary-color);
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.carrito-vaciar:hover {
-    background: var(--primary-color);
-    color: var(--light-color);
-}
-
-/* Notificaciones */
-.notificacion {
+.notificacion-carrito {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background: var(--primary-color);
-    color: var(--light-color);
-    padding: 1rem 2rem;
+    background: #4CAF50;
+    color: white;
+    padding: 1rem;
     border-radius: 5px;
-    box-shadow: var(--shadow);
     animation: slideIn 0.3s ease-out;
     z-index: 1000;
+}
+
+/* Login Button */
+.btn-login {
+    background-color: #4285f4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    transition: background-color 0.3s;
+}
+
+.btn-login:hover {
+    background-color: #357abd;
+}
+
+.btn-login i {
+    font-size: 18px;
+}
+
+/* Crear Pastel */
+.crear-pastel {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.pasos {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.pasos::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--primary-color);
+    z-index: 1;
+}
+
+.paso {
+    background: var(--light-color);
+    padding: 1rem;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    border: 2px solid var(--primary-color);
+    cursor: pointer;
+}
+
+.paso.activo {
+    background: var(--primary-color);
+    color: var(--light-color);
+}
+
+.formulario-paso {
+    display: none;
+    animation: fadeIn 0.5s;
+}
+
+.formulario-paso.activo {
+    display: block;
+}
+
+.opciones {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.opcion {
+    background: var(--light-color);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.opcion:hover {
+    transform: translateY(-5px);
+}
+
+.opcion.seleccionada {
+    border: 2px solid var(--primary-color);
+}
+
+.opcion img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.opcion h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.opcion p {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.opcion .precio {
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+.botones-navegacion {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.resumen {
+    background: var(--light-color);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    margin-top: 2rem;
+}
+
+.resumen h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.resumen-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.total {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 2px solid var(--primary-color);
+}
+
+/* Clásicos */
+.clasicos-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.clasicos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.clasico-card {
+    background: var(--light-color);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s;
+    position: relative;
+}
+
+.clasico-card:hover {
+    transform: translateY(-10px);
+}
+
+.clasico-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.clasico-info {
+    padding: 1.5rem;
+}
+
+.clasico-info h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.clasico-info p {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.clasico-info .precio {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.clasico-info .tamano {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: var(--accent-color);
+    color: var(--dark-color);
+    border-radius: 20px;
+    font-weight: bold;
+    margin-right: 1rem;
+}
+
+.clasico-info .popular {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--primary-color);
+    color: var(--light-color);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+/* Temporada */
+.temporada-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.temporada-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.temporada-card {
+    background: var(--light-color);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s;
+}
+
+.temporada-card:hover {
+    transform: translateY(-10px);
+}
+
+.temporada-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.temporada-info {
+    padding: 1.5rem;
+}
+
+.temporada-info h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.temporada-info p {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.temporada-info .precio {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.temporada-info .ingredientes {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.temporada-info .disponibilidad {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: var(--accent-color);
+    color: var(--dark-color);
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 @keyframes slideIn {
@@ -394,58 +732,27 @@ footer {
     }
 }
 
-/* Overlay para el carrito */
-.carrito-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0,0,0,0.5);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s;
-    z-index: 999;
-}
-
-.carrito-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
-
 /* Responsive */
 @media (max-width: 768px) {
     .menu-toggle {
         display: block;
-        background: none;
-        border: none;
-        font-size: 1.5rem;
-        color: var(--text-color);
-        cursor: pointer;
     }
 
     .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
         background: var(--light-color);
         flex-direction: column;
-        padding: 1rem;
-        text-align: center;
+        align-items: center;
+        padding: 2rem;
+        transition: left 0.3s;
     }
 
     .nav-links.active {
-        display: flex;
-    }
-
-    .hero-content h1 {
-        font-size: 2.5rem;
-    }
-
-    .hero-content p {
-        font-size: 1.2rem;
+        left: 0;
     }
 
     .carrito-panel {
@@ -454,26 +761,77 @@ footer {
     }
 }
 
-/* Ajustes específicos para cada contenedor */
-.clasicos-container,
-.temporada-container,
-.crear-pastel,
-.contacto-container,
+/* Galería */
 .galeria-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
 }
 
-/* Eliminar los estilos anteriores que causaban el problema */
-.hero,
-.ofertas,
-.temporada,
-.proceso,
-.clasicos-container,
-.temporada-container,
-.crear-pastel,
-.contacto-container {
-    margin-top: 0;
-    padding-top: 0;
+.galeria-filtros {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.filtro-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 20px;
+    background: var(--light-color);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.filtro-btn.active {
+    background: var(--primary-color);
+    color: var(--light-color);
+}
+
+.galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.galeria-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.galeria-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.galeria-item:hover img {
+    transform: scale(1.05);
+}
+
+.galeria-item-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    color: var(--light-color);
+    transform: translateY(100%);
+    transition: transform 0.3s;
+}
+
+.galeria-item:hover .galeria-item-info {
+    transform: translateY(0);
+}
+
+.lightbox-caption {
+    font-size: 1.2rem;
+    padding: 1rem;
 } 

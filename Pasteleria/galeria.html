@@ -10,107 +10,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
-    <style>
-        .galeria-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .galeria-filtros {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .filtro-btn {
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 20px;
-            background: var(--light-color);
-            color: var(--text-color);
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .filtro-btn.active {
-            background: var(--primary-color);
-            color: var(--light-color);
-        }
-
-        .galeria-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .galeria-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-            cursor: pointer;
-        }
-
-        .galeria-item img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            transition: transform 0.3s;
-        }
-
-        .galeria-item:hover img {
-            transform: scale(1.05);
-        }
-
-        .galeria-item-info {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 1rem;
-            background: linear-gradient(transparent, rgba(0,0,0,0.8));
-            color: var(--light-color);
-            transform: translateY(100%);
-            transition: transform 0.3s;
-        }
-
-        .galeria-item:hover .galeria-item-info {
-            transform: translateY(0);
-        }
-
-        .lightbox-caption {
-            font-size: 1.2rem;
-            padding: 1rem;
-        }
-    </style>
+    <!-- Firebase -->
+    <script type="module">
+    </script>
+    <!-- Navbar Script -->
+    <script src="js/navbar.js"></script>
 </head>
 <body>
-    <!-- Navegación -->
-    <nav class="navbar">
-        <div class="logo">
-            <i class="bi bi-cake2"></i>
-            <span>Dulce Tentación</span>
-        </div>
-        <button class="menu-toggle" aria-label="Toggle menu">
-            <i class="bi bi-list"></i>
-        </button>
-        <ul class="nav-links">
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="crea-tu-pastel.html">Crea tu Pastel</a></li>
-            <li><a href="temporada.html">Pasteles de Temporada</a></li>
-            <li><a href="clasicos.html">Pasteles Clásicos</a></li>
-            <li><a href="galeria.html" class="active">Galería</a></li>
-            <li><a href="contacto.html">Contacto</a></li>
-            <li>
-                <div class="carrito-icon" id="carrito-toggle">
-                    <i class="bi bi-cart3"></i>
-                    <span id="carrito-contador">0</span>
-                </div>
-            </li>
-        </ul>
-    </nav>
+    <!-- Contenedor del menú de navegación -->
+    <div id="navbar-container"></div>
 
     <!-- Carrito de Compras -->
     <div class="carrito-overlay" id="carrito-overlay"></div>

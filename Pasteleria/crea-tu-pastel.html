@@ -218,165 +218,28 @@
         // Inicializar el carrito y hacerlo global
         window.carrito = new Carrito();
     </script>
-    <style>
-        .crear-pastel {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .pasos {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .pasos::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: var(--primary-color);
-            z-index: 1;
-        }
-
-        .paso {
-            background: var(--light-color);
-            padding: 1rem;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            z-index: 2;
-            border: 2px solid var(--primary-color);
-            cursor: pointer;
-        }
-
-        .paso.activo {
-            background: var(--primary-color);
-            color: var(--light-color);
-        }
-
-        .formulario-paso {
-            display: none;
-            animation: fadeIn 0.5s;
-        }
-
-        .formulario-paso.activo {
-            display: block;
-        }
-
-        .opciones {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .opcion {
-            background: var(--light-color);
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .opcion:hover {
-            transform: translateY(-5px);
-        }
-
-        .opcion.seleccionada {
-            border: 2px solid var(--primary-color);
-        }
-
-        .opcion img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 5px;
-            margin-bottom: 1rem;
-        }
-
-        .opcion h3 {
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .opcion p {
-            color: var(--text-color);
-            margin-bottom: 1rem;
-        }
-
-        .opcion .precio {
-            font-weight: bold;
-            color: var(--secondary-color);
-        }
-
-        .botones-navegacion {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 2rem;
-        }
-
-        .resumen {
-            background: var(--light-color);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            margin-top: 2rem;
-        }
-
-        .resumen h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .resumen-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
-        }
-
-        .total {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-color);
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 2px solid var(--primary-color);
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-    </style>
+    <!-- Navbar Script -->
+    <script src="js/navbar.js"></script>
 </head>
 <body>
-    <!-- Navegación -->
-    <nav class="navbar">
-        <div class="logo">
-            <i class="bi bi-cake2"></i>
-            <span>Dulce Tentación</span>
+    <!-- Contenedor del menú de navegación -->
+    <div id="navbar-container"></div>
+
+    <!-- Carrito de Compras -->
+    <div class="carrito-overlay" id="carrito-overlay"></div>
+    <div class="carrito-panel" id="carrito-panel">
+        <div class="carrito-header">
+            <h3>Tu Carrito</h3>
+            <button class="carrito-cerrar" id="carrito-cerrar">
+                <i class="bi bi-x"></i>
+            </button>
         </div>
-        <button class="menu-toggle" aria-label="Toggle menu">
-            <i class="bi bi-list"></i>
-        </button>
-        <ul class="nav-links">
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="crea-tu-pastel.html" class="active">Crea tu Pastel</a></li>
-            <li><a href="temporada.html">Pasteles de Temporada</a></li>
-            <li><a href="clasicos.html">Pasteles Clásicos</a></li>
-            <li><a href="contacto.html">Contacto</a></li>
-        </ul>
-    </nav>
+        <div id="carrito-lista"></div>
+        <div class="carrito-total">
+            Total: <span id="carrito-total">0€</span>
+        </div>
+        <button class="carrito-vaciar" onclick="carrito.vaciarCarrito()">Vaciar Carrito</button>
+    </div>
 
     <div class="crear-pastel">
         <h1>Crea tu Pastel Perfecto</h1>
@@ -622,6 +485,24 @@
             // Inicializar
             actualizarPaso(1);
         });
+    </script>
+
+    <!-- Script para el carrito -->
+    <script>
+        // Carrito
+        const carritoPanel = document.getElementById('carrito-panel');
+        const carritoOverlay = document.getElementById('carrito-overlay');
+        const carritoToggle = document.getElementById('carrito-toggle');
+        const carritoCerrar = document.getElementById('carrito-cerrar');
+
+        function toggleCarrito() {
+            carritoPanel.classList.toggle('active');
+            carritoOverlay.classList.toggle('active');
+        }
+
+        carritoToggle.addEventListener('click', toggleCarrito);
+        carritoCerrar.addEventListener('click', toggleCarrito);
+        carritoOverlay.addEventListener('click', toggleCarrito);
     </script>
 </body>
 </html> 

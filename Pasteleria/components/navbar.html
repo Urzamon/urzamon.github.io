@@ -1,0 +1,40 @@
+<!-- Navegación -->
+<nav class="navbar">
+    <div class="logo">
+        <i class="bi bi-cake2"></i>
+        <span>Divina Tarta</span>
+    </div>
+    <button class="menu-toggle" aria-label="Toggle menu">
+        <i class="bi bi-list"></i>
+    </button>
+    <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="crea-tu-pastel.html">Crea tu Pastel</a></li>
+        <li><a href="temporada.html">Pasteles de Temporada</a></li>
+        <li><a href="clasicos.html">Pasteles Clásicos</a></li>
+        <li><a href="galeria.html">Galería</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li>
+            <div class="carrito-icon" id="carrito-toggle">
+                <i class="bi bi-cart3"></i>
+                <span id="carrito-contador">0</span>
+            </div>
+        </li>
+    </ul>
+</nav>
+
+<!-- Carrito de Compras -->
+<div class="carrito-overlay" id="carrito-overlay"></div>
+<div class="carrito-panel" id="carrito-panel">
+    <div class="carrito-header">
+        <h3>Tu Carrito</h3>
+        <button class="carrito-cerrar" id="carrito-cerrar">
+            <i class="bi bi-x"></i>
+        </button>
+    </div>
+    <div id="carrito-lista"></div>
+    <div class="carrito-total">
+        Total: <span id="carrito-total">0€</span>
+    </div>
+    <button class="carrito-vaciar" onclick="carrito.vaciarCarrito()">Vaciar Carrito</button>
+</div> 
