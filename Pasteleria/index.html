@@ -50,12 +50,27 @@
 
             async iniciarSesion() {
                 try {
+                    // Configurar el proveedor de Google
+                    provider.setCustomParameters({
+                        prompt: 'select_account'
+                    });
+                    
+                    // Intentar iniciar sesión
                     const result = await signInWithPopup(auth, provider);
                     this.userId = result.user.uid;
                     await this.cargarCarrito();
+                    this.mostrarNotificacion('Sesión iniciada correctamente');
                     return true;
                 } catch (error) {
                     console.error("Error al iniciar sesión:", error);
+                    // Mostrar el error al usuario
+                    if (error.code === 'auth/popup-closed-by-user') {
+                        this.mostrarNotificacion('Inicio de sesión cancelado');
+                    } else if (error.code === 'auth/popup-blocked') {
+                        this.mostrarNotificacion('El navegador bloqueó la ventana de inicio de sesión');
+                    } else {
+                        this.mostrarNotificacion('Error al iniciar sesión: ' + error.message);
+                    }
                     return false;
                 }
             }
@@ -390,8 +405,8 @@
     <!-- Pasteles de Temporada -->
     <section class="temporada">
         <h2>Pasteles de Temporada</h2>
-        <div class="temporada-grid">
-            <div class="pastel-card">
+        <div class="ofertas-grid">
+            <div class="oferta-card">
                 <img src="img/temporada1.jpg" alt="Pastel de Temporada">
                 <h3>Roscón de Reyes</h3>
                 <p>Delicioso roscón tradicional con nata y trufa</p>
@@ -403,7 +418,7 @@
                     imagen: 'img/temporada1.jpg'
                 })" class="btn-secondary">Pedir Ahora</button>
             </div>
-            <div class="pastel-card">
+            <div class="oferta-card">
                 <img src="img/temporada2.jpg" alt="Pastel de Temporada">
                 <h3>Tarta de Navidad</h3>
                 <p>Chocolate negro, frutos rojos y menta</p>
