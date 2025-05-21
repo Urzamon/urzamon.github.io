@@ -66,7 +66,9 @@ class CarritoCompras {
         if (carritoLista) {
             carritoLista.innerHTML = this.items.map(item => `
                 <div class="carrito-item">
-                    <img src="${item.imagen}" alt="${item.nombre}">
+                    <div class="carrito-item-imagen-container">
+                        <img src="${item.imagen}" alt="${item.nombre}" style="width: 50px !important; height: 50px !important; object-fit: cover;">
+                    </div>
                     <div class="carrito-item-info">
                         <h4>${item.nombre}</h4>
                         <p>${item.precio}€ x ${item.cantidad}</p>

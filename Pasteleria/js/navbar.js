@@ -50,6 +50,58 @@ function initializeNavbar() {
             link.classList.add('active');
         }
     });
+
+    // Inicializar login Google
+    setupGoogleLogin();
+}
+
+// Función para manejar login/logout con Google
+function setupGoogleLogin() {
+    // Esperar a que Firebase esté disponible
+    if (typeof getAuth !== 'function' || typeof GoogleAuthProvider !== 'function') {
+        console.warn('Firebase Auth no está disponible. Asegúrate de importar los módulos en la página.');
+        return;
+    }
+    const auth = getAuth();
+    const provider = new GoogleAuthProvider();
+    provider.setCustomParameters({ prompt: 'select_account' });
+
+    const googleLoginIcon = document.getElementById('google-login-icon');
+    const userIcon = document.getElementById('user-icon');
+
+    // Mostrar/ocultar íconos según el estado de autenticación
+    function updateIcons(user) {
+        if (user) {
+            googleLoginIcon.style.display = 'none';
+            userIcon.style.display = 'flex';
+            userIcon.title = user.displayName || 'Mi perfil';
+        } else {
+            googleLoginIcon.style.display = 'flex';
+            userIcon.style.display = 'none';
+        }
+    }
+
+    // Escuchar cambios de estado
+    auth.onAuthStateChanged(updateIcons);
+
+    // Login con Google
+    googleLoginIcon.addEventListener('click', async () => {
+        try {
+            await carrito.iniciarSesion();
+        } catch (error) {
+            console.error('Error al iniciar sesión:', error);
+        }
+    });
+
+    // Logout al hacer clic en el ícono de usuario
+    userIcon.addEventListener('click', async () => {
+        try {
+            await auth.signOut();
+            alert('Sesión cerrada.');
+        } catch (error) {
+            alert('Error al cerrar sesión: ' + error.message);
+        }
+    });
 }
 
 // Cargar el menú cuando el DOM esté listo
