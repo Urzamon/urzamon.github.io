@@ -10,31 +10,26 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
-    <!-- Firebase -->
-    <script type="module">
-    </script>
-    <!-- Navbar Script -->
-    <script src="js/navbar.js"></script>
+    <!-- Firebase App (the core Firebase SDK) -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <!-- Firebase Auth -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <!-- Firebase Firestore -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <!-- Firebase UI -->
+    <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
+    <!-- Navbar Script (debe ir después de Firebase) -->
+    <script src="js/navbar.js" defer></script>
+    <!-- Carrito Script -->
+    <script src="js/carrito.js" defer></script>
 </head>
 <body>
     <!-- Contenedor del menú de navegación -->
     <div id="navbar-container"></div>
 
-    <!-- Carrito de Compras -->
-    <div class="carrito-overlay" id="carrito-overlay"></div>
-    <div class="carrito-panel" id="carrito-panel">
-        <div class="carrito-header">
-            <h3>Tu Carrito</h3>
-            <button class="carrito-cerrar" id="carrito-cerrar">
-                <i class="bi bi-x"></i>
-            </button>
-        </div>
-        <div id="carrito-lista"></div>
-        <div class="carrito-total">
-            Total: <span id="carrito-total">0€</span>
-        </div>
-        <button class="carrito-vaciar" onclick="carrito.vaciarCarrito()">Vaciar Carrito</button>
-    </div>
+    <!-- Incluir componentes comunes -->
+    <div id="carrito-container"></div>
 
     <div class="galeria-container">
         <h1>Galería de Creaciones</h1>
@@ -76,11 +71,15 @@
         </div>
     </div>
 
-    <!-- Scripts -->
-    <script src="js/carrito.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
     <script>
+        // Cargar componentes comunes
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Cargar el carrito
+            const carritoResponse = await fetch('components/carrito.html');
+            const carritoHtml = await carritoResponse.text();
+            document.getElementById('carrito-container').innerHTML = carritoHtml;
+        });
+
         // Menú móvil
         document.querySelector('.menu-toggle').addEventListener('click', function() {
             document.querySelector('.nav-links').classList.toggle('active');

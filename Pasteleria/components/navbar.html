@@ -17,10 +17,10 @@
         <li class="nav-icons">
             <div class="google-login-button" id="google-login-icon">
                 <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo" class="google-logo">
-                <span>Registrate con Google</span>
+                <span>Login</span>
             </div>
             <div class="user-icon" id="user-icon" style="display:none" title="Mi perfil">
-                <i class="bi bi-person-circle"></i>
+                <img id="user-photo" class="user-photo" src="" alt="Foto de perfil">
                 <div class="user-dropdown">
                     <div class="user-info">
                         <span id="user-name"></span>
@@ -230,9 +230,26 @@
     }
 }
 
+.user-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.user-photo:hover {
+    transform: scale(1.1);
+    border-color: var(--dark-color);
+}
+
 .user-icon {
     position: relative;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .user-dropdown {
@@ -246,6 +263,7 @@
     padding: 8px 0;
     min-width: 200px;
     z-index: 1000;
+    margin-top: 8px;
 }
 
 .user-icon:hover .user-dropdown {
@@ -325,12 +343,21 @@
 <script>
 function updateIcons(user) {
     if (user) {
-        googleLoginIcon.style.display = 'none';
-        userIcon.style.display = 'flex';
-        document.getElementById('user-name').textContent = user.displayName || 'Usuario';
+        if (googleLoginIcon) googleLoginIcon.style.display = 'none';
+        if (userIcon) {
+            userIcon.style.display = 'flex';
+            userIcon.title = user.displayName || 'Mi perfil';
+            const userName = document.getElementById('user-name');
+            const userPhoto = document.getElementById('user-photo');
+            if (userName) userName.textContent = user.displayName || 'Usuario';
+            if (userPhoto) {
+                userPhoto.src = user.photoURL || 'https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/default.png';
+                userPhoto.alt = user.displayName || 'Foto de perfil';
+            }
+        }
     } else {
-        googleLoginIcon.style.display = 'flex';
-        userIcon.style.display = 'none';
+        if (googleLoginIcon) googleLoginIcon.style.display = 'flex';
+        if (userIcon) userIcon.style.display = 'none';
     }
 }
 
