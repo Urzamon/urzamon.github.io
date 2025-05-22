@@ -1,3 +1,29 @@
+// Esperar a que Firebase esté disponible
+document.addEventListener('DOMContentLoaded', function() {
+    // Verificar que Firebase esté disponible
+    if (typeof firebase === 'undefined') {
+        console.error('Firebase no está disponible. Asegúrate de importar los módulos en la página.');
+        return;
+    }
+
+    // Inicializar Firebase si no está inicializado
+    if (!firebase.apps.length) {
+        const firebaseConfig = {
+            apiKey: "AIzaSyCbuHAKkLVfrQwrI5g7iLgpy_nK1OC7CZM",
+            authDomain: "divina-tarta.firebaseapp.com",
+            projectId: "divina-tarta",
+            storageBucket: "divina-tarta.firebasestorage.app",
+            messagingSenderId: "676183370068",
+            appId: "1:676183370068:web:b6e4b8fb9c6122841d40c1",
+            measurementId: "G-KH27KY66KR"
+        };
+        firebase.initializeApp(firebaseConfig);
+    }
+
+    // Cargar el menú de navegación
+    loadNavbar();
+});
+
 // Función para cargar el menú de navegación
 async function loadNavbar() {
     try {
@@ -57,13 +83,8 @@ function initializeNavbar() {
 
 // Función para manejar login/logout con Google
 function setupGoogleLogin() {
-    // Esperar a que Firebase esté disponible
-    if (typeof getAuth !== 'function' || typeof GoogleAuthProvider !== 'function') {
-        console.warn('Firebase Auth no está disponible. Asegúrate de importar los módulos en la página.');
-        return;
-    }
-    const auth = getAuth();
-    const provider = new GoogleAuthProvider();
+    const auth = firebase.auth();
+    const provider = new firebase.auth.GoogleAuthProvider();
     provider.setCustomParameters({ prompt: 'select_account' });
 
     const googleLoginIcon = document.getElementById('google-login-icon');
@@ -72,12 +93,16 @@ function setupGoogleLogin() {
     // Mostrar/ocultar íconos según el estado de autenticación
     function updateIcons(user) {
         if (user) {
-            googleLoginIcon.style.display = 'none';
-            userIcon.style.display = 'flex';
-            userIcon.title = user.displayName || 'Mi perfil';
+            if (googleLoginIcon) googleLoginIcon.style.display = 'none';
+            if (userIcon) {
+                userIcon.style.display = 'flex';
+                userIcon.title = user.displayName || 'Mi perfil';
+                const userName = document.getElementById('user-name');
+                if (userName) userName.textContent = user.displayName || 'Usuario';
+            }
         } else {
-            googleLoginIcon.style.display = 'flex';
-            userIcon.style.display = 'none';
+            if (googleLoginIcon) googleLoginIcon.style.display = 'flex';
+            if (userIcon) userIcon.style.display = 'none';
         }
     }
 
@@ -85,24 +110,31 @@ function setupGoogleLogin() {
     auth.onAuthStateChanged(updateIcons);
 
     // Login con Google
-    googleLoginIcon.addEventListener('click', async () => {
-        try {
-            await carrito.iniciarSesion();
-        } catch (error) {
-            console.error('Error al iniciar sesión:', error);
-        }
-    });
+    if (googleLoginIcon) {
+        googleLoginIcon.addEventListener('click', async () => {
+            try {
+                const result = await auth.signInWithPopup(provider);
+                if (result.user) {
+                    console.log('Usuario autenticado:', result.user.displayName);
+                }
+            } catch (error) {
+                console.error('Error al iniciar sesión:', error);
+            }
+        });
+    }
 
     // Logout al hacer clic en el ícono de usuario
-    userIcon.addEventListener('click', async () => {
-        try {
-            await auth.signOut();
-            alert('Sesión cerrada.');
-        } catch (error) {
-            alert('Error al cerrar sesión: ' + error.message);
+    if (userIcon) {
+        const logoutButton = userIcon.querySelector('.logout-button');
+        if (logoutButton) {
+            logoutButton.addEventListener('click', async () => {
+                try {
+                    await auth.signOut();
+                    console.log('Sesión cerrada correctamente');
+                } catch (error) {
+                    console.error('Error al cerrar sesión:', error);
+                }
+            });
         }
-    });
-}
-
-// Cargar el menú cuando el DOM esté listo
-document.addEventListener('DOMContentLoaded', loadNavbar); 
+    }
+} 
