@@ -50,11 +50,13 @@
             <i class="bi bi-x"></i>
         </button>
     </div>
-    <div id="carrito-lista"></div>
+    <div id="carrito-lista">
+        <!-- Los items se generarán dinámicamente -->
+    </div>
     <div class="carrito-total">
         Total: <span id="carrito-total">0€</span>
     </div>
-    <button class="carrito-vaciar" onclick="carrito.vaciarCarrito()">Vaciar Carrito</button>
+    <button class="carrito-vaciar" onclick="window.carrito.vaciarCarrito()">Vaciar Carrito</button>
 </div>
 
 <style>
@@ -298,15 +300,17 @@
     border-radius: 5px;
     cursor: pointer;
     font-weight: 500;
-    transition: background-color 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
+    transition: all 0.3s;
+    width: calc(100% - 2rem);
 }
 
 .carrito-vaciar:hover {
     background: var(--dark-color);
+    transform: translateY(-2px);
+}
+
+.carrito-vaciar:active {
+    transform: translateY(0);
 }
 
 .carrito-vaciar i {
@@ -334,4 +338,8 @@ document.querySelector('.logout-button').addEventListener('click', async () => {
         alert('Error al cerrar sesión: ' + error.message);
     }
 });
-</script> 
+</script>
+
+<!-- En todas las páginas que usan el carrito -->
+<script src="js/carrito.js"></script>
+</body> 

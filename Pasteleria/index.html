@@ -11,8 +11,9 @@
     <!-- Firebase -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-        import { getFirestore, doc, setDoc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { getAuth, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import * as firebaseui from 'https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js';
 
         // Tu configuración de Firebase
             // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -29,7 +30,31 @@
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
-        const provider = new GoogleAuthProvider();
+
+        // Configurar Firebase UI
+        const ui = new firebaseui.auth.AuthUI(auth);
+        const uiConfig = {
+            signInOptions: [
+                {
+                    provider: GoogleAuthProvider.PROVIDER_ID,
+                    customParameters: {
+                        prompt: 'select_account'
+                    }
+                }
+            ],
+            signInFlow: 'popup',
+            callbacks: {
+                signInSuccessWithAuthResult: function(authResult) {
+                    // Manejar el inicio de sesión exitoso
+                    carrito.userId = authResult.user.uid;
+                    carrito.cargarCarrito();
+                    return false; // Evita la redirección
+                }
+            }
+        };
+
+        // Inicializar Firebase UI
+        ui.start('#firebaseui-auth-container', uiConfig);
 
         // Clase Carrito
         class Carrito {
@@ -46,33 +71,6 @@
                         await this.cargarCarrito();
                     }
                 });
-            }
-
-            async iniciarSesion() {
-                try {
-                    // Configurar el proveedor de Google
-                    provider.setCustomParameters({
-                        prompt: 'select_account'
-                    });
-                    
-                    // Intentar iniciar sesión
-                    const result = await signInWithPopup(auth, provider);
-                    this.userId = result.user.uid;
-                    await this.cargarCarrito();
-                    this.mostrarNotificacion('Sesión iniciada correctamente');
-                    return true;
-                } catch (error) {
-                    console.error("Error al iniciar sesión:", error);
-                    // Mostrar el error al usuario
-                    if (error.code === 'auth/popup-closed-by-user') {
-                        this.mostrarNotificacion('Inicio de sesión cancelado');
-                    } else if (error.code === 'auth/popup-blocked') {
-                        this.mostrarNotificacion('El navegador bloqueó la ventana de inicio de sesión');
-                    } else {
-                        this.mostrarNotificacion('Error al iniciar sesión: ' + error.message);
-                    }
-                    return false;
-                }
             }
 
             async cargarCarrito() {
@@ -218,8 +216,29 @@
         // Inicializar el carrito y hacerlo global
         window.carrito = new Carrito();
     </script>
+    <!-- Firebase UI -->
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
+    <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
     <!-- Navbar Script -->
     <script src="js/navbar.js"></script>
+    <style>
+        .firebaseui-container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .firebaseui-idp-button {
+            max-width: 100%;
+            padding: 8px 16px;
+            border-radius: 4px;
+            background-color: #fff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+        }
+
+        .firebaseui-idp-google {
+            background-color: #fff !important;
+        }
+    </style>
 </head>
 <body>
     <!-- Contenedor del menú de navegación -->
@@ -240,6 +259,9 @@
         </div>
         <button class="carrito-vaciar" onclick="carrito.vaciarCarrito()">Vaciar Carrito</button>
     </div>
+
+    <!-- Agrega esto donde quieras mostrar el botón de inicio de sesión -->
+    <div id="firebaseui-auth-container"></div>
 
     <!-- Hero Section -->
     <section id="inicio" class="hero">
