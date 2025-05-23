@@ -5,433 +5,104 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Divina Tarta - Pastelería Artesanal</title>
     
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
     <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css">
-    <!-- Firebase App (the core Firebase SDK) -->
-    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
-    <!-- Firebase Auth -->
-    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
-    <!-- Firebase Firestore -->
-    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
-    <!-- Firebase UI -->
-    <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
-    <!-- Navbar Script (debe ir después de Firebase) -->
-    <script src="js/navbar.js" defer></script>
-    <style>
-        .auth-container {
-            padding: 20px;
-            max-width: 300px;
-            margin: 0 auto;
-        }
-
-        .firebaseui-container {
-            max-width: 100%;
-            margin: 0 auto;
-        }
-
-        .firebaseui-idp-button {
-            max-width: 100%;
-            padding: 8px 16px;
-            border-radius: 4px;
-            background-color: #fff;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-        }
-
-        .firebaseui-idp-google {
-            background-color: #fff !important;
-        }
-
-        .firebaseui-idp-button:hover {
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-    </style>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <!-- Contenedor del menú de navegación -->
+    <!-- Navbar Container -->
     <div id="navbar-container"></div>
 
-    <!-- Carrito de Compras -->
-    <div class="carrito-overlay" id="carrito-overlay"></div>
-    <div class="carrito-panel" id="carrito-panel">
-        <div class="carrito-header">
-            <h3>Tu Carrito</h3>
-            <button class="carrito-cerrar" id="carrito-cerrar">
-                <i class="bi bi-x"></i>
-            </button>
-        </div>
-        <div id="carrito-lista"></div>
-        <div class="carrito-total">
-            Total: <span id="carrito-total">0€</span>
-        </div>
-        <button class="carrito-vaciar" onclick="carrito.vaciarCarrito()">Vaciar Carrito</button>
-    </div>
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Divina Tarta</h1>
+                <p>Pastelería artesanal con los mejores ingredientes</p>
+                <a href="/crea-tu-pastel.html" class="btn btn-primary">Crea tu Pastel</a>
+            </div>
+        </section>
 
-    <!-- Agrega esto donde quieras mostrar el botón de inicio de sesión
-    <div class="auth-container">
-        <div id="firebaseui-auth-container"></div>
-    </div>
-    -->
-    <!-- Hero Section -->
-    <section id="inicio" class="hero">
-        <div class="hero-content">
-            <h1>Divina Tarta</h1>
-            <p>Pastelería artesanal con los mejores ingredientes</p>
-            <a href="crea-tu-pastel.html" class="btn-primary">Crea tu Pastel</a>
-        </div>
-    </section>
+        <!-- Featured Section -->
+        <section class="featured">
+            <div class="container">
+                <h2>Nuestros Pasteles Destacados</h2>
+                <div class="grid-pasteles">
+                    <!-- Los pasteles se cargarán dinámicamente -->
+                </div>
+            </div>
+        </section>
 
-    <!-- Ofertas Especiales -->
-    <section class="ofertas">
-        <h2>Ofertas Especiales</h2>
-        <div class="ofertas-grid">
-            <div class="oferta-card">
-                <img src="img/oferta1.jpg" alt="Oferta Especial">
-                <h3>Pack Cumpleaños</h3>
-                <p>Pastel + 12 cupcakes - 20% descuento</p>
-                <span class="precio">45€</span>
-                <button onclick="carrito.agregarItem({
-                    id: 'pack-cumpleanos',
-                    nombre: 'Pack Cumpleaños',
-                    precio: 45,
-                    imagen: 'img/oferta1.jpg'
-                })" class="btn-secondary">Pedir Ahora</button>
+        <!-- Services Section -->
+        <section class="services">
+            <div class="container">
+                <h2>Nuestros Servicios</h2>
+                <div class="grid-servicios">
+                    <div class="servicio-item">
+                        <i class="bi bi-cake2"></i>
+                        <h3>Pasteles Personalizados</h3>
+                        <p>Crea tu pastel ideal con nuestros ingredientes de alta calidad</p>
+                    </div>
+                    <div class="servicio-item">
+                        <i class="bi bi-calendar-event"></i>
+                        <h3>Eventos Especiales</h3>
+                        <p>Celebra tus momentos especiales con nuestros pasteles</p>
+                    </div>
+                    <div class="servicio-item">
+                        <i class="bi bi-truck"></i>
+                        <h3>Entrega a Domicilio</h3>
+                        <p>Llevamos tu pedido hasta la puerta de tu casa</p>
+                    </div>
+                </div>
             </div>
-            <div class="oferta-card">
-                <img src="img/oferta2.jpg" alt="Oferta Especial">
-                <h3>Pack Boda</h3>
-                <p>Pastel principal + 50 cupcakes - 15% descuento</p>
-                <span class="precio">299€</span>
-                <button onclick="carrito.agregarItem({
-                    id: 'pack-boda',
-                    nombre: 'Pack Boda',
-                    precio: 299,
-                    imagen: 'img/oferta2.jpg'
-                })" class="btn-secondary">Pedir Ahora</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pasteles de Temporada -->
-    <section class="temporada">
-        <h2>Pasteles de Temporada</h2>
-        <div class="ofertas-grid">
-            <div class="oferta-card">
-                <img src="img/temporada1.jpg" alt="Pastel de Temporada">
-                <h3>Roscón de Reyes</h3>
-                <p>Delicioso roscón tradicional con nata y trufa</p>
-                <span class="precio">25€</span>
-                <button onclick="carrito.agregarItem({
-                    id: 'roscon-reyes',
-                    nombre: 'Roscón de Reyes',
-                    precio: 25,
-                    imagen: 'img/temporada1.jpg'
-                })" class="btn-secondary">Pedir Ahora</button>
-            </div>
-            <div class="oferta-card">
-                <img src="img/temporada2.jpg" alt="Pastel de Temporada">
-                <h3>Tarta de Navidad</h3>
-                <p>Chocolate negro, frutos rojos y menta</p>
-                <span class="precio">35€</span>
-                <button onclick="carrito.agregarItem({
-                    id: 'tarta-navidad',
-                    nombre: 'Tarta de Navidad',
-                    precio: 35,
-                    imagen: 'img/temporada2.jpg'
-                })" class="btn-secondary">Pedir Ahora</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Proceso de Creación -->
-    <section class="proceso">
-        <h2>Crea tu Pastel Perfecto</h2>
-        <div class="proceso-steps">
-            <div class="step">
-                <i class="bi bi-1-circle"></i>
-                <h3>Elige el Sabor</h3>
-                <p>Selecciona entre nuestras deliciosas bases</p>
-            </div>
-            <div class="step">
-                <i class="bi bi-2-circle"></i>
-                <h3>Personaliza el Relleno</h3>
-                <p>Combina sabores únicos</p>
-            </div>
-            <div class="step">
-                <i class="bi bi-3-circle"></i>
-                <h3>Decora tu Pastel</h3>
-                <p>Añade el toque final perfecto</p>
-            </div>
-        </div>
-        <a href="crea-tu-pastel.html" class="btn-primary">Comenzar</a>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Contacto</h3>
-                <p><i class="bi bi-geo-alt"></i> Calle Principal 123</p>
-                <p><i class="bi bi-telephone"></i> 123-456-789</p>
-                <p><i class="bi bi-envelope"></i> info@divinatarta.com</p>
-            </div>
-            <div class="footer-section">
-                <h3>Horario</h3>
-                <p>Lunes - Viernes: 9:00 - 20:00</p>
-                <p>Sábados: 9:00 - 18:00</p>
-                <p>Domingos: Cerrado</p>
-            </div>
-            <div class="footer-section">
-                <h3>Síguenos</h3>
-                <div class="social-links">
-                    <a href="#"><i class="bi bi-facebook"></i></a>
-                    <a href="#"><i class="bi bi-instagram"></i></a>
-                    <a href="#"><i class="bi bi-twitter"></i></a>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h3>Divina Tarta</h3>
+                    <p>Pastelería artesanal con los mejores ingredientes y el mejor servicio.</p>
+                </div>
+                <div class="col-md-4">
+                    <h3>Contacto</h3>
+                    <p>
+                        <i class="bi bi-geo-alt"></i> Calle Principal 123<br>
+                        <i class="bi bi-telephone"></i> +34 123 456 789<br>
+                        <i class="bi bi-envelope"></i> info@divinatarta.com
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h3>Síguenos</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Divina Tarta. Todos los derechos reservados.</p>
-        </div>
     </footer>
 
-    <script>
-        // Tu configuración de Firebase
-        const firebaseConfig = {
-            apiKey: "AIzaSyCbuHAKkLVfrQwrI5g7iLgpy_nK1OC7CZM",
-            authDomain: "divina-tarta.firebaseapp.com",
-            projectId: "divina-tarta",
-            storageBucket: "divina-tarta.firebasestorage.app",
-            messagingSenderId: "676183370068",
-            appId: "1:676183370068:web:b6e4b8fb9c6122841d40c1",
-            measurementId: "G-KH27KY66KR"
-        };
+    <!-- Firebase Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
 
-        // Inicializar Firebase
-        firebase.initializeApp(firebaseConfig);
-        const auth = firebase.auth();
-        const db = firebase.firestore();
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-        // Clase Carrito
-        class Carrito {
-            constructor() {
-                this.items = [];
-                this.userId = null;
-                this.init();
-            }
-
-            async init() {
-                auth.onAuthStateChanged(async (user) => {
-                    if (user) {
-                        this.userId = user.uid;
-                        await this.cargarCarrito();
-                    }
-                });
-            }
-
-            async cargarCarrito() {
-                if (!this.userId) return;
-
-                try {
-                    const carritoRef = db.collection("carritos").doc(this.userId);
-                    const carritoDoc = await carritoRef.get();
-
-                    if (carritoDoc.exists) {
-                        this.items = carritoDoc.data().items;
-                    } else {
-                        this.items = [];
-                        await this.guardarCarrito();
-                    }
-
-                    this.actualizarContador();
-                    this.renderizarCarrito();
-                } catch (error) {
-                    console.error("Error al cargar el carrito:", error);
-                }
-            }
-
-            async guardarCarrito() {
-                if (!this.userId) return;
-
-                try {
-                    const carritoRef = db.collection("carritos").doc(this.userId);
-                    await carritoRef.set({
-                        items: this.items,
-                        ultimaActualizacion: new Date()
-                    });
-                } catch (error) {
-                    console.error("Error al guardar el carrito:", error);
-                }
-            }
-
-            async agregarItem(producto) {
-                if (!this.userId) {
-                    const iniciado = await this.iniciarSesion();
-                    if (!iniciado) return;
-                }
-
-                const itemExistente = this.items.find(item => item.id === producto.id);
-                
-                if (itemExistente) {
-                    itemExistente.cantidad += 1;
-                } else {
-                    this.items.push({
-                        id: producto.id,
-                        nombre: producto.nombre,
-                        precio: producto.precio,
-                        cantidad: 1,
-                        imagen: producto.imagen
-                    });
-                }
-                
-                await this.guardarCarrito();
-                this.actualizarContador();
-                this.renderizarCarrito();
-                this.mostrarNotificacion('Producto agregado al carrito');
-            }
-
-            async eliminarItem(id) {
-                if (!this.userId) return;
-
-                this.items = this.items.filter(item => item.id !== id);
-                await this.guardarCarrito();
-                this.actualizarContador();
-                this.renderizarCarrito();
-                this.mostrarNotificacion('Producto eliminado del carrito');
-            }
-
-            async actualizarCantidad(id, cantidad) {
-                if (!this.userId) return;
-
-                const item = this.items.find(item => item.id === id);
-                if (item) {
-                    item.cantidad = cantidad;
-                    if (item.cantidad <= 0) {
-                        await this.eliminarItem(id);
-                    } else {
-                        await this.guardarCarrito();
-                        this.actualizarContador();
-                        this.renderizarCarrito();
-                    }
-                }
-            }
-
-            async vaciarCarrito() {
-                if (!this.userId) return;
-
-                this.items = [];
-                await this.guardarCarrito();
-                this.actualizarContador();
-                this.renderizarCarrito();
-                this.mostrarNotificacion('Carrito vaciado');
-            }
-
-            actualizarContador() {
-                const contador = document.getElementById('carrito-contador');
-                if (contador) {
-                    const totalItems = this.items.reduce((total, item) => total + item.cantidad, 0);
-                    contador.textContent = totalItems;
-                }
-            }
-
-            renderizarCarrito() {
-                const listaCarrito = document.getElementById('carrito-lista');
-                if (!listaCarrito) return;
-
-                listaCarrito.innerHTML = '';
-                
-                if (this.items.length === 0) {
-                    listaCarrito.innerHTML = '<p class="carrito-vacio">Tu carrito está vacío</p>';
-                    return;
-                }
-
-                this.items.forEach(item => {
-                    const itemElement = document.createElement('div');
-                    itemElement.className = 'carrito-item';
-                    itemElement.innerHTML = `
-                        <img src="${item.imagen}" alt="${item.nombre}" class="carrito-item-imagen">
-                        <div class="carrito-item-info">
-                            <h4>${item.nombre}</h4>
-                            <p>${item.precio.toFixed(2)}€</p>
-                            <div class="carrito-item-cantidad">
-                                <button onclick="carrito.actualizarCantidad('${item.id}', ${item.cantidad - 1})">-</button>
-                                <span>${item.cantidad}</span>
-                                <button onclick="carrito.actualizarCantidad('${item.id}', ${item.cantidad + 1})">+</button>
-                            </div>
-                        </div>
-                        <button class="carrito-item-eliminar" onclick="carrito.eliminarItem('${item.id}')">
-                            <i class="bi bi-trash"></i>
-                        </button>
-                    `;
-                    listaCarrito.appendChild(itemElement);
-                });
-            }
-
-            mostrarNotificacion(mensaje) {
-                const notificacion = document.createElement('div');
-                notificacion.className = 'notificacion-carrito';
-                notificacion.textContent = mensaje;
-                document.body.appendChild(notificacion);
-
-                setTimeout(() => {
-                    notificacion.remove();
-                }, 2000);
-            }
-        }
-
-        // Inicializar el carrito y hacerlo global
-        window.carrito = new Carrito();
-
-        // Configurar Firebase UI
-        const ui = new firebaseui.auth.AuthUI(auth);
-        const uiConfig = {
-            signInOptions: [
-                {
-                    provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-                    customParameters: {
-                        prompt: 'select_account'
-                    }
-                }
-            ],
-            signInFlow: 'popup',
-            callbacks: {
-                signInSuccessWithAuthResult: function(authResult) {
-                    carrito.userId = authResult.user.uid;
-                    carrito.cargarCarrito();
-                    return false;
-                }
-            }
-        };
-
-        // Inicializar Firebase UI
-        ui.start('#firebaseui-auth-container', uiConfig);
-
-        // Carrito
-        document.addEventListener('DOMContentLoaded', function() {
-            const carritoPanel = document.getElementById('carrito-panel');
-            const carritoOverlay = document.getElementById('carrito-overlay');
-            const carritoToggle = document.getElementById('carrito-toggle');
-            const carritoCerrar = document.getElementById('carrito-cerrar');
-
-            if (carritoToggle) {
-                carritoToggle.addEventListener('click', toggleCarrito);
-            }
-            if (carritoCerrar) {
-                carritoCerrar.addEventListener('click', toggleCarrito);
-            }
-            if (carritoOverlay) {
-                carritoOverlay.addEventListener('click', toggleCarrito);
-            }
-
-            function toggleCarrito() {
-                if (carritoPanel && carritoOverlay) {
-                    carritoPanel.classList.toggle('active');
-                    carritoOverlay.classList.toggle('active');
-                }
-            }
-        });
-    </script>
+    <!-- Custom Scripts -->
+    <script src="/js/navbar.js"></script>
+    <script src="/js/carrito.js"></script>
+    <script src="/js/main.js"></script>
 </body>
 </html>

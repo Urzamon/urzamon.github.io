@@ -20,52 +20,70 @@ document.addEventListener('DOMContentLoaded', function() {
         firebase.initializeApp(firebaseConfig);
     }
 
-    // Cargar el menú de navegación
+    // Cargar la barra de navegación
     loadNavbar();
 });
 
-// Función para cargar el menú de navegación
+// Función para cargar la barra de navegación
 async function loadNavbar() {
     try {
-        const response = await fetch('components/navbar.html');
+        const response = await fetch('./components/navbar.html');
+        if (!response.ok) {
+            throw new Error('Error al cargar la barra de navegación');
+        }
         const html = await response.text();
-        document.getElementById('navbar-container').innerHTML = html;
-
-        // Inicializar funcionalidades del menú
-        initializeNavbar();
+        const navbarContainer = document.getElementById('navbar-container');
+        if (navbarContainer) {
+            navbarContainer.innerHTML = html;
+            initNavbar();
+        }
     } catch (error) {
-        console.error('Error al cargar el menú:', error);
+        console.error('Error:', error);
     }
 }
 
-// Función para inicializar las funcionalidades del menú
-function initializeNavbar() {
-    // Menú móvil
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    
-    if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-    }
-
-    // Carrito
+// Función para inicializar la funcionalidad de la barra de navegación
+function initNavbar() {
+    const navbarToggle = document.getElementById('navbar-toggle');
+    const navbarMenu = document.getElementById('navbar-menu');
     const carritoPanel = document.getElementById('carrito-panel');
     const carritoOverlay = document.getElementById('carrito-overlay');
     const carritoToggle = document.getElementById('carrito-toggle');
     const carritoCerrar = document.getElementById('carrito-cerrar');
 
-    if (carritoPanel && carritoOverlay && carritoToggle && carritoCerrar) {
-        function toggleCarrito() {
-            carritoPanel.classList.toggle('active');
-            carritoOverlay.classList.toggle('active');
-        }
+    // Toggle del menú móvil
+    if (navbarToggle && navbarMenu) {
+        navbarToggle.addEventListener('click', () => {
+            navbarMenu.classList.toggle('active');
+            navbarToggle.classList.toggle('active');
+        });
+    }
 
+    // Toggle del carrito
+    if (carritoToggle) {
         carritoToggle.addEventListener('click', toggleCarrito);
+    }
+
+    // Cerrar carrito
+    if (carritoCerrar) {
         carritoCerrar.addEventListener('click', toggleCarrito);
+    }
+
+    // Cerrar carrito al hacer clic en el overlay
+    if (carritoOverlay) {
         carritoOverlay.addEventListener('click', toggleCarrito);
     }
+
+    // Cerrar menú móvil al hacer clic en un enlace
+    const navbarLinks = document.querySelectorAll('#navbar-menu a');
+    navbarLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (navbarMenu && navbarToggle) {
+                navbarMenu.classList.remove('active');
+                navbarToggle.classList.remove('active');
+            }
+        });
+    });
 
     // Marcar enlace activo
     const currentPage = window.location.pathname.split('/').pop();
@@ -136,5 +154,16 @@ function setupGoogleLogin() {
                 }
             });
         }
+    }
+}
+
+// Función para alternar la visibilidad del carrito
+function toggleCarrito() {
+    const carritoPanel = document.getElementById('carrito-panel');
+    const carritoOverlay = document.getElementById('carrito-overlay');
+    
+    if (carritoPanel && carritoOverlay) {
+        carritoPanel.classList.toggle('active');
+        carritoOverlay.classList.toggle('active');
     }
 } 
