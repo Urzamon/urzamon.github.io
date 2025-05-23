@@ -1,203 +1,343 @@
-<!-- Barra de navegación -->
+<!-- Navegación -->
 <nav class="navbar">
-    <div class="navbar-container">
-        <!-- Logo -->
-        <a href="/" class="navbar-logo">
-            <img src="/img/logo.png" alt="Divina Tarta Logo">
-        </a>
-
-        <!-- Botón de menú móvil -->
-        <button id="navbar-toggle" class="navbar-toggle">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-
-        <!-- Menú de navegación -->
-        <div id="navbar-menu" class="navbar-menu">
-            <ul class="navbar-links">
-                <li><a href="/" class="navbar-link">Inicio</a></li>
-                <li><a href="/crea-tu-pastel.html" class="navbar-link">Crea tu Pastel</a></li>
-                <li><a href="/temporada.html" class="navbar-link">Pasteles de Temporada</a></li>
-                <li><a href="/clasicos.html" class="navbar-link">Pasteles Clásicos</a></li>
-                <li><a href="/galeria.html" class="navbar-link">Galería</a></li>
-                <li><a href="/contacto.html" class="navbar-link">Contacto</a></li>
-            </ul>
-
-            <!-- Botón de inicio de sesión -->
-            <div class="navbar-auth">
-                <button id="login-button" class="btn-login">
-                    <i class="bi bi-google"></i>
-                    Iniciar Sesión
-                </button>
-            </div>
-        </div>
-
-        <!-- Carrito -->
-        <div class="navbar-cart">
-            <button id="carrito-toggle" class="cart-toggle">
-                <i class="bi bi-cart3"></i>
-                <span id="carrito-contador" class="cart-counter">0</span>
-            </button>
-        </div>
+    <div class="logo">
+        <i class="bi bi-cake2"></i>
+        <span>Divina Tarta</span>
+        <h6>Version 1.0.0</h6>
     </div>
+    <button class="menu-toggle" aria-label="Toggle menu">
+        <i class="bi bi-list"></i>
+    </button>
+    <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="crea-tu-pastel.html">Crea tu Pastel</a></li>
+        <li><a href="temporada.html">Pasteles de Temporada</a></li>
+        <li><a href="clasicos.html">Pasteles Clásicos</a></li>
+        <li><a href="galeria.html">Galería</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li class="nav-icons">
+            <div class="google-login-button" id="google-login-icon">
+                <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo" class="google-logo">
+                <span>Login</span>
+            </div>
+            <div class="user-icon" id="user-icon" style="display:none" title="Mi perfil">
+                <img id="user-photo" class="user-photo" src="" alt="Foto de perfil">
+                <div class="user-dropdown">
+                    <div class="user-info">
+                        <span id="user-name"></span>
+                    </div>
+                    <button class="logout-button">
+                        <i class="bi bi-box-arrow-right"></i>
+                        Cerrar sesión
+                    </button>
+                </div>
+            </div>
+        </li>
+         <li>
+            <div class="carrito-icon" id="carrito-toggle">
+                <i class="bi bi-cart3"></i>
+                <span id="carrito-contador">0</span>
+            </div>
+         </li>
+    </ul>
 </nav>
 
-<!-- Estilos de la barra de navegación -->
+<!-- Carrito de Compras -->
+<div class="carrito-overlay" id="carrito-overlay"></div>
+<div class="carrito-panel" id="carrito-panel">
+    <div class="carrito-header">
+        <h3>Tu Carrito</h3>
+        <button class="carrito-cerrar" id="carrito-cerrar">
+            <i class="bi bi-x"></i>
+        </button>
+    </div>
+    <div id="carrito-lista">
+        <!-- Los items se generarán dinámicamente -->
+    </div>
+    <div class="carrito-total">
+        Total: <span id="carrito-total">0€</span>
+    </div>
+    <button class="carrito-vaciar" onclick="window.carrito.vaciarCarrito()">Vaciar Carrito</button>
+</div>
+
 <style>
+/* Ajuste general de la navbar */
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    z-index: 1000;
-}
-
-.navbar-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1rem;
+    background: var(--light-color);
+    padding: 0 2rem;
+    box-shadow: var(--shadow);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: 1000;
+    height: 80px;
 }
 
-.navbar-logo img {
-    height: 40px;
-}
-
-.navbar-toggle {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem;
-}
-
-.navbar-toggle span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background-color: #333;
-    margin: 5px 0;
-    transition: 0.3s;
-}
-
-.navbar-menu {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-}
-
-.navbar-links {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    gap: 1.5rem;
-}
-
-.navbar-link {
-    color: #333;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s;
-}
-
-.navbar-link:hover {
-    color: #ff6b6b;
-}
-
-.navbar-auth {
-    margin-left: 1rem;
-}
-
-.btn-login {
+/* Ajuste del logo */
+.logo {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    border: none;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    height: 100%;
+}
+
+/* Ajuste de los enlaces de navegación */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.3s;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+/* Ajuste de los iconos */
+.nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: auto;
+    height: 100%;
+}
+
+.google-login-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #fff;
+    border: 1px solid #dadce0;
     border-radius: 4px;
-    background-color: #4285f4;
-    color: white;
+    padding: 8px 16px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    font-family: 'Google Sans', 'Roboto', Arial, sans-serif;
+    font-size: 14px;
+    color: #3c4043;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    height: 40px;
+    min-width: 240px;
+    justify-content: center;
 }
 
-.btn-login:hover {
-    background-color: #357abd;
+.google-login-button:hover {
+    background-color: #f8f9fa;
+    box-shadow: 0 1px 2px rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
 }
 
-.navbar-cart {
-    position: relative;
+.google-login-button:active {
+    background-color: #f1f3f4;
+    box-shadow: 0 1px 2px rgba(60,64,67,0.3), 0 2px 6px 2px rgba(60,64,67,0.15);
 }
 
-.cart-toggle {
+.google-logo {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
+
+.user-icon,
+.carrito-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    transition: color 0.3s;
+    height: 40px;
+    width: 40px;
+}
+
+.user-icon:hover,
+.carrito-icon:hover {
+    color: var(--dark-color);
+}
+
+/* Ajuste del contador del carrito */
+#carrito-contador {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+/* Ajuste del botón de menú móvil */
+.menu-toggle {
+    display: none;
     background: none;
     border: none;
-    cursor: pointer;
     font-size: 1.5rem;
-    color: #333;
+    cursor: pointer;
+    color: var(--primary-color);
     padding: 0.5rem;
+    align-items: center;
 }
 
-.cart-counter {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: #ff6b6b;
-    color: white;
-    font-size: 0.75rem;
-    padding: 0.25rem 0.5rem;
-    border-radius: 50%;
-}
-
-/* Estilos responsivos */
+/* Media query para dispositivos móviles */
 @media (max-width: 768px) {
-    .navbar-toggle {
-        display: block;
+    .menu-toggle {
+        display: flex;
     }
 
-    .navbar-menu {
+    .nav-links {
         position: fixed;
-        top: 70px;
+        top: 80px;
         left: -100%;
         width: 100%;
-        height: calc(100vh - 70px);
-        background-color: white;
+        height: calc(100vh - 80px);
+        background: var(--light-color);
         flex-direction: column;
+        align-items: center;
         padding: 2rem;
         transition: left 0.3s;
     }
 
-    .navbar-menu.active {
+    .nav-links.active {
         left: 0;
     }
 
-    .navbar-links {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .navbar-auth {
+    .nav-icons {
         margin: 1rem 0;
     }
 }
 
-/* Animación del botón de menú */
-.navbar-toggle.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
+.user-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary-color);
+    transition: all 0.3s ease;
 }
 
-.navbar-toggle.active span:nth-child(2) {
-    opacity: 0;
+.user-photo:hover {
+    transform: scale(1.1);
+    border-color: var(--dark-color);
 }
 
-.navbar-toggle.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -6px);
+.user-icon {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 8px 0;
+    min-width: 200px;
+    z-index: 1000;
+    margin-top: 8px;
+}
+
+.user-icon:hover .user-dropdown {
+    display: block;
+}
+
+.user-info {
+    padding: 8px 16px;
+    border-bottom: 1px solid #eee;
+}
+
+.user-info span {
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.logout-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 8px 16px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #3c4043;
+    font-size: 14px;
+    text-align: left;
+}
+
+.logout-button:hover {
+    background-color: #f8f9fa;
+}
+
+.logout-button i {
+    font-size: 1.1rem;
+}
+
+/* Ajuste para el icono de usuario */
+.user-icon i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    transition: color 0.3s;
+}
+
+.user-icon:hover i {
+    color: var(--dark-color);
+}
+
+.carrito-vaciar {
+    margin: 1rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+    width: calc(100% - 2rem);
+}
+
+.carrito-vaciar:hover {
+    background: var(--dark-color);
+    transform: translateY(-2px);
+}
+
+.carrito-vaciar:active {
+    transform: translateY(0);
+}
+
+.carrito-vaciar i {
+    font-size: 1.1rem;
 }
 </style>
 

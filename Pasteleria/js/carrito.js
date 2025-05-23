@@ -184,7 +184,7 @@ class Carrito {
 // Inicializar el carrito y hacerlo global
 window.carrito = new Carrito();
 
-// Inicializar funcionalidades del carrito
+// Carrito
 document.addEventListener('DOMContentLoaded', function() {
     const carritoPanel = document.getElementById('carrito-panel');
     const carritoOverlay = document.getElementById('carrito-overlay');
@@ -200,15 +200,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (carritoOverlay) {
         carritoOverlay.addEventListener('click', toggleCarrito);
     }
-});
 
-// Función para alternar la visibilidad del carrito
-function toggleCarrito() {
-    const carritoPanel = document.getElementById('carrito-panel');
-    const carritoOverlay = document.getElementById('carrito-overlay');
-    
-    if (carritoPanel && carritoOverlay) {
-        carritoPanel.classList.toggle('active');
-        carritoOverlay.classList.toggle('active');
+    function toggleCarrito() {
+        if (carritoPanel && carritoOverlay) {
+            carritoPanel.classList.toggle('active');
+            carritoOverlay.classList.toggle('active');
+        }
     }
-} 
+}); 
