@@ -868,4 +868,15 @@ footer {
 .lightbox-caption {
     font-size: 1.2rem;
     padding: 1rem;
+}
+
+.user-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary-color);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: block; /* Asegura que la imagen se muestre correctamente */
 } 

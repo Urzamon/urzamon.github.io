@@ -101,7 +101,18 @@ function setupGoogleLogin() {
                 const userPhoto = document.getElementById('user-photo');
                 if (userName) userName.textContent = user.displayName || 'Usuario';
                 if (userPhoto) {
-                    userPhoto.src = user.photoURL || 'https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/default.png';
+                    const photoURL = user.photoURL;
+                    if (photoURL) {
+                        // Asegurarse de que la URL sea HTTPS
+                        const securePhotoURL = photoURL.replace('http://', 'https://');
+                        userPhoto.src = securePhotoURL;
+                        userPhoto.onerror = function() {
+                            // Si la imagen falla, usar la imagen por defecto
+                            this.src = 'https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/default.png';
+                        };
+                    } else {
+                        userPhoto.src = 'https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/default.png';
+                    }
                     userPhoto.alt = user.displayName || 'Foto de perfil';
                 }
             }
