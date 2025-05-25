@@ -21,7 +21,7 @@
                 <span>Login</span>
             </div>
             <div class="user-icon" id="user-icon" style="display:none" title="Mi perfil">
-                <img id="user-photo" class="user-photo" src="" alt="Foto de perfil">
+                <img id="user-photo" class="user-photo" src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/default.png" alt="Foto de perfil">
                 <div class="user-dropdown">
                     <div class="user-info">
                         <span id="user-name"></span>
@@ -238,6 +238,7 @@
     object-fit: cover;
     border: 2px solid var(--primary-color);
     transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .user-photo:hover {
@@ -251,6 +252,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 4px;
 }
 
 .user-dropdown {
@@ -265,20 +267,30 @@
     min-width: 200px;
     z-index: 1000;
     margin-top: 8px;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.user-icon:hover .user-dropdown {
+.user-icon:hover .user-dropdown,
+.user-dropdown:hover {
     display: block;
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .user-info {
-    padding: 8px 16px;
+    padding: 12px 16px;
     border-bottom: 1px solid #eee;
 }
 
 .user-info span {
     font-weight: 500;
     color: var(--text-color);
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .logout-button {
@@ -286,21 +298,27 @@
     align-items: center;
     gap: 8px;
     width: 100%;
-    padding: 8px 16px;
+    padding: 12px 16px;
     border: none;
     background: none;
     cursor: pointer;
     color: #3c4043;
     font-size: 14px;
     text-align: left;
+    transition: background-color 0.2s ease;
 }
 
 .logout-button:hover {
     background-color: #f8f9fa;
 }
 
+.logout-button:active {
+    background-color: #f1f3f4;
+}
+
 .logout-button i {
     font-size: 1.1rem;
+    color: var(--primary-color);
 }
 
 /* Ajuste para el icono de usuario */

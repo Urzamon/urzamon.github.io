@@ -98,7 +98,12 @@ function setupGoogleLogin() {
                 userIcon.style.display = 'flex';
                 userIcon.title = user.displayName || 'Mi perfil';
                 const userName = document.getElementById('user-name');
+                const userPhoto = document.getElementById('user-photo');
                 if (userName) userName.textContent = user.displayName || 'Usuario';
+                if (userPhoto) {
+                    userPhoto.src = user.photoURL || 'https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/default.png';
+                    userPhoto.alt = user.displayName || 'Foto de perfil';
+                }
             }
         } else {
             if (googleLoginIcon) googleLoginIcon.style.display = 'flex';
