@@ -3,6 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Divina Tarta - Pastelería artesanal con los mejores ingredientes. Crea tu pastel personalizado o elige entre nuestras deliciosas opciones.">
+    <meta name="keywords" content="pastelería, tartas, pasteles, repostería, dulces, postres">
+    <meta property="og:title" content="Divina Tarta - Pastelería Artesanal">
+    <meta property="og:description" content="Descubre nuestras deliciosas creaciones artesanales">
+    <meta property="og:image" content="img/hero-bg.webp">
+    <meta property="og:url" content="https://divinatarta.com">
+    <link rel="icon" type="image/png" href="img/favicon.png">
     <title>Divina Tarta - Pastelería Artesanal</title>
     
     <!-- Bootstrap Icons -->
@@ -18,6 +25,8 @@
     <!-- Firebase UI -->
     <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
+    <!-- Configuración de Firebase -->
+    <script type="module" src="js/config.js"></script>
     <!-- Navbar Script (debe ir después de Firebase) -->
     <script src="js/navbar.js" defer></script>
     <style>
@@ -88,7 +97,7 @@
         <h2>Ofertas Especiales</h2>
         <div class="ofertas-grid">
             <div class="oferta-card">
-                <img src="img/oferta1.jpg" alt="Oferta Especial">
+                <img src="img/oferta1.jpg" alt="Pack Cumpleaños - Pastel con cupcakes" width="300" height="200" loading="lazy">
                 <h3>Pack Cumpleaños</h3>
                 <p>Pastel + 12 cupcakes - 20% descuento</p>
                 <span class="precio">45€</span>
@@ -97,10 +106,10 @@
                     nombre: 'Pack Cumpleaños',
                     precio: 45,
                     imagen: 'img/oferta1.jpg'
-                })" class="btn-secondary">Pedir Ahora</button>
+                })" class="btn-secondary" aria-label="Añadir Pack Cumpleaños al carrito">Pedir Ahora</button>
             </div>
             <div class="oferta-card">
-                <img src="img/oferta2.jpg" alt="Oferta Especial">
+                <img src="img/oferta2.jpg" alt="Pack Boda - Pastel principal con cupcakes" width="300" height="200" loading="lazy">
                 <h3>Pack Boda</h3>
                 <p>Pastel principal + 50 cupcakes - 15% descuento</p>
                 <span class="precio">299€</span>
@@ -109,7 +118,7 @@
                     nombre: 'Pack Boda',
                     precio: 299,
                     imagen: 'img/oferta2.jpg'
-                })" class="btn-secondary">Pedir Ahora</button>
+                })" class="btn-secondary" aria-label="Añadir Pack Boda al carrito">Pedir Ahora</button>
             </div>
         </div>
     </section>

@@ -439,6 +439,14 @@ footer {
     z-index: 1000;
 }
 
+.notificacion-success {
+    background: #4CAF50 !important;
+}
+
+.notificacion-error {
+    background: #f44336 !important;
+}
+
 /* Login Button */
 .btn-login {
     background-color: #4285f4;
