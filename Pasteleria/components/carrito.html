@@ -11,5 +11,14 @@
     <div class="carrito-total">
         Total: <span id="carrito-total">0€</span>
     </div>
-    <button class="carrito-vaciar" onclick="carrito.vaciarCarrito()">Vaciar Carrito</button>
+    <div class="carrito-buttons">
+        <button class="carrito-enviar" onclick="carrito.enviarPedido()">
+            <i class="bi bi-send"></i>
+            Enviar Pedido
+        </button>
+        <button class="carrito-vaciar" onclick="carrito.vaciarCarrito()">
+            <i class="bi bi-trash"></i>
+            Vaciar Carrito
+        </button>
+    </div>
 </div> 

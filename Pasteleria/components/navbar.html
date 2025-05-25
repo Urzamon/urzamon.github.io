@@ -51,13 +51,20 @@
             <i class="bi bi-x"></i>
         </button>
     </div>
-    <div id="carrito-lista">
-        <!-- Los items se generarán dinámicamente -->
-    </div>
+    <div id="carrito-lista"></div>
     <div class="carrito-total">
         Total: <span id="carrito-total">0€</span>
     </div>
-    <button class="carrito-vaciar" onclick="window.carrito.vaciarCarrito()">Vaciar Carrito</button>
+    <div class="carrito-buttons">
+        <button class="carrito-enviar" onclick="carrito.enviarPedido()">
+            <i class="bi bi-send"></i>
+            Enviar Pedido
+        </button>
+        <button class="carrito-vaciar" onclick="carrito.vaciarCarrito()">
+            <i class="bi bi-trash"></i>
+            Vaciar Carrito
+        </button>
+    </div>
 </div>
 
 <style>
@@ -266,7 +273,7 @@
     padding: 8px 0;
     min-width: 200px;
     z-index: 1000;
-    margin-top: 8px;
+    margin-top: 0px;
     opacity: 0;
     transform: translateY(-10px);
     transition: opacity 0.3s ease, transform 0.3s ease;
@@ -333,7 +340,39 @@
 }
 
 .carrito-vaciar {
-    margin: 1rem;
+    flex: 1;
+    padding: 0.75rem 1.5rem;
+    background: #ff4444;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.carrito-vaciar:hover {
+    background: #cc0000;
+    transform: translateY(-2px);
+}
+
+.carrito-vaciar:active {
+    transform: translateY(0);
+}
+
+.carrito-buttons {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.carrito-enviar {
+    flex: 1;
     padding: 0.75rem 1.5rem;
     background: var(--primary-color);
     color: white;
@@ -342,20 +381,19 @@
     cursor: pointer;
     font-weight: 500;
     transition: all 0.3s;
-    width: calc(100% - 2rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
 }
 
-.carrito-vaciar:hover {
+.carrito-enviar:hover {
     background: var(--dark-color);
     transform: translateY(-2px);
 }
 
-.carrito-vaciar:active {
+.carrito-enviar:active {
     transform: translateY(0);
-}
-
-.carrito-vaciar i {
-    font-size: 1.1rem;
 }
 </style>
 

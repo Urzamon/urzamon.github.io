@@ -320,18 +320,61 @@ footer {
     text-align: right;
 }
 
+.carrito-buttons {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.carrito-enviar {
+    flex: 1;
+    padding: 0.75rem 1.5rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.carrito-enviar:hover {
+    background: var(--dark-color);
+    transform: translateY(-2px);
+}
+
+.carrito-enviar:active {
+    transform: translateY(0);
+}
+
 .carrito-vaciar {
-    margin: 1rem;
-    padding: 0.5rem;
+    flex: 1;
+    padding: 0.75rem 1.5rem;
     background: #ff4444;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
 }
 
 .carrito-vaciar:hover {
     background: #cc0000;
+    transform: translateY(-2px);
+}
+
+.carrito-vaciar:active {
+    transform: translateY(0);
 }
 
 .carrito-icon {
@@ -431,8 +474,6 @@ footer {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background: #4CAF50;
-    color: white;
     padding: 1rem;
     border-radius: 5px;
     animation: slideIn 0.3s ease-out;
@@ -440,11 +481,13 @@ footer {
 }
 
 .notificacion-success {
-    background: #4CAF50 !important;
+    background: #4CAF50;
+    color: white;
 }
 
 .notificacion-error {
-    background: #f44336 !important;
+    background: #f44336;
+    color: white;
 }
 
 /* Login Button */

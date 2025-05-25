@@ -138,12 +138,14 @@ class Carrito {
 
     renderizarCarrito() {
         const listaCarrito = document.getElementById('carrito-lista');
+        const totalElement = document.getElementById('carrito-total');
         if (!listaCarrito) return;
 
         listaCarrito.innerHTML = '';
         
         if (this.items.length === 0) {
             listaCarrito.innerHTML = '<p class="carrito-vacio">Tu carrito está vacío</p>';
+            if (totalElement) totalElement.textContent = '0€';
             return;
         }
 
@@ -167,17 +169,77 @@ class Carrito {
             `;
             listaCarrito.appendChild(itemElement);
         });
+
+        // Actualizar el total
+        if (totalElement) {
+            const total = this.calcularTotal();
+            totalElement.textContent = `${total.toFixed(2)}€`;
+        }
     }
 
-    mostrarNotificacion(mensaje) {
+    mostrarNotificacion(mensaje, tipo = 'success') {
         const notificacion = document.createElement('div');
-        notificacion.className = 'notificacion-carrito';
+        notificacion.className = `notificacion-carrito notificacion-${tipo}`;
         notificacion.textContent = mensaje;
         document.body.appendChild(notificacion);
 
         setTimeout(() => {
             notificacion.remove();
-        }, 2000);
+        }, 3000);
+    }
+
+    async enviarPedido() {
+        if (!this.userId) {
+            this.mostrarNotificacion('Debes iniciar sesión para enviar el pedido', 'error');
+            return;
+        }
+
+        if (this.items.length === 0) {
+            this.mostrarNotificacion('El carrito está vacío', 'error');
+            return;
+        }
+
+        try {
+            const user = firebase.auth().currentUser;
+            if (!user) {
+                this.mostrarNotificacion('Error: Usuario no autenticado', 'error');
+                return;
+            }
+
+            // Crear el contenido del email
+            const emailContent = {
+                to: user.email,
+                from: 'akeladinelia@hotmail.com',
+                subject: 'Confirmación de Pedido - Divina Tarta',
+                html: `
+                    <h2>¡Gracias por tu pedido!</h2>
+                    <p>Hola ${user.displayName},</p>
+                    <p>Hemos recibido tu pedido. Aquí está el resumen:</p>
+                    <ul>
+                        ${this.items.map(item => `
+                            <li>${item.nombre} - ${item.cantidad} x ${item.precio.toFixed(2)}€ = ${(item.cantidad * item.precio).toFixed(2)}€</li>
+                        `).join('')}
+                    </ul>
+                    <p><strong>Total: ${this.calcularTotal().toFixed(2)}€</strong></p>
+                    <p>Nos pondremos en contacto contigo pronto para confirmar los detalles del pedido.</p>
+                    <p>Saludos,<br>El equipo de Divina Tarta</p>
+                `
+            };
+
+            // Enviar el email usando Firebase Cloud Functions
+            const sendEmail = firebase.functions().httpsCallable('sendEmail');
+            await sendEmail(emailContent);
+
+            this.mostrarNotificacion('Pedido enviado correctamente', 'success');
+            await this.vaciarCarrito();
+        } catch (error) {
+            console.error('Error al enviar el pedido:', error);
+            this.mostrarNotificacion('Error al enviar el pedido', 'error');
+        }
+    }
+
+    calcularTotal() {
+        return this.items.reduce((total, item) => total + (item.precio * item.cantidad), 0);
     }
 }
 
