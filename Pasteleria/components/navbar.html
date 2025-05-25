@@ -18,7 +18,6 @@
         <li class="nav-icons">
             <div class="google-login-button" id="google-login-icon">
                 <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo" class="google-logo">
-                <span></span>
             </div>
             <div class="user-icon" id="user-icon" style="display:none" title="Mi perfil">
                 <img id="user-photo" class="user-photo" src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/default.png" alt="Foto de perfil">
@@ -394,6 +393,37 @@
 .carrito-enviar:active {
     transform: translateY(0);
 }
+
+.notificacion-carrito {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 1rem;
+    border-radius: 5px;
+    animation: slideIn 0.3s ease-out;
+    z-index: 1000;
+}
+
+.notificacion-success {
+    background: #4CAF50;
+    color: white;
+}
+
+.notificacion-error {
+    background: #f44336;
+    color: white;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
 </style>
 
 <script>
@@ -429,4 +459,10 @@ document.querySelector('.logout-button').addEventListener('click', async () => {
 
 <!-- En todas las páginas que usan el carrito -->
 <script src="js/carrito.js"></script>
+
+<!-- Agregar esto justo después del navbar-container -->
+<div id="navbar-container"></div>
+<div class="auth-container">
+    <div id="firebaseui-auth-container"></div>
+</div>
 </body> 
